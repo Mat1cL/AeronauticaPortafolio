@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DA80BB82-46B2-4A18-B622-8037BA75DEE2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Aeronautica</RootNamespace>
+    <AssemblyName>Aeronautica</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Ahmadhania-Spherical-Airplane.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Vistas\Administrador\IngresarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Administrador\IngresarUsuario.Designer.cs">
+      <DependentUpon>IngresarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Administrador\MantenedorUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Administrador\MantenedorUsuario.Designer.cs">
+      <DependentUpon>MantenedorUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultor\ConsultarVuelosRealizados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\ConsultarVuelosRealizados.Designer.cs">
+      <DependentUpon>ConsultarVuelosRealizados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultor\ReportesAeronaves.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\ReportesAeronaves.Designer.cs">
+      <DependentUpon>ReportesAeronaves.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarDetalleMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarDetalleMantenimiento.Designer.cs">
+      <DependentUpon>IngresarDetalleMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarLicencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarLicencia.Designer.cs">
+      <DependentUpon>IngresarLicencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultor\ConsultarHorasVuelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\ConsultarHorasVuelo.Designer.cs">
+      <DependentUpon>ConsultarHorasVuelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultor\ConsultarHorasVueloAeronave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\ConsultarHorasVueloAeronave.Designer.cs">
+      <DependentUpon>ConsultarHorasVueloAeronave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Administrador\VistaAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Administrador\VistaAdministrador.Designer.cs">
+      <DependentUpon>VistaAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultor\VistaConsultor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\VistaConsultor.Designer.cs">
+      <DependentUpon>VistaConsultor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarFichaMedica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarFichaMedica.Designer.cs">
+      <DependentUpon>IngresarFichaMedica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\Mantenedores\MantenedorAeronave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Mantenedores\MantenedorAeronave.Designer.cs">
+      <DependentUpon>MantenedorAeronave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\Mantenedores\MantenedorFichaMedica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Mantenedores\MantenedorFichaMedica.Designer.cs">
+      <DependentUpon>MantenedorFichaMedica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\Mantenedores\MantenedorLicencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Mantenedores\MantenedorLicencia.Designer.cs">
+      <DependentUpon>MantenedorLicencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\Mantenedores\MantenedorPiloto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Mantenedores\MantenedorPiloto.Designer.cs">
+      <DependentUpon>MantenedorPiloto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultor\ReportePiloto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\ReportePiloto.Designer.cs">
+      <DependentUpon>ReportePiloto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\VistaOperador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\VistaOperador.Designer.cs">
+      <DependentUpon>VistaOperador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarAeronave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarAeronave.Designer.cs">
+      <DependentUpon>IngresarAeronave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarComponente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarComponente.Designer.cs">
+      <DependentUpon>IngresarComponente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarPiloto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarPiloto.Designer.cs">
+      <DependentUpon>IngresarPiloto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarPlanVuelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarPlanVuelo.Designer.cs">
+      <DependentUpon>IngresarPlanVuelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Piloto\ConsultarHoraDeVueloPiloto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Piloto\ConsultarHoraDeVueloPiloto.Designer.cs">
+      <DependentUpon>ConsultarHoraDeVueloPiloto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Piloto\VistaPiloto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Piloto\VistaPiloto.Designer.cs">
+      <DependentUpon>VistaPiloto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vistas\Operador\Ingresos\IngresarPlanVueloReal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarPlanVueloReal.Designer.cs">
+      <DependentUpon>IngresarPlanVueloReal.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Vistas\Administrador\IngresarUsuario.resx">
+      <DependentUpon>IngresarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Administrador\MantenedorUsuario.resx">
+      <DependentUpon>MantenedorUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\ConsultarHorasVuelo.resx">
+      <DependentUpon>ConsultarHorasVuelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\ConsultarHorasVueloAeronave.resx">
+      <DependentUpon>ConsultarHorasVueloAeronave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\ConsultarVuelosRealizados.resx">
+      <DependentUpon>ConsultarVuelosRealizados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\ReportesAeronaves.resx">
+      <DependentUpon>ReportesAeronaves.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Administrador\VistaAdministrador.resx">
+      <DependentUpon>VistaAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\VistaConsultor.resx">
+      <DependentUpon>VistaConsultor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Ingresos\IngresarComponente.resx">
+      <DependentUpon>IngresarComponente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Ingresos\IngresarDetalleMantenimiento.resx">
+      <DependentUpon>IngresarDetalleMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Ingresos\IngresarFichaMedica.resx">
+      <DependentUpon>IngresarFichaMedica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Ingresos\IngresarLicencia.resx">
+      <DependentUpon>IngresarLicencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Mantenedores\MantenedorAeronave.resx">
+      <DependentUpon>MantenedorAeronave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Mantenedores\MantenedorFichaMedica.resx">
+      <DependentUpon>MantenedorFichaMedica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Mantenedores\MantenedorLicencia.resx">
+      <DependentUpon>MantenedorLicencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Mantenedores\MantenedorPiloto.resx">
+      <DependentUpon>MantenedorPiloto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\ReportePiloto.resx">
+      <DependentUpon>ReportePiloto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\VistaOperador.resx">
+      <DependentUpon>VistaOperador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Ingresos\IngresarAeronave.resx">
+      <DependentUpon>IngresarAeronave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Ingresos\IngresarPiloto.resx">
+      <DependentUpon>IngresarPiloto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Ingresos\IngresarPlanVuelo.resx">
+      <DependentUpon>IngresarPlanVuelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Piloto\ConsultarHoraDeVueloPiloto.resx">
+      <DependentUpon>ConsultarHoraDeVueloPiloto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Piloto\VistaPiloto.resx">
+      <DependentUpon>VistaPiloto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Vistas\Operador\Ingresos\IngresarPlanVueloReal.resx">
+      <DependentUpon>IngresarPlanVueloReal.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\licencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoAvion.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medicina.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Occupations-Pilot-Male-Light-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_bx.png" />
+    <None Include="Resources\pilo.png" />
+    <None Include="Resources\ico.bmp" />
+    <None Include="Resources\Ahmadhania-Spherical-Airplane.ico" />
+    <None Include="Resources\paper2X.png" />
+    <None Include="Resources\paper1X.png" />
+    <None Include="Resources\Matenimiento.png" />
+    <None Include="Resources\paper2.png" />
+    <None Include="Resources\paper1.png" />
+    <None Include="Resources\verde.png" />
+    <None Include="Resources\rojo.png" />
+    <None Include="Resources\medicina2.png" />
+    <None Include="Resources\Occupations-Pilot-Male-Light-2icon.png" />
+    <None Include="Resources\aeronave1.png" />
+    <None Include="Resources\aeronave2.png" />
+    <None Include="Resources\fabricante.png" />
+    <None Include="Resources\ConsultarHoradeVueloPiloto.png" />
+    <None Include="Resources\ConsultarHorasDeVueloAeronave.png" />
+    <None Include="Resources\AddUsuario.png" />
+    <None Include="Resources\EditUsuario.png" />
+    <None Include="Resources\AddAeronave.png" />
+    <None Include="Resources\EditAeronave.png" />
+    <None Include="Resources\DetalleMantenimiento.png" />
+    <None Include="Resources\DetalleMantenimiento2.png" />
+    <None Include="Resources\Componente.png" />
+    <None Include="Resources\Aeronavexx.png" />
+    <None Include="Resources\Aeronavexx22.png" />
+    <Content Include="Resources\licencia2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Conexion\Conexion.csproj">
+      <Project>{c9176c93-0432-495a-a991-2294665eda87}</Project>
+      <Name>Conexion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{9f7cba8a-1c40-41af-81cb-51a262d94e2b}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

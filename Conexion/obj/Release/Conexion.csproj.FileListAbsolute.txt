@@ -1,0 +1,6 @@
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\bin\Release\Conexion.dll
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\bin\Release\Conexion.pdb
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\bin\Release\Oracle.DataAccess.dll
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\obj\Release\Conexion.csprojResolveAssemblyReference.cache
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\obj\Release\Conexion.dll
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\obj\Release\Conexion.pdb

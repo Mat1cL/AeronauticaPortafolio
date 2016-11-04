@@ -1,0 +1,4 @@
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\bin\x64\Release\Conexion.dll
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\bin\x64\Release\Conexion.pdb
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\obj\x64\Release\Conexion.dll
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\obj\x64\Release\Conexion.pdb

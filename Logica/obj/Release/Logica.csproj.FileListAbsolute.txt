@@ -1,0 +1,8 @@
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Logica\bin\Release\Logica.dll
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Logica\bin\Release\Logica.pdb
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Logica\bin\Release\Conexion.dll
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Logica\bin\Release\Oracle.DataAccess.dll
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Logica\bin\Release\Conexion.pdb
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Logica\obj\Release\Logica.csprojResolveAssemblyReference.cache
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Logica\obj\Release\Logica.dll
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Logica\obj\Release\Logica.pdb
