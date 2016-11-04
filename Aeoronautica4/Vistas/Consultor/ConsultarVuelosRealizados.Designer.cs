@@ -37,6 +37,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnFiltrar = new System.Windows.Forms.Button();
+            this.txtMatricula = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVuelos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@
             // 
             // btnVuelos
             // 
-            this.btnVuelos.Location = new System.Drawing.Point(506, 478);
+            this.btnVuelos.Location = new System.Drawing.Point(488, 481);
             this.btnVuelos.Name = "btnVuelos";
             this.btnVuelos.Size = new System.Drawing.Size(117, 41);
             this.btnVuelos.TabIndex = 1;
@@ -72,7 +74,7 @@
             // 
             this.dtDesde.CustomFormat = "dd/MM/yyyy";
             this.dtDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDesde.Location = new System.Drawing.Point(446, 103);
+            this.dtDesde.Location = new System.Drawing.Point(446, 76);
             this.dtDesde.Name = "dtDesde";
             this.dtDesde.Size = new System.Drawing.Size(89, 20);
             this.dtDesde.TabIndex = 15;
@@ -81,7 +83,7 @@
             // 
             this.dtHasta.CustomFormat = "dd/MM/yyyy";
             this.dtHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtHasta.Location = new System.Drawing.Point(585, 103);
+            this.dtHasta.Location = new System.Drawing.Point(585, 76);
             this.dtHasta.Name = "dtHasta";
             this.dtHasta.Size = new System.Drawing.Size(89, 20);
             this.dtHasta.TabIndex = 16;
@@ -89,7 +91,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(402, 109);
+            this.label2.Location = new System.Drawing.Point(402, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 17;
@@ -98,7 +100,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(544, 109);
+            this.label3.Location = new System.Drawing.Point(544, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 18;
@@ -106,13 +108,30 @@
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(693, 103);
+            this.btnFiltrar.Location = new System.Drawing.Point(691, 82);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrar.Size = new System.Drawing.Size(75, 53);
             this.btnFiltrar.TabIndex = 19;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
+            // txtMatricula
+            // 
+            this.txtMatricula.Location = new System.Drawing.Point(541, 113);
+            this.txtMatricula.MaxLength = 6;
+            this.txtMatricula.Name = "txtMatricula";
+            this.txtMatricula.Size = new System.Drawing.Size(100, 20);
+            this.txtMatricula.TabIndex = 20;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(485, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Matricula";
             // 
             // ConsultarVuelosRealizados
             // 
@@ -120,6 +139,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1143, 544);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtMatricula);
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -150,5 +171,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnFiltrar;
+        private System.Windows.Forms.TextBox txtMatricula;
+        private System.Windows.Forms.Label label4;
     }
 }
