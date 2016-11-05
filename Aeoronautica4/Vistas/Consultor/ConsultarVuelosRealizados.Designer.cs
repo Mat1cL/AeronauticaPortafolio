@@ -39,6 +39,7 @@
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnVolver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVuelos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             // 
             // btnVuelos
             // 
-            this.btnVuelos.Location = new System.Drawing.Point(488, 481);
+            this.btnVuelos.Location = new System.Drawing.Point(514, 484);
             this.btnVuelos.Name = "btnVuelos";
             this.btnVuelos.Size = new System.Drawing.Size(117, 41);
             this.btnVuelos.TabIndex = 1;
@@ -133,12 +134,23 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Matricula";
             // 
+            // btnVolver
+            // 
+            this.btnVolver.Location = new System.Drawing.Point(532, 546);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(75, 23);
+            this.btnVolver.TabIndex = 22;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // ConsultarVuelosRealizados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1143, 544);
+            this.ClientSize = new System.Drawing.Size(1143, 581);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtMatricula);
             this.Controls.Add(this.btnFiltrar);
@@ -173,5 +185,6 @@
         private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.TextBox txtMatricula;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnVolver;
     }
 }

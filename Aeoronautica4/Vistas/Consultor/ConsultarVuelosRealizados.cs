@@ -223,5 +223,10 @@ namespace Aeronautica.Vistas.Consultor
             dtDesde.Enabled = false;
             btnFiltrar.Enabled = false;
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
