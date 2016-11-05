@@ -82,6 +82,7 @@
             this.SCoPilotoVerde = new System.Windows.Forms.PictureBox();
             this.cboPilotoDisponible = new System.Windows.Forms.ComboBox();
             this.cboCoPilotoDisponible = new System.Windows.Forms.ComboBox();
+            this.lblFinal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbRojo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbVerde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPilotoVerde)).BeginInit();
@@ -251,7 +252,7 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(380, 677);
+            this.btnVolver.Location = new System.Drawing.Point(335, 642);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
             this.btnVolver.TabIndex = 24;
@@ -261,7 +262,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(266, 677);
+            this.btnAgregar.Location = new System.Drawing.Point(221, 642);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 23;
@@ -301,7 +302,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(221, 505);
             this.txtDescripcion.MaxLength = 200;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(320, 131);
+            this.txtDescripcion.Size = new System.Drawing.Size(320, 117);
             this.txtDescripcion.TabIndex = 22;
             this.txtDescripcion.Text = "";
             this.txtDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescripcion_KeyPress);
@@ -490,7 +491,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(493, 677);
+            this.btnLimpiar.Location = new System.Drawing.Point(448, 642);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 25;
@@ -612,13 +613,22 @@
             this.cboCoPilotoDisponible.TabIndex = 73;
             this.cboCoPilotoDisponible.Tag = "";
             // 
+            // lblFinal
+            // 
+            this.lblFinal.AutoSize = true;
+            this.lblFinal.Location = new System.Drawing.Point(572, 664);
+            this.lblFinal.Name = "lblFinal";
+            this.lblFinal.Size = new System.Drawing.Size(0, 13);
+            this.lblFinal.TabIndex = 88;
+            // 
             // IngresarPlanVuelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1096, 700);
+            this.ClientSize = new System.Drawing.Size(1096, 611);
+            this.Controls.Add(this.lblFinal);
             this.Controls.Add(this.cboCoPilotoDisponible);
             this.Controls.Add(this.cboPilotoDisponible);
             this.Controls.Add(this.SCoPilotoVerde);
@@ -744,5 +754,6 @@
         private System.Windows.Forms.PictureBox SCoPilotoVerde;
         private System.Windows.Forms.ComboBox cboPilotoDisponible;
         private System.Windows.Forms.ComboBox cboCoPilotoDisponible;
+        private System.Windows.Forms.Label lblFinal;
     }
 }

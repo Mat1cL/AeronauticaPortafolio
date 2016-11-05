@@ -105,6 +105,7 @@
             this.btnCambiarOrigen = new System.Windows.Forms.Button();
             this.btnCambiarRuta = new System.Windows.Forms.Button();
             this.btnCambiarDescripcion = new System.Windows.Forms.Button();
+            this.lblFinal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVuelos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -269,7 +270,7 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(371, 816);
+            this.btnVolver.Location = new System.Drawing.Point(366, 793);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
             this.btnVolver.TabIndex = 36;
@@ -279,7 +280,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(257, 816);
+            this.btnAgregar.Location = new System.Drawing.Point(252, 793);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 35;
@@ -657,7 +658,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(482, 816);
+            this.btnLimpiar.Location = new System.Drawing.Point(477, 793);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 37;
@@ -1009,6 +1010,14 @@
             this.btnCambiarDescripcion.UseVisualStyleBackColor = true;
             this.btnCambiarDescripcion.Click += new System.EventHandler(this.btnCambiarDescripcion_Click);
             // 
+            // lblFinal
+            // 
+            this.lblFinal.AutoSize = true;
+            this.lblFinal.Location = new System.Drawing.Point(635, 821);
+            this.lblFinal.Name = "lblFinal";
+            this.lblFinal.Size = new System.Drawing.Size(0, 13);
+            this.lblFinal.TabIndex = 87;
+            // 
             // IngresarPlanVueloReal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1016,6 +1025,7 @@
             this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1209, 599);
+            this.Controls.Add(this.lblFinal);
             this.Controls.Add(this.btnCambiarDescripcion);
             this.Controls.Add(this.btnCambiarRuta);
             this.Controls.Add(this.label28);
@@ -1182,5 +1192,6 @@
         private System.Windows.Forms.Button btnCambiarOrigen;
         private System.Windows.Forms.Button btnCambiarRuta;
         private System.Windows.Forms.Button btnCambiarDescripcion;
+        private System.Windows.Forms.Label lblFinal;
     }
 }
