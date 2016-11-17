@@ -1055,7 +1055,7 @@ namespace Aeoronautica
                 else
                 {
 
-                    OracleConnection cnn = new OracleConnection((consultas.Variables.ConString));
+                    OracleConnection cnn = new OracleConnection(consultas.Variables.ConString);
                     cnn.Open();
                     string sqlString2 = "" + (consultas.Variables.VerificarIDVuelo) + "'" + txtID.Text + "'";
                     OracleCommand dbCmdx2 = new OracleCommand(sqlString2, cnn);
@@ -1069,27 +1069,29 @@ namespace Aeoronautica
                         string sql = "" + (consultas.Variables.InsertPlanVueloReal) + " (id_plan_vuelo_real.nextval,'" + this.txtDescripcion.Text + "','" + this.dtSalida.Text + this.dtHoraSalida.Text + ":00" + "','" + this.dtLlegada.Text + this.dtHoraLlegada.Text + ":00" + "','" + "01/01/2001" + this.dtTaxeoSalida.Text + ":00" + "','" + "01/01/2001" + this.dtTaxeoLlegada.Text + ":00" + "','" + this.cboPiloto.SelectedValue + "','" + this.cboCopiloto.SelectedValue + "','" + this.cboTipoLicencia.SelectedValue + "','" + this.cboTipoLicenciaCopiloto.SelectedValue + "','" + this.cboPilotoHoras.Text + "','" + this.cboCopilotoHoras.Text + "','" + this.cboPilotoMinutos.Text + "','" + this.cboCopilotoMinutos.Text + "','"+this.txtRuta.Text+"','" + this.cboOrigen.SelectedValue + "','" + this.cboDestino.SelectedValue + "','" + this.cboAeronave.SelectedValue + "','" + this.cbMision.SelectedValue + "','" + this.cboCondicion.SelectedValue + "','" + this.txtID.Text + "')";
                         if (obDAtos.insertar(sql))
                         {
-                            OracleCommand cmd = new OracleCommand("UPDATE_TIEMPOCOMPONENTE", cnn);
-                            cmd.CommandType = CommandType.StoredProcedure;
-
-                            cmd.Parameters.Add("MATRICULA", Convert.ToString(cboAeronave.Text));
-                            cmd.ExecuteNonQuery();
-                            
+                            actualizarComponente();
                             MessageBox.Show("Vuelo Registrado");
                         }
                         else
                         {
                             MessageBox.Show("Error al Registrar Plan de Vuelo");
                         }
-                    }
-
-
-
+                    }                    
                 }
-
-
             }
+        }
+        private void actualizarComponente()
+        {
+            using (OracleConnection cn = new OracleConnection(Logica.consultas.Variables.ConString))
+            {
+                cn.Open();
 
+                OracleCommand cmd = new OracleCommand("UPDATE_TIEMPOCOMPONENTE", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("MATRICULA", Convert.ToString("AB-123"));
+                cmd.ExecuteNonQuery();
+            }
         }
 
         private void cboPiloto_SelectedIndexChanged(object sender, EventArgs e)
