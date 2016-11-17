@@ -1069,6 +1069,12 @@ namespace Aeoronautica
                         string sql = "" + (consultas.Variables.InsertPlanVueloReal) + " (id_plan_vuelo_real.nextval,'" + this.txtDescripcion.Text + "','" + this.dtSalida.Text + this.dtHoraSalida.Text + ":00" + "','" + this.dtLlegada.Text + this.dtHoraLlegada.Text + ":00" + "','" + "01/01/2001" + this.dtTaxeoSalida.Text + ":00" + "','" + "01/01/2001" + this.dtTaxeoLlegada.Text + ":00" + "','" + this.cboPiloto.SelectedValue + "','" + this.cboCopiloto.SelectedValue + "','" + this.cboTipoLicencia.SelectedValue + "','" + this.cboTipoLicenciaCopiloto.SelectedValue + "','" + this.cboPilotoHoras.Text + "','" + this.cboCopilotoHoras.Text + "','" + this.cboPilotoMinutos.Text + "','" + this.cboCopilotoMinutos.Text + "','"+this.txtRuta.Text+"','" + this.cboOrigen.SelectedValue + "','" + this.cboDestino.SelectedValue + "','" + this.cboAeronave.SelectedValue + "','" + this.cbMision.SelectedValue + "','" + this.cboCondicion.SelectedValue + "','" + this.txtID.Text + "')";
                         if (obDAtos.insertar(sql))
                         {
+                            OracleCommand cmd = new OracleCommand("UPDATE_TIEMPOCOMPONENTE", cnn);
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("MATRICULA", Convert.ToString(cboAeronave.Text));
+                            cmd.ExecuteNonQuery();
+                            
                             MessageBox.Show("Vuelo Registrado");
                         }
                         else
