@@ -268,7 +268,7 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(371, 816);
+            this.btnVolver.Location = new System.Drawing.Point(371, 780);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
             this.btnVolver.TabIndex = 36;
@@ -278,7 +278,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(257, 816);
+            this.btnAgregar.Location = new System.Drawing.Point(257, 780);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 35;
@@ -656,7 +656,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(482, 816);
+            this.btnLimpiar.Location = new System.Drawing.Point(482, 780);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 37;
@@ -936,7 +936,7 @@
             this.dgvVuelos.Name = "dgvVuelos";
             this.dgvVuelos.ReadOnly = true;
             this.dgvVuelos.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dgvVuelos.Size = new System.Drawing.Size(548, 260);
+            this.dgvVuelos.Size = new System.Drawing.Size(548, 207);
             this.dgvVuelos.TabIndex = 79;
             this.dgvVuelos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVuelos_CellContentClick);
             // 
@@ -944,14 +944,14 @@
             // 
             this.groupBox2.Location = new System.Drawing.Point(583, 488);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(560, 287);
+            this.groupBox2.Size = new System.Drawing.Size(560, 239);
             this.groupBox2.TabIndex = 80;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Todos los Vuelos";
             // 
             // btnVuelos
             // 
-            this.btnVuelos.Location = new System.Drawing.Point(1026, 781);
+            this.btnVuelos.Location = new System.Drawing.Point(1026, 757);
             this.btnVuelos.Name = "btnVuelos";
             this.btnVuelos.Size = new System.Drawing.Size(111, 23);
             this.btnVuelos.TabIndex = 81;
@@ -1014,7 +1014,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1209, 475);
+            this.ClientSize = new System.Drawing.Size(1209, 556);
             this.Controls.Add(this.btnCambiarDescripcion);
             this.Controls.Add(this.btnCambiarRuta);
             this.Controls.Add(this.label28);

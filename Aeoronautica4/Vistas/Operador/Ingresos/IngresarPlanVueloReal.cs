@@ -311,7 +311,7 @@ namespace Aeoronautica
         //Fin CargaTipoAeronave
 
         //Inicio CargaAeronave
-
+        string matricula = "";
         void FillCbAeronave()
         {
             DataTable dt = new DataTable();
@@ -330,6 +330,7 @@ namespace Aeoronautica
                 foreach (DataRow dr in dt.Rows)
                 {
                     dr["Concatenacion"] = dr["nombre_modelo"].ToString() + " - " + dr["aeronave_matricula"].ToString();
+                    matricula = dr["aeronave_matricula"].ToString();
                 }
                 //DataRow row = dt.NewRow();
                 //row["aeronave_matricula"] = Convert.ToInt32("0");
@@ -338,6 +339,7 @@ namespace Aeoronautica
                 this.cboAeronave.DataSource = dt;
                 this.cboAeronave.DisplayMember = "Concatenacion";
                 this.cboAeronave.ValueMember = "aeronave_matricula";
+                
             }
             catch (Exception ex)
             {
@@ -1088,8 +1090,8 @@ namespace Aeoronautica
 
                 OracleCommand cmd = new OracleCommand("UPDATE_TIEMPOCOMPONENTE", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.Add("MATRICULA", Convert.ToString("AB-123"));
+                MessageBox.Show(matricula);
+                cmd.Parameters.Add("MATRICULA", Convert.ToString(matricula));
                 cmd.ExecuteNonQuery();
             }
         }
