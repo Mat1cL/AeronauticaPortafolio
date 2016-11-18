@@ -1090,7 +1090,6 @@ namespace Aeoronautica
 
                 OracleCommand cmd = new OracleCommand("UPDATE_TIEMPOCOMPONENTE", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                MessageBox.Show(matricula);
                 cmd.Parameters.Add("MATRICULA", Convert.ToString(matricula));
                 cmd.ExecuteNonQuery();
             }
