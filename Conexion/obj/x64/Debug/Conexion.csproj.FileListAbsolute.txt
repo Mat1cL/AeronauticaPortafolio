@@ -12,3 +12,13 @@ C:\Users\matit\Desktop\Proyecto de Titulo\Aeoronautica4\Conexion\bin\x64\Debug\C
 C:\Users\matit\Desktop\Proyecto de Titulo\Aeoronautica4\Conexion\obj\x64\Debug\Conexion.csprojResolveAssemblyReference.cache
 C:\Users\matit\Desktop\Proyecto de Titulo\Aeoronautica4\Conexion\obj\x64\Debug\Conexion.dll
 C:\Users\matit\Desktop\Proyecto de Titulo\Aeoronautica4\Conexion\obj\x64\Debug\Conexion.pdb
+C:\Users\matit\Desktop\AeronauticaFinal 06-12-2016 Final\Conexion\bin\x64\Debug\Conexion.dll
+C:\Users\matit\Desktop\AeronauticaFinal 06-12-2016 Final\Conexion\bin\x64\Debug\Conexion.pdb
+C:\Users\matit\Desktop\AeronauticaFinal 06-12-2016 Final\Conexion\obj\x64\Debug\Conexion.csprojResolveAssemblyReference.cache
+C:\Users\matit\Desktop\AeronauticaFinal 06-12-2016 Final\Conexion\obj\x64\Debug\Conexion.dll
+C:\Users\matit\Desktop\AeronauticaFinal 06-12-2016 Final\Conexion\obj\x64\Debug\Conexion.pdb
+G:\Proyecto de Titulo\AeronauticaFinal 06-12-2016 Final\Conexion\bin\x64\Debug\Conexion.dll
+G:\Proyecto de Titulo\AeronauticaFinal 06-12-2016 Final\Conexion\bin\x64\Debug\Conexion.pdb
+G:\Proyecto de Titulo\AeronauticaFinal 06-12-2016 Final\Conexion\obj\x64\Debug\Conexion.csprojResolveAssemblyReference.cache
+G:\Proyecto de Titulo\AeronauticaFinal 06-12-2016 Final\Conexion\obj\x64\Debug\Conexion.dll
+G:\Proyecto de Titulo\AeronauticaFinal 06-12-2016 Final\Conexion\obj\x64\Debug\Conexion.pdb

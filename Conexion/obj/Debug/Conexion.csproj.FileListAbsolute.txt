@@ -12,3 +12,33 @@ C:\Users\matit\Desktop\Aeoronautica4\Conexion\bin\Debug\Conexion.pdb
 C:\Users\matit\Desktop\Aeoronautica4\Conexion\obj\Debug\Conexion.dll
 C:\Users\matit\Desktop\Aeoronautica4\Conexion\obj\Debug\Conexion.pdb
 C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\obj\Debug\Conexion.csprojResolveAssemblyReference.cache
+C:\Users\AVATAR\Desktop\AeronauticaPortafolio-master\Conexion\bin\Debug\Conexion.dll
+C:\Users\AVATAR\Desktop\AeronauticaPortafolio-master\Conexion\bin\Debug\Conexion.pdb
+C:\Users\AVATAR\Desktop\AeronauticaPortafolio-master\Conexion\obj\Debug\Conexion.csprojResolveAssemblyReference.cache
+C:\Users\AVATAR\Desktop\AeronauticaPortafolio-master\Conexion\obj\Debug\Conexion.dll
+C:\Users\AVATAR\Desktop\AeronauticaPortafolio-master\Conexion\obj\Debug\Conexion.pdb
+C:\Users\matit\Desktop\Proyecto de Titulo\AeronauticaPortafolio-Modifcado\Conexion\bin\Debug\Conexion.dll
+C:\Users\matit\Desktop\Proyecto de Titulo\AeronauticaPortafolio-Modifcado\Conexion\bin\Debug\Conexion.pdb
+C:\Users\matit\Desktop\Proyecto de Titulo\AeronauticaPortafolio-Modifcado\Conexion\obj\Debug\Conexion.csprojResolveAssemblyReference.cache
+C:\Users\matit\Desktop\Proyecto de Titulo\AeronauticaPortafolio-Modifcado\Conexion\obj\Debug\Conexion.dll
+C:\Users\matit\Desktop\Proyecto de Titulo\AeronauticaPortafolio-Modifcado\Conexion\obj\Debug\Conexion.pdb
+C:\Users\AVATAR\Desktop\AeronauticaPortafolio-Modifcado\Conexion\bin\Debug\Conexion.dll
+C:\Users\AVATAR\Desktop\AeronauticaPortafolio-Modifcado\Conexion\bin\Debug\Conexion.pdb
+C:\Users\AVATAR\Desktop\AeronauticaPortafolio-Modifcado\Conexion\obj\Debug\Conexion.csprojResolveAssemblyReference.cache
+C:\Users\AVATAR\Desktop\AeronauticaPortafolio-Modifcado\Conexion\obj\Debug\Conexion.dll
+C:\Users\AVATAR\Desktop\AeronauticaPortafolio-Modifcado\Conexion\obj\Debug\Conexion.pdb
+G:\Nueva carpeta\Aeronautica-Nicolas\Conexion\bin\Debug\Conexion.dll
+G:\Nueva carpeta\Aeronautica-Nicolas\Conexion\bin\Debug\Conexion.pdb
+G:\Nueva carpeta\Aeronautica-Nicolas\Conexion\obj\Debug\Conexion.csprojResolveAssemblyReference.cache
+G:\Nueva carpeta\Aeronautica-Nicolas\Conexion\obj\Debug\Conexion.dll
+G:\Nueva carpeta\Aeronautica-Nicolas\Conexion\obj\Debug\Conexion.pdb
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeronautica-Nicolas\Conexion\bin\Debug\Conexion.dll
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeronautica-Nicolas\Conexion\bin\Debug\Conexion.pdb
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeronautica-Nicolas\Conexion\obj\Debug\Conexion.csprojResolveAssemblyReference.cache
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeronautica-Nicolas\Conexion\obj\Debug\Conexion.dll
+C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeronautica-Nicolas\Conexion\obj\Debug\Conexion.pdb
+C:\Users\matit\Desktop\Aeronautica-Nicolas\Conexion\bin\Debug\Conexion.dll
+C:\Users\matit\Desktop\Aeronautica-Nicolas\Conexion\bin\Debug\Conexion.pdb
+C:\Users\matit\Desktop\Aeronautica-Nicolas\Conexion\obj\Debug\Conexion.csprojResolveAssemblyReference.cache
+C:\Users\matit\Desktop\Aeronautica-Nicolas\Conexion\obj\Debug\Conexion.dll
+C:\Users\matit\Desktop\Aeronautica-Nicolas\Conexion\obj\Debug\Conexion.pdb

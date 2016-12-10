@@ -2,3 +2,8 @@ C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\bin\
 C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\bin\x64\Release\Conexion.pdb
 C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\obj\x64\Release\Conexion.dll
 C:\Users\alvar\Documents\Visual Studio 2013\Projects\Aeoronautica4\Conexion\obj\x64\Release\Conexion.pdb
+C:\Users\matit\Desktop\AeronauticaFinal 05-12-2016 Final\Conexion\bin\x64\Release\Conexion.dll
+C:\Users\matit\Desktop\AeronauticaFinal 05-12-2016 Final\Conexion\bin\x64\Release\Conexion.pdb
+C:\Users\matit\Desktop\AeronauticaFinal 05-12-2016 Final\Conexion\obj\x64\Release\Conexion.csprojResolveAssemblyReference.cache
+C:\Users\matit\Desktop\AeronauticaFinal 05-12-2016 Final\Conexion\obj\x64\Release\Conexion.dll
+C:\Users\matit\Desktop\AeronauticaFinal 05-12-2016 Final\Conexion\obj\x64\Release\Conexion.pdb
