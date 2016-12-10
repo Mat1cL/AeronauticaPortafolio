@@ -159,58 +159,242 @@ namespace Aeronautica
         }
 
 
-
+        string Sexo;
         datos obDAtos = new datos();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            string pattern = null;
-            pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
-            if (Regex.IsMatch(txtCorreo.Text, pattern))
-            {
-                if (string.IsNullOrWhiteSpace(txtRut.Text) || string.IsNullOrWhiteSpace(this.txtApellidoPaterno.Text) || string.IsNullOrWhiteSpace(this.txtApellidoMaterno.Text) || string.IsNullOrWhiteSpace(this.txtCorreo.Text) || string.IsNullOrWhiteSpace(this.txtDireccion.Text) || string.IsNullOrWhiteSpace(this.txtTelefono.Text) || string.IsNullOrWhiteSpace(this.txtCelular.Text) || string.IsNullOrWhiteSpace(this.Sexo))
-                {
-                    MessageBox.Show("Debes completar los campos...");
-                    return;
-                }
-                if (cboPais.Text == "Seleccione un País")
-                {
-                    MessageBox.Show("Debes Seleccionar un País");
-                }
-                else if (cboRegion.Text == "Seleccione una Región")
-                {
-                    MessageBox.Show("Debes Seleccionar una Región");
-                }
-                else if (cboProvincia.Text == "Seleccione una Provincia")
-                {
-                    MessageBox.Show("Debes Seleccionar una Provincia");
-                }
-                else if (cboComuna.Text == "Seleccione una Comuna")
-                {
-                    MessageBox.Show("Debes Seleccionar una Comuna");
-                }
 
-                else
+            Logica.Clases.Piloto.RutPiloto_ = txtRut.Text;
+            Logica.Clases.Piloto.Nombre_ = txtNombre.Text;
+            Logica.Clases.Piloto.ApellidoPaterno_ = txtApellidoPaterno.Text;
+            Logica.Clases.Piloto.ApellidoMaterno_ = txtApellidoMaterno.Text;
+            Logica.Clases.Piloto.FechaNacimiento_ = dtFecha.Text;
+            Logica.Clases.Piloto.Correo_ = txtCorreo.Text;
+            Logica.Clases.Piloto.Direccion_ = txtDireccion.Text;
+            Logica.Clases.Piloto.Telefono_ = txtTelefono.Text;
+            Logica.Clases.Piloto.Celular_ = txtCelular.Text;
+            Logica.Clases.Piloto.Sexo_ = Sexo;
+            Logica.Clases.Piloto.Comuna_ = cboComuna.SelectedValue.ToString();
+
+
+                if (txtRut.Text.Length > 0)
                 {
+                    errorProvider1.SetError(txtRut, string.Empty);
                     if (Rut.ValidaRut(txtRut.Text))
                     {
                         Console.WriteLine("Rut Valido");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Rut Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtRut.Clear();
+                        errorProvider1.SetError(txtRut, string.Empty);
+                    }
+                }
+                if (txtNombre.Text.Length > 0)
+                {
+                    errorProvider1.SetError(txtNombre, string.Empty);
+                }
+                if (txtApellidoPaterno.Text.Length > 0)
+                {
+                    errorProvider1.SetError(txtApellidoPaterno, string.Empty);
+                }
+                if (txtApellidoMaterno.Text.Length > 0)
+                {
+                    errorProvider1.SetError(txtApellidoMaterno, string.Empty);
+                }
+                if (txtCorreo.Text.Length > 0)
+                {
+                    errorProvider1.SetError(txtCorreo, string.Empty);
+                    string pattern = null;
+                    pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
+                    if (Regex.IsMatch(txtCorreo.Text, pattern))
+                    {
+                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("E-mail inválido", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                if (txtDireccion.Text.Length > 0)
+                {
+                    errorProvider1.SetError(txtDireccion, string.Empty);
+                }
+                if (txtTelefono.Text.Length > 0)
+                {
+                    errorProvider1.SetError(txtTelefono, string.Empty);
+                }
+                if (txtCelular.Text.Length > 0)
+                {
+                    errorProvider1.SetError(txtCelular, string.Empty);
+                }
+                if (dtFecha.Value <= DateTime.Now.AddYears(-17))
+                {
+                    errorProvider1.SetError(dtFecha, string.Empty);
+                }
+                if (rM.Checked == true)
+                {
+                    errorProvider1.SetError(grpSexo, string.Empty);
+                }
+                if (rF.Checked == true)
+                {
+                    errorProvider1.SetError(grpSexo, string.Empty);
+                }
+                if (cboPais.Text != "Seleccione un País")
+                {
+                    errorProvider1.SetError(cboPais, string.Empty);
+                }
+                if (cboRegion.Text != "Seleccione una Región")
+                {
+                    errorProvider1.SetError(cboRegion, string.Empty);
+                }
+                if (cboProvincia.Text != "Seleccione una Provincia")
+                {
+                    errorProvider1.SetError(cboProvincia, string.Empty);
+                }
+                if (cboComuna.Text != "Seleccione una Comuna")
+                {
+                    errorProvider1.SetError(cboComuna, string.Empty);
+                }
+            
+                //**//
+                if (string.IsNullOrWhiteSpace(txtRut.Text))
+                {
+                    errorProvider1.SetError(txtRut, "Debe ingresar su Rut");
+                }
+                if (string.IsNullOrWhiteSpace(this.txtNombre.Text))
+                {
+                    errorProvider1.SetError(txtNombre, "Debe ingresar su Nombre");
+                }
+                if (string.IsNullOrWhiteSpace(this.txtApellidoPaterno.Text))
+                {
+                    errorProvider1.SetError(txtApellidoPaterno, "Debe ingresar su Apellido Paterno");
+                }
+                if (string.IsNullOrWhiteSpace(this.txtApellidoMaterno.Text))
+                {
+                    errorProvider1.SetError(txtApellidoMaterno, "Debe ingresar su Apellido Materno");
+                }
+                if (string.IsNullOrWhiteSpace(this.txtCorreo.Text))
+                {
+                    errorProvider1.SetError(txtCorreo, "Debe ingresar su correo");
+                }
+                if (string.IsNullOrWhiteSpace(this.txtDireccion.Text))
+                {
+                    errorProvider1.SetError(txtDireccion, "Debe ingresar su dirección");
+                }
+                if (cboPais.Text == "Seleccione un País")
+                {
+                    errorProvider1.SetError(cboPais, "Debes Seleccionar un País");
+                }
+                if (cboRegion.Text == "Seleccione una Región")
+                {
+                    errorProvider1.SetError(cboRegion, "Debes Seleccionar una Región");
+                }
+                if (cboProvincia.Text == "Seleccione una Provincia")
+                {
+                    errorProvider1.SetError(cboProvincia, "Debes Seleccionar una Provincia");
+                }
+                if (cboComuna.Text == "Seleccione una Comuna")
+                {
+                    errorProvider1.SetError(cboComuna, "Debes Seleccionar una Comuna");
+                }
+                if (string.IsNullOrWhiteSpace(this.txtTelefono.Text))
+                {
+                    errorProvider1.SetError(txtTelefono, "Debes ingresar un teléfono");
+                }
+                if (string.IsNullOrWhiteSpace(this.txtCelular.Text))
+                {
+                    errorProvider1.SetError(txtCelular, "Debes ingresar un celular");
+                }
+                if (dtFecha.Value >= DateTime.Now.AddYears(-17))
+                {
+                    errorProvider1.SetError(dtFecha, "El piloto debe ser mayor a 17 años");
+                    
+                }
+                if (string.IsNullOrWhiteSpace(this.Sexo))
+                {
+                    errorProvider1.SetError(grpSexo, "Debes seleccionar un sexo");
+                }
+
+                /*VALIDAR SI EXISTEN ERRORES*/
+                if (errorProvider1.GetError(txtRut) == "Debe ingresar su Rut")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(txtNombre) == "Debe ingresar su Nombre")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(txtApellidoPaterno) == "Debe ingresar su Apellido Paterno")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(txtApellidoMaterno) == "Debe ingresar su Apellido Materno")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(txtCorreo) == "Debe ingresar su correo")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(txtDireccion) == "Debe ingresar su dirección")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(cboPais) == "Debes Seleccionar un País")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(cboRegion) == "Debes Seleccionar una Región")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(cboProvincia) == "Debes Seleccionar una Provincia")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(cboComuna) == "Debes Seleccionar una Comuna")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(txtTelefono) == "Debes ingresar un teléfono")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(txtCelular) == "Debes ingresar un celular")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(dtFecha) == "El piloto debe ser mayor a 17 años")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(grpSexo) == "Debes seleccionar un sexo")
+                {
+                    return;
+                }
+
+                /*FIN VALIDAR SI EXISTEN ERRORES*/
+                else
+                {
                         try
                         {
 
                             OracleConnection cnn = new OracleConnection(consultas.Variables.ConString);
                             cnn.Open();
-                            string sqlString = ""+(consultas.Variables.SelectPiloto)+"'" + txtRut.Text + "'";
+                            string sqlString = "" + (consultas.Variables.SelectPiloto) + "'" + Logica.Clases.Piloto.RutPiloto_ + "'";
                             OracleCommand dbCmd = new OracleCommand(sqlString, cnn);
                             OracleDataReader reader = dbCmd.ExecuteReader();
-                            string sqlString2 = ""+(consultas.Variables.SelectPilotoCorreo)+"'" + txtCorreo.Text + "'";
+                            string sqlString2 = "" + (consultas.Variables.SelectPilotoCorreo) + "'" + Logica.Clases.Piloto.Correo_ + "'";
                             OracleCommand dbCmdx2 = new OracleCommand(sqlString2, cnn);
                             OracleDataReader reader2 = dbCmdx2.ExecuteReader();
-                            string sqlString3 = ""+(consultas.Variables.ValidarRUT)+"'"+txtRut.Text+"' "+(consultas.Variables.ValidarRUT2)+"";
+                            string sqlString3 = "" + (consultas.Variables.ValidarRUT) + "'" + Logica.Clases.Piloto.RutPiloto_ + "' " + (consultas.Variables.ValidarRUT2) + "";
                             OracleCommand dbCmdx3 = new OracleCommand(sqlString3, cnn);
                             OracleDataReader reader3 = dbCmdx3.ExecuteReader();
                             if (reader.Read())
                             {
-                                MessageBox.Show("El Rut ya se encuentra registrado");
+                                MessageBox.Show("El Rut ya se encuentra registrado", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                             else if (reader2.Read())
                             {
@@ -218,19 +402,20 @@ namespace Aeronautica
                             }
                             else if (reader3.Read())
                             {
-                                MessageBox.Show("El RUT se encuentra asociado a un Administrador, Operado o Consultor");
+                                MessageBox.Show("El RUT se encuentra asociado a un Administrador, Operado o Consultor", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                             else
                             {
-                                string sql = ""+(consultas.Variables.InsertPiloto)+" ('" + this.txtRut.Text + "','" + this.txtNombre.Text + "','" + this.txtApellidoPaterno.Text + "','" + this.txtApellidoMaterno.Text + "','" + this.dtFecha.Text + "','" + this.txtCorreo.Text + "','" + this.txtDireccion.Text + "','" + this.txtTelefono.Text + "','" + this.txtCelular.Text + "','" + Sexo + "','" + this.cboComuna.SelectedValue + "',2)";
+                                string sql = "" + (consultas.Variables.InsertPiloto) + " ('" + Logica.Clases.Piloto.RutPiloto_ + "','" + Logica.Clases.Piloto.Nombre_ + "','" + Logica.Clases.Piloto.ApellidoPaterno_ + "','" + Logica.Clases.Piloto.ApellidoMaterno_ + "','" + Logica.Clases.Piloto.FechaNacimiento_ + "','" + Logica.Clases.Piloto.Correo_ + "','" + Logica.Clases.Piloto.Direccion_ + "','" + Logica.Clases.Piloto.Telefono_ + "','" + Logica.Clases.Piloto.Celular_ + "','" + Logica.Clases.Piloto.Sexo_ + "','" + Logica.Clases.Piloto.Comuna_ + "',2)";
 
                                 if (obDAtos.insertar(sql))
                                 {
-                                    MessageBox.Show("Piloto Insertado, Recuerda que el Piloto quedara deshabilitado hasta que se registre una Ficha Médica");
+                                    MessageBox.Show("Piloto Insertado, Recuerda que el Piloto quedara deshabilitado hasta que se registre una Ficha Médica", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    this.Close();
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Error al Insertar");
+                                    MessageBox.Show("Error al Insertar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                                 }
                             }
@@ -248,17 +433,9 @@ namespace Aeronautica
                             Console.WriteLine("Exception Message: " + ex.Message);
                             Console.WriteLine("Exception Source: " + ex.Source);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Rut Inválido", "ERROR");
-                    }
+                    
                 }
-            }
-            else
-            {
-                MessageBox.Show("E-mail inválido");
-            }
+            
 
 
 
@@ -279,7 +456,7 @@ namespace Aeronautica
         {
 
         }
-        string Sexo;
+        
         private void rM_CheckedChanged(object sender, EventArgs e)
         {
             Sexo = "1";
@@ -409,6 +586,16 @@ namespace Aeronautica
         private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
         {
             datos.SoloNumeros(e);
+        }
+
+        private void txtApellidoPaterno_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
 
         

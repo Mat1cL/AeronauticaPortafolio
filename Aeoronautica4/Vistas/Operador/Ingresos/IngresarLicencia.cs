@@ -116,19 +116,79 @@ namespace Aeronautica
         datos obDAtos = new datos();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtDescripcion.Text) || (string.IsNullOrWhiteSpace(txtNumero.Text)))
+            Logica.Clases.Licencia.NumeroLicencia_ = txtNumero.Text;
+            Logica.Clases.Licencia.Descripcion_ = txtDescripcion.Text;
+            Logica.Clases.Licencia.FechaVencimiento_ = dtFecha.Text;
+            Logica.Clases.Licencia.RutPiloto_ = cbPiloto.SelectedValue.ToString();
+            Logica.Clases.Licencia.Licencia_ = cbLicencia.SelectedValue.ToString();
+            /*INICIO LIMPIAR ERRORES*/
+            if (txtDescripcion.Text.Length > 0)
             {
-                MessageBox.Show("Debe ingresar todos los datos");
-                return;
+                errorProvider1.SetError(txtDescripcion, string.Empty);
+            }
+            if (txtNumero.Text.Length > 0)
+            {
+                errorProvider1.SetError(txtNumero, string.Empty);
+            }
+            if (cbPiloto.Text != "Seleccione un Piloto")
+            {
+                errorProvider1.SetError(cbPiloto, string.Empty);
+            }
+            if (cbLicencia.Text != "Seleccione Tipo de Licencia")
+            {
+                errorProvider1.SetError(cbLicencia, string.Empty);
+            }
+            if (dtFecha.Value > DateTime.Now)
+            {
+                errorProvider1.SetError(dtFecha, string.Empty);
+            }
+            /*FIN LIMPIAR ERRORES*/
+
+            /*INICIO DECLARAR ERRORES*/
+            if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
+            {
+                errorProvider1.SetError(txtDescripcion, "Debes ingresar una descripción");
+            }
+            if (string.IsNullOrWhiteSpace(txtNumero.Text))
+            {
+                errorProvider1.SetError(txtNumero, "Debes ingresar un número de licencia");
             }
             if (cbPiloto.Text == "Seleccione un Piloto")
             {
-                MessageBox.Show("Debes Seleccionar un Piloto");
+                errorProvider1.SetError(cbPiloto, "Debes Seleccionar un Piloto");
             }
-            else if (cbLicencia.Text == "Seleccione Tipo de Licencia")
+            if (cbLicencia.Text == "Seleccione Tipo de Licencia")
             {
-                MessageBox.Show("Debes Seleccionar una Licencia");
+                errorProvider1.SetError(cbLicencia, "Debes Seleccionar una Licencia");
             }
+            if (dtFecha.Value < DateTime.Now)
+            {
+                errorProvider1.SetError(dtFecha, "La fecha de Expiración no puede ser menor a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "");
+            }
+            /*FIN DECLARAR ERRORES*/
+
+            /*VALIDAR SI EXISTEN ERRORES*/
+            if (errorProvider1.GetError(txtDescripcion) == "Debes ingresar una descripción")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(txtNumero) == "Debes ingresar un número de licencia")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cbPiloto) == "Debes Seleccionar un Piloto")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cbLicencia) == "Debes Seleccionar una Licencia")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(dtFecha) == "La fecha de Expiración no puede ser menor a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "")
+            {
+                return;
+            }
+            /*FIN VALIDAR SI EXISTEN ERRORES*/
             else
             {
                 try
@@ -137,39 +197,35 @@ namespace Aeronautica
 
                     OracleConnection cnn = new OracleConnection(consultas.Variables.ConString);
                     cnn.Open();
-                    //string sqlString2 = "select  rut_piloto, numero_licencia  from piloto INNER JOIN licencia ON  piloto.rut_piloto = licencia.piloto_rut_piloto where rut_piloto = = '" + cbPiloto.SelectedValue + "' and numero_licencia =" + txtNumero;
-                    string sqlString2 = "" + (consultas.Variables.SelectLicenciaNumeroLicencia) + "'" + txtNumero.Text + "'";
+                    string sqlString2 = "" + (consultas.Variables.SelectLicenciaNumeroLicencia) + "'" + Logica.Clases.Licencia.NumeroLicencia_ + "'";
                     OracleCommand dbCmd2 = new OracleCommand(sqlString2, cnn);
                     OracleDataReader reader2 = dbCmd2.ExecuteReader();
-                    string sqlString = "" + (consultas.Variables.ValidarPilotoLicencia) + " '" + cbPiloto.SelectedValue + "' " + (consultas.Variables.ValidarPilotoLicencia2) + "" + cbLicencia.SelectedValue;
+                    string sqlString = "" + (consultas.Variables.ValidarPilotoLicencia) + " '" + Logica.Clases.Licencia.RutPiloto_ + "' " + (consultas.Variables.ValidarPilotoLicencia2) + "" + Logica.Clases.Licencia.Licencia_;
                     OracleCommand dbCmd = new OracleCommand(sqlString, cnn);
                     OracleDataReader reader = dbCmd.ExecuteReader();
 
                     if (reader2.Read())
                     {
-                        MessageBox.Show("El Número de Licencia ya Existe");
+                        MessageBox.Show("El Número de Licencia ya Existe", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    else if (dtFecha.Value < DateTime.Now)
-                    {
-                        MessageBox.Show("La fecha de Expiración no puede ser menor a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "");
-                    }
+                    
                     else
                     {
                         if (reader.Read())
                         {
-                            MessageBox.Show("El Piloto ya posee esta licencia");
+                            MessageBox.Show("El Piloto ya posee esta licencia", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
 
                         else
                         {
-                            string sql = "" + (consultas.Variables.InsertLicencia) + " (" + this.txtNumero.Text + ",'" + this.txtDescripcion.Text + "','" + this.dtFecha.Text + "','" + this.cbPiloto.SelectedValue + "','" + this.cbLicencia.SelectedValue + "')";
+                            string sql = "" + (consultas.Variables.InsertLicencia) + " (" + Logica.Clases.Licencia.NumeroLicencia_ + ",'" + Logica.Clases.Licencia.Descripcion_ + "','" + Logica.Clases.Licencia.FechaVencimiento_ + "','" + Logica.Clases.Licencia.RutPiloto_ + "','" + Logica.Clases.Licencia.Licencia_ + "')";
                             if (obDAtos.insertar(sql))
                             {
-                                MessageBox.Show("Licencia Registrada");
+                                MessageBox.Show("Licencia Registrada", "LICENCIA REGISTRADA", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             }
                             else
                             {
-                                MessageBox.Show("Error al Registrar Licencia");
+                                MessageBox.Show("Error al Registrar Licencia", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
 
                         }

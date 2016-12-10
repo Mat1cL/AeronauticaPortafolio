@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresarDetalleMantenimiento));
             this.cboAeronave = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,12 +42,15 @@
             this.dtTermino = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.cboTaller = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtbody = new System.Windows.Forms.TextBox();
             this.txtsubject = new System.Windows.Forms.TextBox();
             this.txtreciever = new System.Windows.Forms.TextBox();
             this.txtpass = new System.Windows.Forms.TextBox();
             this.txtsender = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // cboAeronave
@@ -123,7 +127,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 13);
             this.label7.TabIndex = 50;
-            this.label7.Text = "Fecha Termino";
+            this.label7.Text = "Fecha Término";
             // 
             // label6
             // 
@@ -162,15 +166,6 @@
             this.cboTaller.Size = new System.Drawing.Size(162, 21);
             this.cboTaller.TabIndex = 0;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(135, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 13);
-            this.label2.TabIndex = 58;
-            this.label2.Text = "Ingresar Mantenimiento";
-            // 
             // txtbody
             // 
             this.txtbody.Location = new System.Drawing.Point(74, 242);
@@ -208,18 +203,44 @@
             this.txtsender.Size = new System.Drawing.Size(10, 20);
             this.txtsender.TabIndex = 61;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(27, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(323, 25);
+            this.label11.TabIndex = 64;
+            this.label11.Text = "INGRESO DE MANTENIMIENTO";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(340, 249);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 65;
+            this.label2.Text = "label2";
+            // 
             // IngresarDetalleMantenimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(387, 274);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.txtbody);
             this.Controls.Add(this.txtsubject);
             this.Controls.Add(this.txtreciever);
             this.Controls.Add(this.txtpass);
             this.Controls.Add(this.txtsender);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.cboAeronave);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dtIngreso);
@@ -238,6 +259,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Matenimiento";
             this.Load += new System.EventHandler(this.IngresarDetalleMantenimiento_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,11 +279,13 @@
         private System.Windows.Forms.DateTimePicker dtTermino;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboTaller;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtbody;
         private System.Windows.Forms.TextBox txtsubject;
         private System.Windows.Forms.TextBox txtreciever;
         private System.Windows.Forms.TextBox txtpass;
         private System.Windows.Forms.TextBox txtsender;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label2;
     }
 }

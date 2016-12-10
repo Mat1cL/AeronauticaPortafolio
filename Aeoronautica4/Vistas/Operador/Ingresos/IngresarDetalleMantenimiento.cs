@@ -1,15 +1,11 @@
 ﻿using Logica;
 using Oracle.DataAccess.Client;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+using System.Threading;
 
 namespace Aeronautica.Vistas.Operador.Ingresos
 {
@@ -19,6 +15,7 @@ namespace Aeronautica.Vistas.Operador.Ingresos
         public static string ModeloVariable;
         public static string TipoVariable;
         public static string FechaTerminoVariable;
+        public static string FechaTerminoVariable2;
         public static string YearVariable;
         public IngresarDetalleMantenimiento()
         {
@@ -106,7 +103,7 @@ namespace Aeronautica.Vistas.Operador.Ingresos
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    dr["Concatenacion"] = "Mantenimiento - " + dr["horas_vuelo"].ToString();
+                    dr["Concatenacion"] = "" + dr["horas_vuelo"].ToString();
                 }
                 DataRow row = dt.NewRow();
                 row["horas_vuelo"] = Convert.ToInt32("0");
@@ -127,6 +124,7 @@ namespace Aeronautica.Vistas.Operador.Ingresos
 
         private void IngresarDetalleMantenimiento_Load(object sender, EventArgs e)
         {
+            label2.Hide();
             FillCbAeronave2();
             FillCbMantenimiento2();
             FillCbTaller();
@@ -151,51 +149,115 @@ namespace Aeronautica.Vistas.Operador.Ingresos
             OracleConnection con = new OracleConnection((consultas.Variables.ConString));
             con.Open();
 
+            Logica.Clases.Mantenimiento.FechaIngreso_ = dtIngreso.Text;
+            Logica.Clases.Mantenimiento.FechaTermino_ = dtTermino.Text;
+            Logica.Clases.Mantenimiento.NombreTaller_ = cboTaller.SelectedValue.ToString();
+            Logica.Clases.Mantenimiento.TipoMantenimiento_ = cboMantenimiento2.SelectedValue.ToString();
+            Logica.Clases.Mantenimiento.Aeronave_ = cboAeronave.SelectedValue.ToString();
+
             try
             {
+                /*INICIO LIMPIAR ERRORES*/
+                if (cboTaller.Text != "Seleccione un Taller")
+                {
+                    errorProvider1.SetError(cboTaller, string.Empty);
+                }
+                if (cboAeronave.Text != "Seleccione una Aeronave")
+                {
+                    errorProvider1.SetError(cboAeronave, string.Empty);
+                }
+                if (cboMantenimiento2.Text != "Seleccione un Mantenimiento")
+                {
+                    errorProvider1.SetError(cboMantenimiento2, string.Empty);
+                }
+                if (dtIngreso.Value > DateTime.Today)
+                {
+                    errorProvider1.SetError(dtIngreso, string.Empty);
+                }
+                if (dtTermino.Value > DateTime.Today)
+                {
+                    errorProvider1.SetError(dtTermino, string.Empty);
+                }
+                if (dtIngreso.Value < dtTermino.Value)
+                {
+                    errorProvider1.SetError(dtTermino, string.Empty);
+                }
+                /*FIN LIMPIAR ERRORES*/
+
+                /*INICIO DECLARAR ERRORES*/
                 if (cboTaller.Text == "Seleccione un Taller")
                 {
-                    MessageBox.Show("Debe seleccionar un Taller");
+                    errorProvider1.SetError(cboTaller, "Debes seleccionar un Taller");
                 }
-                else if (cboAeronave.Text == "Seleccione una Aeronave")
+                if (cboAeronave.Text == "Seleccione una Aeronave")
                 {
-                    MessageBox.Show("Debe seleccionar una Aeronave");
+                    errorProvider1.SetError(cboAeronave, "Debes seleccionar una Aeronave");
                 }
-                else if (cboMantenimiento2.Text == "Seleccione un Mantenimiento")
+                if (cboMantenimiento2.Text == "Seleccione un Mantenimiento")
                 {
-                    MessageBox.Show("Debe seleccionar un Mantenimiento");
+                    errorProvider1.SetError(cboMantenimiento2, "Debes seleccionar un Mantenimiento");
                 }
-                else if (dtIngreso.Value < DateTime.Today)
+                if (dtIngreso.Value < DateTime.Today)
                 {
-                    MessageBox.Show("No puedes ingresar una fecha de Ingreso de Mantenimiento inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "");
+                    errorProvider1.SetError(dtIngreso, "No puedes ingresar una fecha de Ingreso de Mantenimiento inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "");
                 }
-                else if (dtTermino.Value < DateTime.Today)
+                if (dtTermino.Value < DateTime.Today)
                 {
-                    MessageBox.Show("No puedes ingresar una fecha de Termino de Mantenimiento inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "");
+                    errorProvider1.SetError(dtTermino, "No puedes ingresar una fecha de Término de Mantenimiento inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "");
                 }
-                else if (dtIngreso.Value > dtTermino.Value)
+                if (dtIngreso.Value > dtTermino.Value)
                 {
-                    MessageBox.Show("La Fecha de Termino debe ser mayor a la Fecha de Ingreso: " + dtIngreso.Text + "");
+                    errorProvider1.SetError(dtTermino, "La Fecha de Término debe ser mayor a la Fecha de Ingreso: " + dtIngreso.Text + "");
                 }
+                /*FIN DECLARAR ERRORES*/
+
+                /*VALIDAR SI EXISTEN ERRORES*/
+                if (errorProvider1.GetError(cboTaller) == "Debes seleccionar un Taller")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(cboAeronave) == "Debes seleccionar una Aeronave")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(cboMantenimiento2) == "Debes seleccionar un Mantenimiento")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(dtIngreso) == "No puedes ingresar una fecha de Ingreso de Mantenimiento inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(dtTermino) == "No puedes ingresar una fecha de Término de Mantenimiento inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(dtTermino) == "La Fecha de Término debe ser mayor a la Fecha de Ingreso: " + dtIngreso.Text + "")
+                {
+                    return;
+                }
+                /*FIN VALIDAR SI EXISTEN ERRORES*/
+
+                
                 
                 else
                 {
-                    string sqlStringx2 = "" + (consultas.Variables.ValidarMantenimiento) + "'" + cboAeronave.SelectedValue + "' " + (consultas.Variables.ValidarMatenimiento2) + "";
+                    string sqlStringx2 = "" + (consultas.Variables.ValidarMantenimiento) + "'" + Logica.Clases.Mantenimiento.Aeronave_ + "' " + (consultas.Variables.ValidarMatenimiento2) + "";
                     OracleCommand dbCmdxxx2 = new OracleCommand(sqlStringx2, con);
                     OracleDataReader readexr2 = dbCmdxxx2.ExecuteReader();
                     if (readexr2.Read())
                     {
-                        MessageBox.Show("La Aeronave ya se encuentra en Mantenimiento");
+                        MessageBox.Show("La Aeronave ya se encuentra en Mantenimiento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-                        OracleCommand sqlc = new OracleCommand("" + (consultas.Variables.InsertarDetalleMantenimiento) + "('" + dtIngreso.Text + "','" + dtTermino.Text + "','" + cboTaller.SelectedValue + "','" + cboMantenimiento2.SelectedValue + "','" + cboAeronave.SelectedValue + "')", con);
+                        OracleCommand sqlc = new OracleCommand("" + (consultas.Variables.InsertarDetalleMantenimiento) + "('" + Logica.Clases.Mantenimiento.FechaIngreso_ + "','" + Logica.Clases.Mantenimiento.FechaTermino_ + "','" + Logica.Clases.Mantenimiento.NombreTaller_ + "','" + Logica.Clases.Mantenimiento.TipoMantenimiento_ + "','" + Logica.Clases.Mantenimiento.Aeronave_ + "')", con);
                         OracleDataAdapter dtaa = new OracleDataAdapter();
                         dtaa.InsertCommand = sqlc;
                         dtaa.InsertCommand.ExecuteNonQuery();
                         /////////////////////////////////////////////////
 
-                        string Query = ""+(consultas.Variables.UpdateAeronaveToEstado3)+"'" + cboAeronave.SelectedValue + "'";
+                        string Query = "" + (consultas.Variables.UpdateAeronaveToEstado3) + "'" + Logica.Clases.Mantenimiento.Aeronave_ + "'";
                         OracleCommand cmdDataBase = new OracleCommand(Query, con);
                         cmdDataBase.ExecuteReader();
                         OracleDataReader drxx = null;
@@ -213,13 +275,22 @@ namespace Aeronautica.Vistas.Operador.Ingresos
                             YearVariable = readexr["ANO_FABRICACION"].ToString();
                             FechaTerminoVariable = readexr["FECHA_TERMINO"].ToString();
 
+                        }
+                        string Query2 = "" + (consultas.Variables.UpdateAeronaveToEstado2) + "'" + Logica.Clases.Mantenimiento.Aeronave_ + "'";
+                        OracleCommand cmdDataBasex = new OracleCommand(Query2, con);
+                        cmdDataBasex.ExecuteReader();
+                        OracleDataReader drxxx = null;
+                        drxxx = cmdDataBasex.ExecuteReader();
+                        MessageBox.Show("Ingreso correctamente", "INGRESO CORRECTAMENTE", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-                            string Command2 = ""+(consultas.Variables.AgruparCorreosDePilotos)+"";
+                        try
+                        {
+                            string Command2 = "" + (consultas.Variables.AgruparCorreosDePilotos) + "";
                             OracleCommand Comm12 = new OracleCommand(Command2, con);
                             OracleDataReader DR12 = Comm12.ExecuteReader();
                             if (DR12.Read())
                             {
-                                FechaTerminoVariable = DateTime.Now.ToString("dd/MM/yyyy");
+    
                                 txtreciever.Text = DR12["correos"].ToString();
                                 SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Conexión a Gmail
                                 MailMessage message = new MailMessage(); // Objeto E-mail
@@ -240,21 +311,22 @@ namespace Aeronautica.Vistas.Operador.Ingresos
                                 client.Send(message); //Enviar Email
                                 Cursor.Current = Cursors.Default;
                                 message = null; // Liberar Memoria
+                                MessageBox.Show("CORREO DE MANTENIMIENTO ENVIADO CORRECTAMENTE", "CORREOS ENVIADOS", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
 
 
                             }
-
-
                         }
-                        string Query2 = ""+(consultas.Variables.UpdateAeronaveToEstado2)+"'" + cboAeronave.SelectedValue + "'";
-                        OracleCommand cmdDataBasex = new OracleCommand(Query2, con);
-                        cmdDataBasex.ExecuteReader();
-                        OracleDataReader drxxx = null;
-                        drxxx = cmdDataBasex.ExecuteReader();
-                        MessageBox.Show("Ingreso correctamente");
+                        catch
+                        {
+                            MessageBox.Show("Error de Conexión al Enviar Correos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                        this.Close();
+
+
                     }
-                   
+                    
 
 
                     ////////////////////////////////////////////////
@@ -268,7 +340,7 @@ namespace Aeronautica.Vistas.Operador.Ingresos
 
             catch
             {
-                MessageBox.Show("Error al Agregar");
+                MessageBox.Show("Error al Agregar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             con.Close();
         }

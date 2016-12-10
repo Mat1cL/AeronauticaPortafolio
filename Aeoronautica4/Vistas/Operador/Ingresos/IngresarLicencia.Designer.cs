@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresarLicencia));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,14 +43,17 @@
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(210, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(171, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.Size = new System.Drawing.Size(199, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ingreso de Licencia";
             // 
@@ -88,7 +92,7 @@
             this.cbLicencia.Location = new System.Drawing.Point(213, 110);
             this.cbLicencia.Name = "cbLicencia";
             this.cbLicencia.Size = new System.Drawing.Size(258, 21);
-            this.cbLicencia.TabIndex = 5;
+            this.cbLicencia.TabIndex = 2;
             this.cbLicencia.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // txtDescripcion
@@ -97,7 +101,7 @@
             this.txtDescripcion.MaxLength = 150;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(258, 96);
-            this.txtDescripcion.TabIndex = 6;
+            this.txtDescripcion.TabIndex = 4;
             this.txtDescripcion.Text = "";
             this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
@@ -106,7 +110,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(213, 307);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 7;
+            this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -116,7 +120,7 @@
             this.btnVolver.Location = new System.Drawing.Point(306, 307);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
-            this.btnVolver.TabIndex = 8;
+            this.btnVolver.TabIndex = 6;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
@@ -128,7 +132,7 @@
             this.cbPiloto.Location = new System.Drawing.Point(213, 78);
             this.cbPiloto.Name = "cbPiloto";
             this.cbPiloto.Size = new System.Drawing.Size(258, 21);
-            this.cbPiloto.TabIndex = 9;
+            this.cbPiloto.TabIndex = 1;
             this.cbPiloto.SelectedIndexChanged += new System.EventHandler(this.cbPiloto_SelectedIndexChanged);
             // 
             // label5
@@ -146,7 +150,7 @@
             this.txtNumero.MaxLength = 9;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(258, 20);
-            this.txtNumero.TabIndex = 11;
+            this.txtNumero.TabIndex = 0;
             this.txtNumero.TextChanged += new System.EventHandler(this.txtNumero_TextChanged);
             this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
@@ -166,12 +170,18 @@
             this.dtFecha.Location = new System.Drawing.Point(213, 145);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Size = new System.Drawing.Size(258, 20);
-            this.dtFecha.TabIndex = 13;
+            this.dtFecha.TabIndex = 3;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
             // 
             // IngresarLicencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(539, 347);
             this.Controls.Add(this.dtFecha);
             this.Controls.Add(this.label6);
@@ -191,6 +201,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingreso de Licencia";
             this.Load += new System.EventHandler(this.VistaOperadorIngresarLicencia_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,5 +222,6 @@
         private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtFecha;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

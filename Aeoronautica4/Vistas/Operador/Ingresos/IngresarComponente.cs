@@ -100,6 +100,7 @@ namespace Aeronautica
 
         private void btnAgregar_Click_1(object sender, EventArgs e)
         {
+            
             try
             {
 
@@ -109,31 +110,83 @@ namespace Aeronautica
                 string sqlString = ""+(consultas.Variables.SelectComponente)+"";
                 OracleCommand dbCmd = new OracleCommand(sqlString, cnn);
                 OracleDataReader reader = dbCmd.ExecuteReader();
-                if (string.IsNullOrWhiteSpace(txtComponente.Text) || string.IsNullOrWhiteSpace(this.txtDescripcion.Text))
+
+                Logica.Componente.NombreComponente = txtComponente.Text;
+                Logica.Componente.Descripcion_ = txtDescripcion.Text;
+                Logica.Componente.Proveedor_ = cbProveedor.SelectedValue.ToString();
+                Logica.Componente.Matricula_ = cbMatricula.SelectedValue.ToString();
+
+                /*INICIAR LIMPIAR ERRORES*/
+                if (txtComponente.Text.Length > 0)
                 {
-                    MessageBox.Show("Debes completar los campos...");
-                    return;
+                    errorProvider1.SetError(txtComponente, string.Empty);
+                }
+                if (txtDescripcion.Text.Length > 0)
+                {
+                    errorProvider1.SetError(txtDescripcion, string.Empty);
+                }
+                if (cbMatricula.Text != "Seleccione una Matricula")
+                {
+                    errorProvider1.SetError(cbMatricula, string.Empty);
+                }
+                if (cbProveedor.Text != "Seleccione un Proveedor")
+                {
+                    errorProvider1.SetError(cbProveedor, string.Empty);
+                }
+                /*FIN LIMPIAR ERRORES*/
+
+                /*INICIO DECLARAR ERRORES*/
+                if (string.IsNullOrWhiteSpace(txtComponente.Text))
+                {
+                    errorProvider1.SetError(txtComponente, "Debes ingresar un nombre de Componente");
+                }
+                if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
+                {
+                    errorProvider1.SetError(txtDescripcion, "Debes ingresar una Descripción");
                 }
                 if (cbMatricula.Text == "Seleccione una Matricula")
                 {
-                    MessageBox.Show("Debe Seleccionar una Matricula");
+                    errorProvider1.SetError(cbMatricula, "Debes Seleccionar una Matricula");
                 }
-                else if (cbProveedor.Text == "Seleccione un Proveedor")
+                if (cbProveedor.Text == "Seleccione un Proveedor")
                 {
-                    MessageBox.Show("Debe Seleccionar un Proveedor");
+                    errorProvider1.SetError(cbProveedor, "Debes Seleccionar un Proveedor");
                 }
+                /*FIN DECLARAR ERRORES*/
+
+                /*VALIDAR SI EXISTEN ERRORES*/
+                if (errorProvider1.GetError(txtComponente) == "Debes ingresar un nombre de Componente")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(txtDescripcion) == "Debes ingresar una Descripción")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(cbMatricula) == "Debes Seleccionar una Matricula")
+                {
+                    return;
+                }
+                if (errorProvider1.GetError(cbProveedor) == "Debes Seleccionar un Proveedor")
+                {
+                    return;
+                }
+                /*FIN VALIDAR SI EXISTEN ERRORES*/
+
+                
                 else
                 {
 
-                    string sql = ""+(consultas.Variables.InsertComponente)+" (id_componente.nextval,'" + this.txtComponente.Text + "','" + this.txtDescripcion.Text + "','" + this.cbProveedor.SelectedValue + "','" + this.cbMatricula.SelectedValue + "')";
+                    string sql = "" + (consultas.Variables.InsertComponente) + " (id_componente.nextval,'" + Logica.Componente.NombreComponente + "','" + Logica.Componente.Descripcion_ + "','" + Logica.Componente.Proveedor_ + "','" + Logica.Componente.Matricula_ + "',sysdate)";
 
                     if (obDAtos.insertar(sql))
                     {
-                        MessageBox.Show("Componente Insertado");
+                        MessageBox.Show("Componente Insertado", "INGRESO CORRECTAMENTE", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Error al Insertar");
+                        MessageBox.Show("Error al Insertar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     }
                 }

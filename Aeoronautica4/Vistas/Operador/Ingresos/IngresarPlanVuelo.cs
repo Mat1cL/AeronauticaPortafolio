@@ -6,10 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using Aeronautica;
 using Logica;
+using Logica.Clases;
 using Conexion;
 
 namespace Aeronautica
@@ -17,12 +19,14 @@ namespace Aeronautica
 
     public partial class IngresarPlanVuelo : Form
     {
+       
         public IngresarPlanVuelo()
         {
+            
             InitializeComponent();
         }
 
-
+        
         //CargaCondicion
 
         void FillCbCondicion()
@@ -764,8 +768,11 @@ namespace Aeronautica
 
         private void VistaOperadorIngresarVuelo_Load(object sender, EventArgs e)
         {
+        
             //txtRuta.CharacterCasing = CharacterCasing.Upper;
             //txtDescripcion.CharacterCasing = CharacterCasing.Upper;
+            dtHoraSalida2.Hide();
+            dtHoraLlegada2.Hide();
             cboPilotoDisponible.Hide();
             cboCoPilotoDisponible.Hide();
             SPilotoRojo.Hide();
@@ -809,125 +816,580 @@ namespace Aeronautica
         {
             this.Close();
         }
+
+        public static string LicenciaPiloto;
+        public static string LicenciaCopiloto;
         datos obDAtos = new datos();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(this.txtDescripcion.Text) || string.IsNullOrWhiteSpace(this.txtRuta.Text))
+
+            Logica.PlanVuelo.Descripcion_ = txtDescripcion.Text;
+            Logica.PlanVuelo.FechaSalida_ = dtSalida.Text;
+            Logica.PlanVuelo.HoraSalida_ = dtHoraSalida.Text;
+            Logica.PlanVuelo.FechaLlegada_ = dtLlegada.Text;
+            Logica.PlanVuelo.HoraLlegada_ = dtHoraLlegada.Text;
+            Logica.PlanVuelo.Condicion_ = cboCondicion.SelectedValue.ToString();
+            Logica.PlanVuelo.Mision_ = cbMision.SelectedValue.ToString();
+            Logica.PlanVuelo.Piloto_ = cboPiloto.SelectedValue.ToString();
+            Logica.PlanVuelo.Copiloto_ = cboCopiloto.SelectedValue.ToString();
+            Logica.PlanVuelo.TipoLicenciaPiloto_ = cboTipoLicencia.SelectedValue.ToString();
+            Logica.PlanVuelo.TipoLicenciaCopiloto_ = cboTipoLicenciaCopiloto.SelectedValue.ToString();
+            Logica.PlanVuelo.Ruta_ = txtRuta.Text;
+            Logica.PlanVuelo.Destino_ = cboDestino.SelectedValue.ToString();
+            Logica.PlanVuelo.Origen_ = cboOrigen.SelectedValue.ToString();
+            Logica.PlanVuelo.Aeronave_ = cboAeronave.SelectedValue.ToString();
+
+            /*************************************************************************** INICIO LIMPIAR ERRORES  ***********************************/
+            OracleConnection cnn = new OracleConnection((consultas.Variables.ConString));
+            cnn.Open();
+            if (cboPiloto.Text != "Seleccione un Piloto" && cboTipoLicencia.Text != "Seleccione un Tipo de Licencia")
             {
-                MessageBox.Show("Debes completar los campos...");
-                return;
+                string sqlStringx = ""+(consultas.Variables.ValidarLicenciaPiloto)+" '" + cboPiloto.SelectedValue + "' "+(consultas.Variables.ValidarLicenciaPiloto2)+" '" + cboTipoLicencia.Text + "'";
+                OracleDataReader dr = null;
+                OracleCommand cmd = new OracleCommand(sqlStringx, cnn);
+                dr = cmd.ExecuteReader();
+                if (dr.Read() == true)
+                {
+                    LicenciaPiloto = dr["LICENCIA"].ToString();
+                }
+            }
+            if (cboCopiloto.Text != "Seleccione un Piloto" && cboTipoLicenciaCopiloto.Text != "Seleccione un Tipo de Licencia")
+            {
+                string sqlStringx2 = ""+(consultas.Variables.ValidarLicenciaCopiloto)+" '" + cboCopiloto.SelectedValue + "' "+(consultas.Variables.ValidarLicenciaCopiloto2)+" '" + cboTipoLicenciaCopiloto.Text + "'";
+                OracleDataReader dr2 = null;
+                OracleCommand cmd2 = new OracleCommand(sqlStringx2, cnn);
+                dr2 = cmd2.ExecuteReader();
+                if (dr2.Read() == true)
+                {
+                    LicenciaCopiloto = dr2["LICENCIA"].ToString();
+                }
+            }
+            
+            /**/
+            if (txtDescripcion.Text.Length > 0)
+            {
+                errorProvider1.SetError(txtDescripcion, string.Empty);
+            }
+            if (txtRuta.Text.Length > 0)
+            {
+                errorProvider1.SetError(txtRuta, string.Empty);
+            }
+            if (cboPiloto.Text != "Seleccione un Piloto")
+            {
+                errorProvider1.SetError(cboPiloto, string.Empty);
+            }
+            if (cboTipoLicencia.Text != "Seleccione un Tipo de Licencia")
+            {
+                errorProvider1.SetError(cboTipoLicencia, string.Empty);
+            }
+            if (cboCopiloto.Text != "Seleccione un Piloto")
+            {
+                errorProvider1.SetError(cboCopiloto, string.Empty);
+            }
+            if (cboTipoLicenciaCopiloto.Text != "Seleccione un Tipo de Licencia")
+            {
+                errorProvider1.SetError(cboTipoLicenciaCopiloto, string.Empty);
+            }
+
+            if (cboTipoAeronave.Text != "Seleccione un Tipo de Aeronave")
+            {
+                errorProvider1.SetError(cboTipoAeronave, string.Empty);
+            }
+            if (cboAeronave.Text != "Seleccione una Aeronave")
+            {
+                errorProvider1.SetError(cboAeronave, string.Empty);
+            }
+            if (LicenciaPiloto == "2")
+            {
+
+                if (cboTipoAeronave.SelectedValue.ToString() == "Avión")
+                {
+                    errorProvider1.SetError(cboTipoLicencia, string.Empty);
+                }
+
+            }
+
+            if (LicenciaPiloto == "3")
+            {
+                if (cboTipoAeronave.SelectedValue.ToString() == "Helicóptero")
+                {
+                    errorProvider1.SetError(cboTipoLicencia, string.Empty);
+                }
+
+            }
+            if (LicenciaCopiloto == "2")
+            {
+
+                if (cboTipoAeronave.SelectedValue.ToString() == "Avión")
+                {
+                    errorProvider1.SetError(cboTipoLicenciaCopiloto, string.Empty);
+                }
+
+            }
+
+            if (LicenciaCopiloto == "3")
+            {
+                if (cboTipoAeronave.SelectedValue.ToString() == "Helicóptero")
+                {
+                    errorProvider1.SetError(cboTipoLicenciaCopiloto, string.Empty);
+                }
+
+            }
+            if (cboTipoLicencia.ToString() != cboTipoLicenciaCopiloto.ToString())
+            {
+                errorProvider1.SetError(cboTipoLicencia, string.Empty);
+                errorProvider1.SetError(cboTipoLicenciaCopiloto, string.Empty);
+            }
+            if (dtSalida.Value > DateTime.Today)
+            {
+                errorProvider1.SetError(dtSalida, string.Empty);
+            }
+            if (dtLlegada.Value > DateTime.Today)
+            {
+                errorProvider1.SetError(dtLlegada, string.Empty);
+            }
+            if (dtLlegada.Text == dtSalida.Text)
+            {
+                errorProvider1.SetError(dtLlegada, string.Empty);
+            }
+            if (dtLlegada.Value > dtSalida.Value)
+            {
+                errorProvider1.SetError(dtLlegada, string.Empty);
+            }
+            if (cboOrigenPais.Text != "Seleccione un País")
+            {
+                errorProvider1.SetError(cboOrigenPais, string.Empty);
+            }
+            if (cboOrigenRegion.Text != "Seleccione una Región")
+            {
+                errorProvider1.SetError(cboOrigenRegion, string.Empty);
+            }
+            if (cboOrigenProvincia.Text != "Seleccione una Provincia")
+            {
+                errorProvider1.SetError(cboOrigenProvincia, string.Empty);
+            }
+            if (cboOrigenComuna.Text != "Seleccione una Comuna")
+            {
+                errorProvider1.SetError(cboOrigenComuna, string.Empty);
+            }
+            if (cboOrigen.Text != "Seleccione Origen")
+            {
+                errorProvider1.SetError(cboOrigen, string.Empty);
+            }
+            if (cboDestinoPais.Text != "Seleccione un País")
+            {
+                errorProvider1.SetError(cboDestinoPais, string.Empty);
+            }
+            if (cboDestinoRegion.Text != "Seleccione una Región")
+            {
+                errorProvider1.SetError(cboDestinoRegion, string.Empty);
+            }
+            if (cboDestinoProvincia.Text != "Seleccione una Provincia")
+            {
+                errorProvider1.SetError(cboDestinoProvincia, string.Empty);
+            }
+            if (cboDestinoComuna.Text != "Seleccione una Comuna")
+            {
+                errorProvider1.SetError(cboDestinoComuna, string.Empty);
+            }
+            if (cboDestino.Text != "Seleccione Destino")
+            {
+                errorProvider1.SetError(cboDestino, string.Empty);
+            }
+            if (cboCondicion.Text != "Seleccione una Condición")
+            {
+                errorProvider1.SetError(cboCondicion, string.Empty);
+            }
+            if (cbMision.Text != "Seleccione una Misión")
+            {
+                errorProvider1.SetError(cbMision, string.Empty);
+            }
+            
+           
+            /*************************************************************************** FIN LIMPIAR ERRORES  ***********************************/
+
+            /*************************************************************************** INICIO DECLARAR ERRORES  ***********************************/
+
+            
+            if (string.IsNullOrWhiteSpace(this.txtDescripcion.Text))
+            {
+                errorProvider1.SetError(txtDescripcion, "Debes dar una descripción");
+            }
+            if (string.IsNullOrWhiteSpace(this.txtRuta.Text))
+            {
+                errorProvider1.SetError(txtRuta, "Debes describir una Ruta");
             }
             if (cboPiloto.Text == "Seleccione un Piloto")
             {
-                MessageBox.Show("Debes Seleccionar un Piloto");
+                errorProvider1.SetError(cboPiloto, "Debes Seleccionar un Piloto");
             }
-            else if (cboTipoLicencia.Text == "Seleccione un Tipo de Licencia")
+            if (cboTipoLicencia.Text == "Seleccione un Tipo de Licencia")
             {
-                MessageBox.Show("Debes Seleccionar un Tipo de Licencia Para el Piloto");
+                errorProvider1.SetError(cboTipoLicencia, "Debes Seleccionar un Piloto");
             }
-            else if (cboCopiloto.Text == "Seleccione un Piloto")
+            if (cboCopiloto.Text == "Seleccione un Piloto")
             {
-                MessageBox.Show("Debes Seleccionar un Copiloto");
+                errorProvider1.SetError(cboCopiloto, "Debes Seleccionar un Copiloto");
             }
-            else if (cboTipoLicenciaCopiloto.Text == "Seleccione un Tipo de Licencia")
+            if (cboTipoLicenciaCopiloto.Text == "Seleccione un Tipo de Licencia")
             {
-                MessageBox.Show("Debes Seleccionar un Tipo de Licencia Para el Copiloto");
+                errorProvider1.SetError(cboTipoLicenciaCopiloto, "Debes Seleccionar un Tipo de Licencia Para el Copiloto");
             }
-            else if (cboTipoAeronave.Text == "Seleccione un Tipo de Aeronave")
+            if (cboTipoAeronave.Text == "Seleccione un Tipo de Aeronave")
             {
-                MessageBox.Show("Debes Seleccionar un Tipo de Aeronave");
+                errorProvider1.SetError(cboTipoAeronave, "Debes Seleccionar un Tipo de Aeronave");
             }
-            else if (cboAeronave.Text == "Seleccione una Aeronave")
+            if (cboAeronave.Text == "Seleccione una Aeronave")
             {
-                MessageBox.Show("Debes Seleccionar una Aeronave");
+                errorProvider1.SetError(cboAeronave, "Debes Seleccionar una Aeronave");
             }
-            else if (dtSalida.Value < DateTime.Today)
+            if (LicenciaPiloto == "2")
             {
-                MessageBox.Show("No puedes ingresar una fecha de Salida inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "");
+
+                if (cboTipoAeronave.SelectedValue.ToString() == "Helicóptero")
+                {
+                    errorProvider1.SetError(cboTipoLicencia, "No puedes pilotar un Helicóptero con una Licencia de Avión");
+                }
 
             }
-            else if (dtLlegada.Value < DateTime.Today)
+
+            if (LicenciaPiloto == "3")
             {
-                MessageBox.Show("No puedes ingresar una fecha de Llegada inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "");
+                if (cboTipoAeronave.SelectedValue.ToString() == "Avión")
+                {
+                    errorProvider1.SetError(cboTipoLicencia, "No puedes pilotar un Avión con una Licencia de Helicóptero");
+                }
+
             }
-            else if (cboOrigenPais.Text == "Seleccione un País")
+
+            //*/
+
+            if (LicenciaCopiloto == "2")
             {
-                MessageBox.Show("Debes Seleccionar un País de Origen");
+
+                if (cboTipoAeronave.SelectedValue.ToString() == "Helicóptero")
+                {
+                    errorProvider1.SetError(cboTipoLicenciaCopiloto, "No puedes pilotar un Helicóptero con una Licencia de Avión");
+                }
+
             }
-            else if (cboOrigenRegion.Text == "Seleccione una Región")
+
+            if (LicenciaCopiloto == "3")
             {
-                MessageBox.Show("Debes Seleccionar una Región de Origen");
+                if (cboTipoAeronave.SelectedValue.ToString() == "Avión")
+                {
+                    errorProvider1.SetError(cboTipoLicenciaCopiloto, "No puedes pilotar un Avión con una Licencia de Helicóptero");
+                }
+
             }
-            else if (cboOrigenProvincia.Text == "Seleccione una Provincia")
+
+            /**/
+            if (LicenciaPiloto == "1" && LicenciaCopiloto == "1")
             {
-                MessageBox.Show("Debes Seleccionar una Provincia de Origen");
+                errorProvider1.SetError(cboTipoLicencia, "Dos estudiantes no pueden pilotar un tipo de Aeronave\nse necesita de un experto en compañia del estudiante");
+                errorProvider1.SetError(cboTipoLicenciaCopiloto, "Dos estudiantes no pueden pilotar un tipo de Aeronave\nse necesita de un experto en compañia del estudiante");
             }
-            else if (cboOrigenComuna.Text == "Seleccione una Comuna")
+
+            /****/
+            if (dtSalida.Value < DateTime.Today)
             {
-                MessageBox.Show("Debes Seleccionar una Comuna de Origen");
+                errorProvider1.SetError(dtSalida, "No puedes ingresar una fecha de Salida inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "");
             }
-            else if (cboOrigen.Text == "Seleccione Origen")
+            if (dtLlegada.Value < DateTime.Today)
             {
-                MessageBox.Show("Debes Seleccionar un Origen");
+                errorProvider1.SetError(dtLlegada, "No puedes ingresar una fecha de Llegada inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "");
             }
-            else if (cboDestinoPais.Text == "Seleccione un País")
+            if (dtSalida.Value > dtLlegada.Value)
             {
-                MessageBox.Show("Debes Seleccionar un País de Destino");
+                if (dtSalida.Text == dtLlegada.Text)
+                {
+                    dtHoraLlegada2 = dtHoraLlegada;
+                    dtHoraSalida2 = dtHoraSalida;
+                    var dtsalidastring = dtHoraSalida2.Value.ToString("HH:mm");
+                    var dtllegadastring = dtHoraLlegada2.Value.ToString("HH:mm");
+                    DateTime dtHoraSalida2x = DateTime.ParseExact(dtsalidastring, "HH:mm",CultureInfo.InvariantCulture);
+                    DateTime dtHoraLlegada2x = DateTime.ParseExact(dtllegadastring, "HH:mm", CultureInfo.InvariantCulture);
+                    errorProvider1.SetError(dtLlegada, string.Empty);
+                    if (dtHoraLlegada2x < dtHoraSalida2x)
+                    {
+                        errorProvider1.SetError(dtHoraLlegada, "No puedes ingresar una hora de llegada menor o igual a la de salida: " + dtHoraSalida.Text + "");
+                    }
+                    else if (dtHoraLlegada2x == dtHoraSalida2x)
+                    {
+                        errorProvider1.SetError(dtHoraLlegada, "Debes ingresar una hora de llegada mayor a la de salida: " + dtHoraSalida.Text + "");
+                    }
+                    else if (dtHoraLlegada2x != dtHoraSalida2x)
+                    {
+                        errorProvider1.SetError(dtHoraLlegada, string.Empty);
+                    }
+                    
+                }
+                else
+                {
+                    errorProvider1.SetError(dtLlegada, "No puedes ingresar una fecha de Llegada inferior a la de Salida: " + dtSalida.Text + "");
+                }
+                
             }
-            else if (cboDestinoRegion.Text == "Seleccione una Región")
+            if (cboOrigenPais.Text == "Seleccione un País")
             {
-                MessageBox.Show("Debes Seleccionar una Región de Destino");
+                errorProvider1.SetError(cboOrigenPais, "Debes Seleccionar un País de Origen");
             }
-            else if (cboDestinoProvincia.Text == "Seleccione una Provincia")
+            if (cboOrigenRegion.Text == "Seleccione una Región")
             {
-                MessageBox.Show("Debes Seleccionar una Provincia de Destino");
+                errorProvider1.SetError(cboOrigenRegion, "Debes Seleccionar una Región de Origen");
             }
-            else if (cboDestinoComuna.Text == "Seleccione una Comuna")
+            if (cboOrigenProvincia.Text == "Seleccione una Provincia")
             {
-                MessageBox.Show("Debes Seleccionar una Comuna de Destino");
+                errorProvider1.SetError(cboOrigenProvincia, "Debes Seleccionar una Provincia de Origen");
             }
-            else if (cboDestino.Text == "Seleccione Destino")
+            if (cboOrigenComuna.Text == "Seleccione una Comuna")
             {
-                MessageBox.Show("Debes Seleccionar un Destino");
+                errorProvider1.SetError(cboOrigenComuna, "Debes Seleccionar una Comuna de Origen");
             }
-            else if (cboCondicion.Text == "Seleccione una Condición")
+            if (cboOrigen.Text == "Seleccione Origen")
             {
-                MessageBox.Show("Debes Seleccionar una Condición");
+                errorProvider1.SetError(cboOrigen, "Debes Seleccionar un Origen");
             }
-            else if (cbMision.Text == "Seleccione una Misión")
+            if (cboDestinoPais.Text == "Seleccione un País")
             {
-                MessageBox.Show("Debes Seleccionar una Misión");
+                errorProvider1.SetError(cboDestinoPais, "Debes Seleccionar un País de Destino");
             }
-            else if (cboPiloto.Text == cboCopiloto.Text)
+            if (cboDestinoRegion.Text == "Seleccione una Región")
             {
-                MessageBox.Show("El Piloto y el Copiloto deben ser diferentes");
+                errorProvider1.SetError(cboDestinoRegion, "Debes Seleccionar una Región de Destino");
             }
-            else if (cboDisponible.Text == "2")
+            if (cboDestinoProvincia.Text == "Seleccione una Provincia")
             {
-                MessageBox.Show("La Aeronave se encuentra en Mantenimiento");
+                errorProvider1.SetError(cboDestinoProvincia, "Debes Seleccionar una Provincia de Destino");
             }
-            else if (cboPilotoDisponible.Text == "2")
+            if (cboDestinoComuna.Text == "Seleccione una Comuna")
             {
-                MessageBox.Show("El Piloto Seleccionado se encuentra deshabilitado");
+                errorProvider1.SetError(cboDestinoComuna, "Debes Seleccionar una Comuna de Destino");
             }
-            else if (cboCoPilotoDisponible.Text == "2")
+            if (cboDestino.Text == "Seleccione Destino")
             {
-                MessageBox.Show("El Copiloto Seleccionado se encuentra deshabilitado");
+                errorProvider1.SetError(cboDestino, "Debes Seleccionar un Destino");
+            }
+            if (cboCondicion.Text == "Seleccione una Condición")
+            {
+                errorProvider1.SetError(cboCondicion, "Debes Seleccionar una Condición");
+            }
+            if (cbMision.Text == "Seleccione una Misión")
+            {
+                errorProvider1.SetError(cbMision, "Debes Seleccionar una Misión");
+            }
+            if (cboDisponible.Text == "2")
+            {
+                MessageBox.Show("La Aeronave se encuentra en Mantenimiento", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            if (cboPilotoDisponible.Text == "2")
+            {
+                MessageBox.Show("El Piloto Seleccionado se encuentra deshabilitado", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            if (cboCoPilotoDisponible.Text == "2")
+            {
+                MessageBox.Show("El Copiloto Seleccionado se encuentra deshabilitado", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            /*************************************************************************** FIN DECLARAR ERRORES  ***********************************/
+
+
+            /*************************************************************************** VALIDAR SI EXISTEN ERRORES ***********************************/
+            if (errorProvider1.GetError(cboTipoLicencia) == "No puedes pilotar un Helicóptero con una Licencia de Avión")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboTipoLicencia) == "No puedes pilotar un Avión con una Licencia de Helicóptero")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboTipoLicenciaCopiloto) == "No puedes pilotar un Helicóptero con una Licencia de Avión")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboTipoLicenciaCopiloto) == "No puedes pilotar un Avión con una Licencia de Helicóptero")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboTipoLicencia) == "Dos estudiantes no pueden pilotar un tipo de Aeronave\nse necesita de un experto en compañia del estudiante")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboTipoLicenciaCopiloto) == "Dos estudiantes no pueden pilotar un tipo de Aeronave\nse necesita de un experto en compañia del estudiante")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(txtDescripcion) == "Debes dar una descripción")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(txtRuta) == "Debes describir una Ruta")
+            {
+                return;
+            }
+            if (cboPiloto.Text != "Seleccione un Piloto" || cboCopiloto.Text != "Seleccione un Piloto")
+            {
+                if (cboPiloto.Text == cboCopiloto.Text)
+                {
+                    MessageBox.Show("El Piloto y el Copiloto deben ser diferentes", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            if (errorProvider1.GetError(cboPiloto) == "Debes Seleccionar un Piloto")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboTipoLicencia) == "Debes Seleccionar un Piloto")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboCopiloto) == "Debes Seleccionar un Copiloto")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboTipoLicenciaCopiloto) == "Debes Seleccionar un Tipo de Licencia Para el Copiloto")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboTipoAeronave) == "Debes Seleccionar un Tipo de Aeronave")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboAeronave) == "Debes Seleccionar una Aeronave")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(dtSalida) == "No puedes ingresar una fecha de Salida inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(dtLlegada) == "No puedes ingresar una fecha de Llegada inferior a la Actual: " + DateTime.Now.ToString("dd/MM/yyyy") + "")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboOrigenPais) == "Debes Seleccionar un País de Origen")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboOrigenRegion) == "Debes Seleccionar una Región de Origen")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboOrigenProvincia) == "Debes Seleccionar una Provincia de Origen")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboOrigenComuna) == "Debes Seleccionar una Comuna de Origen")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboOrigen) == "Debes Seleccionar un Origen")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboDestinoPais) == "Debes Seleccionar un País de Destino")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboDestinoRegion) == "Debes Seleccionar una Región de Destino")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboDestinoProvincia) == "Debes Seleccionar una Provincia de Destino")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboDestinoComuna) == "Debes Seleccionar una Comuna de Destino")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboDestino) == "Debes Seleccionar un Destino")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cboCondicion) == "Debes Seleccionar una Condición")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(cbMision) == "Debes Seleccionar una Misión")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(dtLlegada) == "No puedes ingresar una fecha de Llegada inferior a la de Salida: " + dtSalida.Text + "")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(dtHoraLlegada) == "Debes ingresar una hora de llegada mayor a la de salida: " + dtHoraSalida.Text + "")
+            {
+                return;
+            }
+            if (errorProvider1.GetError(dtHoraLlegada) == "No puedes ingresar una hora de llegada menor o igual a la de salida: " + dtHoraSalida.Text + "")
+            {
+                return;
             }
             
-            else 
-                {
-                        string sql = ""+(consultas.Variables.IngresoPlanVuelo)+" (id_vuelo.nextval,'" + this.txtDescripcion.Text + "','" + this.dtSalida.Text + this.dtHoraSalida.Text + ":00" + "','" + this.dtLlegada.Text + this.dtHoraLlegada.Text + ":00" + "','" + this.cboCondicion.SelectedValue + "', '" + this.cbMision.SelectedValue + "','" + this.cboPiloto.SelectedValue + "','" + this.cboCopiloto.SelectedValue + "','" + this.cboTipoLicencia.SelectedValue + "','" + this.cboTipoLicenciaCopiloto.SelectedValue + "','"+this.txtRuta.Text+"','" + this.cboDestino.SelectedValue + "','" + this.cboOrigen.SelectedValue + "','" + this.cboAeronave.SelectedValue + "')";
-                        if (obDAtos.insertar(sql))
-                        {
-                          MessageBox.Show("Plan de Vuelo Registrado");
-                        }
-                        else
-                        {
-                          MessageBox.Show("Error al Registrar Plan de Vuelo");
-                        }
-                    } 
+            /*************************************************************************** FIN VALIDAR SI EXISTEN ERRORES ***********************************/  
+
+            /*VALIDAR SI PILOTO YA SE ENCUENTRA EN UN PLAN DE VUELO*/
+
+           
+            string sqlString2 = "" + (consultas.Variables.cboPilotoValidarRutPiloto) + "'" + cboPiloto.SelectedValue + "' " + (consultas.Variables.cboPilotoValidarRutPiloto2) + "'" + dtSalida.Text + dtHoraSalida.Text + ":00" + "'" + (consultas.Variables.cboPilotoValidarRutPiloto3) + "'" + dtLlegada.Text + dtHoraLlegada.Text + ":00" + "'" + (consultas.Variables.cboPilotoValidarRutPiloto4) + "'" + dtSalida.Text + dtHoraSalida.Text + ":00" + "'" + (consultas.Variables.cboPilotoValidarRutPiloto5) + "'" + dtLlegada.Text + dtHoraLlegada.Text + ":00" + "')";
+            OracleCommand dbCmd2 = new OracleCommand(sqlString2, cnn);
+            OracleDataReader reader2 = dbCmd2.ExecuteReader();
+            /**/
+            string sqlString3 = "" + (consultas.Variables.cboCoPilotoValidarRutPiloto) + "'" + cboCopiloto.SelectedValue + "' " + (consultas.Variables.cboCoPilotoValidarRutPiloto2) + "'" + dtSalida.Text + dtHoraSalida.Text + ":00" + "'" + (consultas.Variables.cboCoPilotoValidarRutPiloto3) + "'" + dtLlegada.Text + dtHoraLlegada.Text + ":00" + "'" + (consultas.Variables.cboCoPilotoValidarRutPiloto4) + "'" + dtSalida.Text + dtHoraSalida.Text + ":00" + "'" + (consultas.Variables.cboCoPilotoValidarRutPiloto5) + "'" + dtLlegada.Text + dtHoraLlegada.Text + ":00" + "')";
+            OracleCommand dbCmd3 = new OracleCommand(sqlString3, cnn);
+            OracleDataReader reader3 = dbCmd3.ExecuteReader();
+            /**/
+            /**/
+            string sqlString4 = "" + (consultas.Variables.cboPilotoValidarRutCoPiloto) + "'" + cboPiloto.SelectedValue + "' " + (consultas.Variables.cboPilotoValidarRutCoPiloto2) + "'" + dtSalida.Text + dtHoraSalida.Text + ":00" + "'" + (consultas.Variables.cboPilotoValidarRutCoPiloto3) + "'" + dtLlegada.Text + dtHoraLlegada.Text + ":00" + "'" + (consultas.Variables.cboPilotoValidarRutCoPiloto4) + "'" + dtSalida.Text + dtHoraSalida.Text + ":00" + "'" + (consultas.Variables.cboPilotoValidarRutCoPiloto5) + "'" + dtLlegada.Text + dtHoraLlegada.Text + ":00" + "')";
+            OracleCommand dbCmd4 = new OracleCommand(sqlString4, cnn);
+            OracleDataReader reader4 = dbCmd4.ExecuteReader();
+            /**/
+            /**/
+            string sqlString5 = "" + (consultas.Variables.cboCoPilotoValidarRutCoPiloto) + " '" + cboCopiloto.SelectedValue + "' " + (consultas.Variables.cboCoPilotoValidarRutCoPiloto2) + "'" + dtSalida.Text + dtHoraSalida.Text + ":00" + "'" + (consultas.Variables.cboCoPilotoValidarRutCoPiloto3) + "'" + dtLlegada.Text + dtHoraLlegada.Text + ":00" + "'" + (consultas.Variables.cboCoPilotoValidarRutCoPiloto4) + "'" + dtSalida.Text + dtHoraSalida.Text + ":00" + "'" + (consultas.Variables.cboCoPilotoValidarRutCoPiloto5) + "'" + dtLlegada.Text + dtHoraLlegada.Text + ":00" + "')";
+            OracleCommand dbCmd5 = new OracleCommand(sqlString5, cnn);
+            OracleDataReader reader5 = dbCmd5.ExecuteReader();
+            /**/
+            if (reader2.Read())
+            {
+                MessageBox.Show("El Piloto '" + cboPiloto.Text + "' ya se encuentra en un Plan de vuelo estimado \nentre las fechas y Horarios: '" + dtSalida.Text + "  " + dtHoraSalida.Text + "' - '" + dtLlegada.Text + " " +dtHoraLlegada.Text + "'", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+            else if (reader3.Read())
+            {
+                MessageBox.Show("El Piloto '" + cboPiloto.Text + "' ya se encuentra en un Plan de vuelo estimado \nentre las fechas y Horarios: '" + dtSalida.Text + "  " + dtHoraSalida.Text + "' - '" + dtLlegada.Text + " " + dtHoraLlegada.Text + "'", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (reader4.Read())
+            {
+                MessageBox.Show("El Copiloto '" + cboCopiloto.Text + "' ya se encuentra en un Plan de vuelo estimado \nentre las fechas y Horarios: '" + dtSalida.Text + "  " + dtHoraSalida.Text + "' - '" + dtLlegada.Text + " " + dtHoraLlegada.Text + "'", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (reader5.Read())
+            {
+                MessageBox.Show("El Copiloto '" + cboCopiloto.Text + "' ya se encuentra en un Plan de vuelo estimado \nentre las fechas y Horarios: '" + dtSalida.Text + "  " + dtHoraSalida.Text + "' - '" + dtLlegada.Text + " " + dtHoraLlegada.Text + "'", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
+              
+            
+            /*FIN VALIDAR*/
+            
+            else
+            {
+
+                string sql = "" + (consultas.Variables.IngresoPlanVuelo) + " (id_vuelo.nextval,'" + Logica.PlanVuelo.Descripcion_ + "','" + Logica.PlanVuelo.FechaSalida_ + Logica.PlanVuelo.HoraSalida_ + ":00" + "','" + Logica.PlanVuelo.FechaLlegada_ + Logica.PlanVuelo.HoraLlegada_ + ":00" + "','" + Logica.PlanVuelo.Condicion_ + "', '" + Logica.PlanVuelo.Mision_ + "','" + Logica.PlanVuelo.Piloto_ + "','" + Logica.PlanVuelo.Copiloto_ + "','" + Logica.PlanVuelo.TipoLicenciaPiloto_ + "','" + Logica.PlanVuelo.TipoLicenciaCopiloto_ + "','" + Logica.PlanVuelo.Ruta_ + "','" + Logica.PlanVuelo.Destino_ + "','" + Logica.PlanVuelo.Origen_ + "','" + Logica.PlanVuelo.Aeronave_ + "')";
+                if (obDAtos.insertar(sql))
+                {
+                    MessageBox.Show("Plan de Vuelo Registrado", "PLAN DE VUELO REGISTRADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Error al Registrar Plan de Vuelo","ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
 
         private void cboPiloto_SelectedIndexChanged(object sender, EventArgs e)
         {

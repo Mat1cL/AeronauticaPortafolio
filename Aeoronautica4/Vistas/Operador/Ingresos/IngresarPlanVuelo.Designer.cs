@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresarPlanVuelo));
             this.label1 = new System.Windows.Forms.Label();
             this.cboPiloto = new System.Windows.Forms.ComboBox();
@@ -83,12 +84,17 @@
             this.cboPilotoDisponible = new System.Windows.Forms.ComboBox();
             this.cboCoPilotoDisponible = new System.Windows.Forms.ComboBox();
             this.lblFinal = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label17 = new System.Windows.Forms.Label();
+            this.dtHoraLlegada2 = new System.Windows.Forms.DateTimePicker();
+            this.dtHoraSalida2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pbRojo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbVerde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPilotoVerde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPilotoRojo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCoPilotoRojo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCoPilotoVerde)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -166,7 +172,7 @@
             // 
             this.cboOrigenRegion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOrigenRegion.FormattingEnabled = true;
-            this.cboOrigenRegion.Location = new System.Drawing.Point(370, 266);
+            this.cboOrigenRegion.Location = new System.Drawing.Point(379, 266);
             this.cboOrigenRegion.Name = "cboOrigenRegion";
             this.cboOrigenRegion.Size = new System.Drawing.Size(198, 21);
             this.cboOrigenRegion.TabIndex = 11;
@@ -176,7 +182,7 @@
             // 
             this.cboOrigenProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOrigenProvincia.FormattingEnabled = true;
-            this.cboOrigenProvincia.Location = new System.Drawing.Point(575, 266);
+            this.cboOrigenProvincia.Location = new System.Drawing.Point(592, 266);
             this.cboOrigenProvincia.Name = "cboOrigenProvincia";
             this.cboOrigenProvincia.Size = new System.Drawing.Size(164, 21);
             this.cboOrigenProvincia.TabIndex = 12;
@@ -186,7 +192,7 @@
             // 
             this.cboOrigenComuna.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOrigenComuna.FormattingEnabled = true;
-            this.cboOrigenComuna.Location = new System.Drawing.Point(745, 266);
+            this.cboOrigenComuna.Location = new System.Drawing.Point(772, 266);
             this.cboOrigenComuna.Name = "cboOrigenComuna";
             this.cboOrigenComuna.Size = new System.Drawing.Size(143, 21);
             this.cboOrigenComuna.TabIndex = 13;
@@ -206,7 +212,7 @@
             // 
             this.cboDestinoRegion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDestinoRegion.FormattingEnabled = true;
-            this.cboDestinoRegion.Location = new System.Drawing.Point(370, 297);
+            this.cboDestinoRegion.Location = new System.Drawing.Point(379, 297);
             this.cboDestinoRegion.Name = "cboDestinoRegion";
             this.cboDestinoRegion.Size = new System.Drawing.Size(198, 21);
             this.cboDestinoRegion.TabIndex = 16;
@@ -216,7 +222,7 @@
             // 
             this.cboDestinoProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDestinoProvincia.FormattingEnabled = true;
-            this.cboDestinoProvincia.Location = new System.Drawing.Point(575, 297);
+            this.cboDestinoProvincia.Location = new System.Drawing.Point(592, 297);
             this.cboDestinoProvincia.Name = "cboDestinoProvincia";
             this.cboDestinoProvincia.Size = new System.Drawing.Size(164, 21);
             this.cboDestinoProvincia.TabIndex = 17;
@@ -226,7 +232,7 @@
             // 
             this.cboDestinoComuna.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDestinoComuna.FormattingEnabled = true;
-            this.cboDestinoComuna.Location = new System.Drawing.Point(745, 297);
+            this.cboDestinoComuna.Location = new System.Drawing.Point(772, 297);
             this.cboDestinoComuna.Name = "cboDestinoComuna";
             this.cboDestinoComuna.Size = new System.Drawing.Size(143, 21);
             this.cboDestinoComuna.TabIndex = 18;
@@ -255,7 +261,7 @@
             this.btnVolver.Location = new System.Drawing.Point(335, 642);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
-            this.btnVolver.TabIndex = 24;
+            this.btnVolver.TabIndex = 25;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
@@ -265,7 +271,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(221, 642);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 23;
+            this.btnAgregar.TabIndex = 24;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -286,7 +292,7 @@
             this.cbMision.Location = new System.Drawing.Point(221, 471);
             this.cbMision.Name = "cbMision";
             this.cbMision.Size = new System.Drawing.Size(162, 21);
-            this.cbMision.TabIndex = 21;
+            this.cbMision.TabIndex = 22;
             // 
             // label7
             // 
@@ -303,14 +309,14 @@
             this.txtDescripcion.MaxLength = 200;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(320, 117);
-            this.txtDescripcion.TabIndex = 22;
+            this.txtDescripcion.TabIndex = 23;
             this.txtDescripcion.Text = "";
             this.txtDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescripcion_KeyPress);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(437, 191);
+            this.label8.Location = new System.Drawing.Point(454, 194);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(114, 13);
             this.label8.TabIndex = 28;
@@ -319,7 +325,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(437, 227);
+            this.label9.Location = new System.Drawing.Point(454, 230);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(123, 13);
             this.label9.TabIndex = 29;
@@ -341,13 +347,13 @@
             this.cboCondicion.Location = new System.Drawing.Point(221, 432);
             this.cboCondicion.Name = "cboCondicion";
             this.cboCondicion.Size = new System.Drawing.Size(162, 21);
-            this.cboCondicion.TabIndex = 20;
+            this.cboCondicion.TabIndex = 21;
             // 
             // dtHoraSalida
             // 
             this.dtHoraSalida.CustomFormat = "HH:mm";
             this.dtHoraSalida.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtHoraSalida.Location = new System.Drawing.Point(575, 185);
+            this.dtHoraSalida.Location = new System.Drawing.Point(592, 188);
             this.dtHoraSalida.Name = "dtHoraSalida";
             this.dtHoraSalida.ShowUpDown = true;
             this.dtHoraSalida.Size = new System.Drawing.Size(87, 20);
@@ -359,7 +365,7 @@
             // 
             this.dtHoraLlegada.CustomFormat = "HH:mm";
             this.dtHoraLlegada.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtHoraLlegada.Location = new System.Drawing.Point(575, 221);
+            this.dtHoraLlegada.Location = new System.Drawing.Point(592, 224);
             this.dtHoraLlegada.Name = "dtHoraLlegada";
             this.dtHoraLlegada.ShowUpDown = true;
             this.dtHoraLlegada.Size = new System.Drawing.Size(87, 20);
@@ -388,7 +394,7 @@
             // 
             this.cboOrigen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOrigen.FormattingEnabled = true;
-            this.cboOrigen.Location = new System.Drawing.Point(895, 265);
+            this.cboOrigen.Location = new System.Drawing.Point(930, 266);
             this.cboOrigen.Name = "cboOrigen";
             this.cboOrigen.Size = new System.Drawing.Size(143, 21);
             this.cboOrigen.TabIndex = 14;
@@ -397,7 +403,7 @@
             // 
             this.cboDestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDestino.FormattingEnabled = true;
-            this.cboDestino.Location = new System.Drawing.Point(895, 297);
+            this.cboDestino.Location = new System.Drawing.Point(930, 298);
             this.cboDestino.Name = "cboDestino";
             this.cboDestino.Size = new System.Drawing.Size(143, 21);
             this.cboDestino.TabIndex = 19;
@@ -464,7 +470,7 @@
             // 
             this.cboAeronave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAeronave.FormattingEnabled = true;
-            this.cboAeronave.Location = new System.Drawing.Point(412, 150);
+            this.cboAeronave.Location = new System.Drawing.Point(426, 150);
             this.cboAeronave.Name = "cboAeronave";
             this.cboAeronave.Size = new System.Drawing.Size(162, 21);
             this.cboAeronave.TabIndex = 5;
@@ -474,7 +480,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(668, 188);
+            this.label20.Location = new System.Drawing.Point(707, 188);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(180, 13);
             this.label20.TabIndex = 61;
@@ -483,7 +489,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(668, 227);
+            this.label15.Location = new System.Drawing.Point(707, 227);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(180, 13);
             this.label15.TabIndex = 62;
@@ -494,7 +500,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(448, 642);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 25;
+            this.btnLimpiar.TabIndex = 26;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -505,7 +511,7 @@
             this.txtRuta.MaxLength = 300;
             this.txtRuta.Name = "txtRuta";
             this.txtRuta.Size = new System.Drawing.Size(320, 85);
-            this.txtRuta.TabIndex = 63;
+            this.txtRuta.TabIndex = 20;
             this.txtRuta.Text = "";
             this.txtRuta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRuta_KeyPress);
             // 
@@ -522,7 +528,7 @@
             // 
             this.pbRojo.Image = global::Aeronautica.Properties.Resources.rojo;
             this.pbRojo.InitialImage = null;
-            this.pbRojo.Location = new System.Drawing.Point(580, 144);
+            this.pbRojo.Location = new System.Drawing.Point(611, 144);
             this.pbRojo.Name = "pbRojo";
             this.pbRojo.Size = new System.Drawing.Size(28, 35);
             this.pbRojo.TabIndex = 65;
@@ -532,7 +538,7 @@
             // pbVerde
             // 
             this.pbVerde.Image = global::Aeronautica.Properties.Resources.verde;
-            this.pbVerde.Location = new System.Drawing.Point(580, 144);
+            this.pbVerde.Location = new System.Drawing.Point(611, 144);
             this.pbVerde.Name = "pbVerde";
             this.pbVerde.Size = new System.Drawing.Size(28, 35);
             this.pbVerde.TabIndex = 66;
@@ -544,7 +550,7 @@
             // 
             this.cboDisponible.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDisponible.FormattingEnabled = true;
-            this.cboDisponible.Location = new System.Drawing.Point(580, 150);
+            this.cboDisponible.Location = new System.Drawing.Point(611, 150);
             this.cboDisponible.Name = "cboDisponible";
             this.cboDisponible.Size = new System.Drawing.Size(28, 21);
             this.cboDisponible.TabIndex = 67;
@@ -552,7 +558,7 @@
             // SPilotoVerde
             // 
             this.SPilotoVerde.Image = global::Aeronautica.Properties.Resources.verde;
-            this.SPilotoVerde.Location = new System.Drawing.Point(501, 53);
+            this.SPilotoVerde.Location = new System.Drawing.Point(511, 53);
             this.SPilotoVerde.Name = "SPilotoVerde";
             this.SPilotoVerde.Size = new System.Drawing.Size(28, 35);
             this.SPilotoVerde.TabIndex = 68;
@@ -563,7 +569,7 @@
             // 
             this.SPilotoRojo.Image = global::Aeronautica.Properties.Resources.rojo;
             this.SPilotoRojo.InitialImage = null;
-            this.SPilotoRojo.Location = new System.Drawing.Point(501, 53);
+            this.SPilotoRojo.Location = new System.Drawing.Point(511, 53);
             this.SPilotoRojo.Name = "SPilotoRojo";
             this.SPilotoRojo.Size = new System.Drawing.Size(28, 35);
             this.SPilotoRojo.TabIndex = 69;
@@ -574,7 +580,7 @@
             // 
             this.SCoPilotoRojo.Image = global::Aeronautica.Properties.Resources.rojo;
             this.SCoPilotoRojo.InitialImage = null;
-            this.SCoPilotoRojo.Location = new System.Drawing.Point(501, 94);
+            this.SCoPilotoRojo.Location = new System.Drawing.Point(511, 94);
             this.SCoPilotoRojo.Name = "SCoPilotoRojo";
             this.SCoPilotoRojo.Size = new System.Drawing.Size(28, 35);
             this.SCoPilotoRojo.TabIndex = 70;
@@ -584,7 +590,7 @@
             // SCoPilotoVerde
             // 
             this.SCoPilotoVerde.Image = global::Aeronautica.Properties.Resources.verde;
-            this.SCoPilotoVerde.Location = new System.Drawing.Point(501, 94);
+            this.SCoPilotoVerde.Location = new System.Drawing.Point(511, 94);
             this.SCoPilotoVerde.Name = "SCoPilotoVerde";
             this.SCoPilotoVerde.Size = new System.Drawing.Size(28, 35);
             this.SCoPilotoVerde.TabIndex = 71;
@@ -596,7 +602,7 @@
             this.cboPilotoDisponible.AccessibleName = "";
             this.cboPilotoDisponible.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPilotoDisponible.FormattingEnabled = true;
-            this.cboPilotoDisponible.Location = new System.Drawing.Point(501, 56);
+            this.cboPilotoDisponible.Location = new System.Drawing.Point(511, 56);
             this.cboPilotoDisponible.Name = "cboPilotoDisponible";
             this.cboPilotoDisponible.Size = new System.Drawing.Size(40, 21);
             this.cboPilotoDisponible.TabIndex = 72;
@@ -607,7 +613,7 @@
             this.cboCoPilotoDisponible.AccessibleName = "";
             this.cboCoPilotoDisponible.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCoPilotoDisponible.FormattingEnabled = true;
-            this.cboCoPilotoDisponible.Location = new System.Drawing.Point(500, 104);
+            this.cboCoPilotoDisponible.Location = new System.Drawing.Point(510, 104);
             this.cboCoPilotoDisponible.Name = "cboCoPilotoDisponible";
             this.cboCoPilotoDisponible.Size = new System.Drawing.Size(41, 21);
             this.cboCoPilotoDisponible.TabIndex = 73;
@@ -621,13 +627,54 @@
             this.lblFinal.Size = new System.Drawing.Size(0, 13);
             this.lblFinal.TabIndex = 88;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(340, 9);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(430, 25);
+            this.label17.TabIndex = 89;
+            this.label17.Text = "INGRESO DE PLAN DE VUELO ESTIMADO";
+            // 
+            // dtHoraLlegada2
+            // 
+            this.dtHoraLlegada2.CustomFormat = "HH:mm";
+            this.dtHoraLlegada2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtHoraLlegada2.Location = new System.Drawing.Point(592, 224);
+            this.dtHoraLlegada2.Name = "dtHoraLlegada2";
+            this.dtHoraLlegada2.ShowUpDown = true;
+            this.dtHoraLlegada2.Size = new System.Drawing.Size(87, 20);
+            this.dtHoraLlegada2.TabIndex = 9;
+            this.dtHoraLlegada2.Value = new System.DateTime(2016, 10, 3, 0, 0, 0, 0);
+            // 
+            // dtHoraSalida2
+            // 
+            this.dtHoraSalida2.CustomFormat = "HH:mm";
+            this.dtHoraSalida2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtHoraSalida2.Location = new System.Drawing.Point(592, 188);
+            this.dtHoraSalida2.Name = "dtHoraSalida2";
+            this.dtHoraSalida2.ShowUpDown = true;
+            this.dtHoraSalida2.Size = new System.Drawing.Size(87, 20);
+            this.dtHoraSalida2.TabIndex = 7;
+            this.dtHoraSalida2.Value = new System.DateTime(2016, 10, 8, 0, 0, 0, 0);
+            // 
             // IngresarPlanVuelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1096, 611);
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ClientSize = new System.Drawing.Size(1154, 611);
+            this.Controls.Add(this.dtHoraLlegada2);
+            this.Controls.Add(this.dtHoraSalida2);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.lblFinal);
             this.Controls.Add(this.cboCoPilotoDisponible);
             this.Controls.Add(this.cboPilotoDisponible);
@@ -694,6 +741,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SPilotoRojo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCoPilotoRojo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCoPilotoVerde)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -755,5 +803,9 @@
         private System.Windows.Forms.ComboBox cboPilotoDisponible;
         private System.Windows.Forms.ComboBox cboCoPilotoDisponible;
         private System.Windows.Forms.Label lblFinal;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DateTimePicker dtHoraLlegada2;
+        private System.Windows.Forms.DateTimePicker dtHoraSalida2;
     }
 }
