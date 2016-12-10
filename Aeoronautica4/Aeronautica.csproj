@@ -79,6 +79,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -101,11 +102,47 @@
     <Compile Include="Vistas\Administrador\MantenedorUsuario.Designer.cs">
       <DependentUpon>MantenedorUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Consultor\BuscarAeronave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\BuscarAeronave.Designer.cs">
+      <DependentUpon>BuscarAeronave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultor\BuscarPiloto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\BuscarPiloto.Designer.cs">
+      <DependentUpon>BuscarPiloto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultor\Mantenimientos\ConsultarMantenimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\Mantenimientos\ConsultarMantenimientos.Designer.cs">
+      <DependentUpon>ConsultarMantenimientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultor\Mantenimientos\ConsultarMantenimientosHistoricos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\Mantenimientos\ConsultarMantenimientosHistoricos.Designer.cs">
+      <DependentUpon>ConsultarMantenimientosHistoricos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultor\Rankings\ConsultarRankingAeronaves.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\Rankings\ConsultarRankingAeronaves.Designer.cs">
+      <DependentUpon>ConsultarRankingAeronaves.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Consultor\ConsultarVuelosRealizados.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\Consultor\ConsultarVuelosRealizados.Designer.cs">
       <DependentUpon>ConsultarVuelosRealizados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Consultor\Rankings\CosultarListaPilotos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Consultor\Rankings\CosultarListaPilotos.Designer.cs">
+      <DependentUpon>CosultarListaPilotos.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Consultor\ReportesAeronaves.cs">
       <SubType>Form</SubType>
@@ -161,6 +198,12 @@
     <Compile Include="Vistas\Operador\Ingresos\IngresarFichaMedica.Designer.cs">
       <DependentUpon>IngresarFichaMedica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarPlanVueloReal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Operador\Ingresos\IngresarPlanVueloReal.Designer.cs">
+      <DependentUpon>IngresarPlanVueloReal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Operador\Mantenedores\MantenedorAeronave.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,11 +228,11 @@
     <Compile Include="Vistas\Operador\Mantenedores\MantenedorPiloto.Designer.cs">
       <DependentUpon>MantenedorPiloto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Consultor\ReportePiloto.cs">
+    <Compile Include="Vistas\Consultor\BitacoraPiloto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\Consultor\ReportePiloto.Designer.cs">
-      <DependentUpon>ReportePiloto.cs</DependentUpon>
+    <Compile Include="Vistas\Consultor\BitacoraPiloto.Designer.cs">
+      <DependentUpon>BitacoraPiloto.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Operador\VistaOperador.cs">
       <SubType>Form</SubType>
@@ -234,17 +277,17 @@
       <DependentUpon>VistaPiloto.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vistas\Operador\Ingresos\IngresarPlanVueloReal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\Operador\Ingresos\IngresarPlanVueloReal.Designer.cs">
-      <DependentUpon>IngresarPlanVueloReal.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Vistas\Administrador\IngresarUsuario.resx">
       <DependentUpon>IngresarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Administrador\MantenedorUsuario.resx">
       <DependentUpon>MantenedorUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\BuscarAeronave.resx">
+      <DependentUpon>BuscarAeronave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\BuscarPiloto.resx">
+      <DependentUpon>BuscarPiloto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Consultor\ConsultarHorasVuelo.resx">
       <DependentUpon>ConsultarHorasVuelo.cs</DependentUpon>
@@ -252,8 +295,20 @@
     <EmbeddedResource Include="Vistas\Consultor\ConsultarHorasVueloAeronave.resx">
       <DependentUpon>ConsultarHorasVueloAeronave.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\Mantenimientos\ConsultarMantenimientos.resx">
+      <DependentUpon>ConsultarMantenimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\Mantenimientos\ConsultarMantenimientosHistoricos.resx">
+      <DependentUpon>ConsultarMantenimientosHistoricos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\Rankings\ConsultarRankingAeronaves.resx">
+      <DependentUpon>ConsultarRankingAeronaves.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Consultor\ConsultarVuelosRealizados.resx">
       <DependentUpon>ConsultarVuelosRealizados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Consultor\Rankings\CosultarListaPilotos.resx">
+      <DependentUpon>CosultarListaPilotos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Consultor\ReportesAeronaves.resx">
       <DependentUpon>ReportesAeronaves.cs</DependentUpon>
@@ -279,6 +334,9 @@
     <EmbeddedResource Include="Vistas\Operador\Ingresos\IngresarLicencia.resx">
       <DependentUpon>IngresarLicencia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Operador\Ingresos\IngresarPlanVueloReal.resx">
+      <DependentUpon>IngresarPlanVueloReal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Operador\Mantenedores\MantenedorAeronave.resx">
       <DependentUpon>MantenedorAeronave.cs</DependentUpon>
     </EmbeddedResource>
@@ -291,8 +349,8 @@
     <EmbeddedResource Include="Vistas\Operador\Mantenedores\MantenedorPiloto.resx">
       <DependentUpon>MantenedorPiloto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\Consultor\ReportePiloto.resx">
-      <DependentUpon>ReportePiloto.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\Consultor\BitacoraPiloto.resx">
+      <DependentUpon>BitacoraPiloto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Operador\VistaOperador.resx">
       <DependentUpon>VistaOperador.cs</DependentUpon>
@@ -322,9 +380,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Vistas\Operador\Ingresos\IngresarPlanVueloReal.resx">
-      <DependentUpon>IngresarPlanVueloReal.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -371,6 +426,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pilosearch.png" />
+    <None Include="Resources\piloRA.png" />
+    <None Include="Resources\LogoEmpresa.png" />
+    <None Include="Resources\logoescuadrilla.png" />
     <None Include="Resources\search_bx.png" />
     <None Include="Resources\pilo.png" />
     <None Include="Resources\ico.bmp" />
@@ -398,6 +457,9 @@
     <None Include="Resources\Componente.png" />
     <None Include="Resources\Aeronavexx.png" />
     <None Include="Resources\Aeronavexx22.png" />
+    <None Include="Resources\escuadrillalogo.bmp" />
+    <None Include="Resources\Aeronavexx22RA.png" />
+    <None Include="Resources\Aeronavenew.png" />
     <Content Include="Resources\licencia2x.png" />
   </ItemGroup>
   <ItemGroup>
