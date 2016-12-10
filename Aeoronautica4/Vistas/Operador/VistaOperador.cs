@@ -1,6 +1,7 @@
 ﻿using Aeoronautica;
 using Aeronautica.Operador;
 using Aeronautica.Vistas.Consultor;
+using Aeronautica.Vistas.Consultor.Mantenimientos;
 using Aeronautica.Vistas.Operador;
 using Aeronautica.Vistas.Operador.Ingresos;
 using System;
@@ -137,17 +138,12 @@ namespace Aeronautica
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ReportePiloto form = new ReportePiloto();
+            BitacoraPiloto form = new BitacoraPiloto();
             form.ShowDialog();
         }
 
@@ -160,6 +156,57 @@ namespace Aeronautica
         private void btnConsultarVuelos_Click(object sender, EventArgs e)
         {
             ConsultarVuelosRealizados form = new ConsultarVuelosRealizados();
+            form.ShowDialog();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            CosultarListaPilotos form = new CosultarListaPilotos();
+            form.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ConsultarRankingAeronaves form = new ConsultarRankingAeronaves();
+            form.ShowDialog();
+        }
+
+        private void tabConsultas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPilotos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConsultasMantenimientos_Click(object sender, EventArgs e)
+        {
+            ConsultarMantenimientos form = new ConsultarMantenimientos();
+            form.ShowDialog();
+        }
+
+        private void btnHistorico_Click(object sender, EventArgs e)
+        {
+            ConsultarMantenimientosHistoricos form = new ConsultarMantenimientosHistoricos();
+            form.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            BuscarPiloto form = new BuscarPiloto();
+            form.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            BuscarAeronave form = new BuscarAeronave();
             form.ShowDialog();
         }
 
