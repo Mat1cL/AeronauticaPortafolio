@@ -32,7 +32,7 @@ namespace Aeronautica
             string rutFormateado = String.Empty;
             if (string.IsNullOrWhiteSpace(txtRutPiloto.Text))
             {
-                MessageBox.Show("Debe ingresar su Rut");
+                MessageBox.Show("Debe ingresar su Rut", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -43,7 +43,7 @@ namespace Aeronautica
                 }
                 else
                 {
-                    MessageBox.Show("Rut Inválido", "ERROR");
+                    MessageBox.Show("Rut Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtRutPiloto.Text = String.Empty;
                 }
             }
@@ -190,7 +190,7 @@ namespace Aeronautica
             conexion cn = new conexion();
             if (txtDescripcion.Text.Trim() == "" || cbLicencia.SelectedText == "SELECCIONAR")
             {
-                MessageBox.Show("Falta completar los campos...");
+                MessageBox.Show("Falta completar los campos...", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -200,9 +200,9 @@ namespace Aeronautica
                             "' " + (consultas.Variables.ModificarLicencia3) + "" + txtNumeroLicencia.Text + "";
                 if (obDAtos.actualizar(sql))
                 {
-                    MessageBox.Show("Licencia modificada Correctamente");
+                    MessageBox.Show("Licencia modificada Correctamente", "LICENCIA MODIFICADA", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
-                else { MessageBox.Show("No se pudo Modificar"); }
+                else { MessageBox.Show("No se pudo Modificar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
         }
 
@@ -222,7 +222,7 @@ namespace Aeronautica
                     txtNumeroLicencia.Text = string.Empty;
                     txtDescripcion.Text = string.Empty;
                     cbLicencia.SelectedIndex = 0;
-                    MessageBox.Show("El piloto fue eliminado Correctamente");
+                    MessageBox.Show("La Licencia fue eliminada Correctamente", "PILOTO ELIMINADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     OracleConnection cnn = new OracleConnection((consultas.Variables.ConString));
                     OracleCommand cmd;
                     cmd = new OracleCommand(""+(consultas.Variables.SelectNombreSexo)+"'" + txtRutPiloto.Text + "' "+(consultas.Variables.SelectNombreSexo2)+"", cnn);
@@ -234,7 +234,7 @@ namespace Aeronautica
                     dgvLicencias.DataSource = ds.Tables[0];
 
                 }
-                else { MessageBox.Show("No se pudo eliminar"); }
+                else { MessageBox.Show("No se pudo eliminar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
 
             }
         }

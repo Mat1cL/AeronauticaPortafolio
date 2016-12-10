@@ -50,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnVolveraBuscar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLicencias)).BeginInit();
@@ -58,7 +59,7 @@
             // lblMensaje
             // 
             this.lblMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensaje.Location = new System.Drawing.Point(335, 32);
+            this.lblMensaje.Location = new System.Drawing.Point(336, 53);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(154, 20);
             this.lblMensaje.TabIndex = 9;
@@ -66,7 +67,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(254, 29);
+            this.btnBuscar.Location = new System.Drawing.Point(255, 50);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 1;
@@ -77,7 +78,7 @@
             // txtRutPiloto
             // 
             this.txtRutPiloto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRutPiloto.Location = new System.Drawing.Point(114, 29);
+            this.txtRutPiloto.Location = new System.Drawing.Point(115, 50);
             this.txtRutPiloto.MaxLength = 9;
             this.txtRutPiloto.Name = "txtRutPiloto";
             this.txtRutPiloto.Size = new System.Drawing.Size(123, 23);
@@ -90,7 +91,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 32);
+            this.label1.Location = new System.Drawing.Point(21, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 6;
@@ -100,7 +101,7 @@
             // 
             this.groupBox1.Controls.Add(this.lblSexo);
             this.groupBox1.Controls.Add(this.lblNombre);
-            this.groupBox1.Location = new System.Drawing.Point(23, 67);
+            this.groupBox1.Location = new System.Drawing.Point(24, 88);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(452, 87);
             this.groupBox1.TabIndex = 16;
@@ -183,7 +184,7 @@
             this.groupBox2.Controls.Add(this.txtNumeroLicencia);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.txtDescripcion);
-            this.groupBox2.Location = new System.Drawing.Point(209, 181);
+            this.groupBox2.Location = new System.Drawing.Point(210, 202);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(266, 226);
             this.groupBox2.TabIndex = 2;
@@ -226,7 +227,7 @@
             this.dgvLicencias.ColumnHeadersHeight = 4;
             this.dgvLicencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvLicencias.ColumnHeadersVisible = false;
-            this.dgvLicencias.Location = new System.Drawing.Point(51, 195);
+            this.dgvLicencias.Location = new System.Drawing.Point(52, 216);
             this.dgvLicencias.Name = "dgvLicencias";
             this.dgvLicencias.ReadOnly = true;
             this.dgvLicencias.RowHeadersVisible = false;
@@ -239,7 +240,7 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(373, 418);
+            this.btnVolver.Location = new System.Drawing.Point(374, 439);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
             this.btnVolver.TabIndex = 3;
@@ -250,7 +251,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(59, 179);
+            this.label2.Location = new System.Drawing.Point(60, 200);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 18;
@@ -259,7 +260,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(143, 179);
+            this.label3.Location = new System.Drawing.Point(144, 200);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 19;
@@ -268,7 +269,7 @@
             // btnVolveraBuscar
             // 
             this.btnVolveraBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolveraBuscar.Location = new System.Drawing.Point(254, 29);
+            this.btnVolveraBuscar.Location = new System.Drawing.Point(255, 50);
             this.btnVolveraBuscar.Name = "btnVolveraBuscar";
             this.btnVolveraBuscar.Size = new System.Drawing.Size(118, 23);
             this.btnVolveraBuscar.TabIndex = 20;
@@ -276,11 +277,23 @@
             this.btnVolveraBuscar.UseVisualStyleBackColor = true;
             this.btnVolveraBuscar.Click += new System.EventHandler(this.btnVolveraBuscar_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(110, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(297, 25);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "MANTENEDOR DE LICENCIA";
+            // 
             // MantenedorLicencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 453);
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ClientSize = new System.Drawing.Size(498, 477);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnVolveraBuscar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -330,5 +343,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnVolveraBuscar;
+        private System.Windows.Forms.Label label4;
     }
 }

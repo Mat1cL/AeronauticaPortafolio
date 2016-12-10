@@ -31,7 +31,7 @@ namespace Aeronautica.Operador
             string rutFormateado = String.Empty;
             if (string.IsNullOrWhiteSpace(txtRutPiloto.Text))
             {
-                MessageBox.Show("Debe ingresar su Rut");
+                MessageBox.Show("Debe ingresar su Rut", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -42,7 +42,7 @@ namespace Aeronautica.Operador
                 }
                 else
                 {
-                    MessageBox.Show("Rut Inválido", "ERROR");
+                    MessageBox.Show("Rut Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtRutPiloto.Text = String.Empty;
                 }
             }
@@ -162,7 +162,7 @@ namespace Aeronautica.Operador
         {
             if (txtRutPiloto.Text.Trim() == "")
             {
-                MessageBox.Show("Debes Completar el Campo de Rut");
+                MessageBox.Show("Debes Completar el Campo de Rut", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -171,7 +171,7 @@ namespace Aeronautica.Operador
                 {
                     if (txtDescripcion.Text.Trim() == "")
                     {
-                        MessageBox.Show("Falta completar los campos...");
+                        MessageBox.Show("Falta completar los campos...", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                     else
@@ -180,7 +180,7 @@ namespace Aeronautica.Operador
 
                         if (obDAtos.actualizar(sql))
                         {
-                            MessageBox.Show("La Ficha Médica se ha actualizado correctamente");
+                            MessageBox.Show("La Ficha Médica se ha actualizado correctamente", "FICHA MÉDICA ACTUALIZADA", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             OracleConnection cnn = new OracleConnection((consultas.Variables.ConString));
                             OracleCommand cmd;
                             cmd = new OracleCommand(""+(consultas.Variables.MostrarFichaMedica)+"", cnn);
@@ -192,11 +192,11 @@ namespace Aeronautica.Operador
                             dgvFicha.DataSource = ds.Tables[0];
 
                         }
-                        else { MessageBox.Show("No se pudo Modificar"); }
+                        else { MessageBox.Show("No se pudo Modificar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
                     }
 
                 }
-                else { MessageBox.Show("Rut invalido"); }
+                else { MessageBox.Show("Rut invalido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
         }
 
@@ -204,7 +204,7 @@ namespace Aeronautica.Operador
         {
             if (txtRutPiloto.Text.Trim() == "")
             {
-                MessageBox.Show("Debes Completar el Campo de Rut");
+                MessageBox.Show("Debes Completar el Campo de Rut", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -215,7 +215,7 @@ namespace Aeronautica.Operador
                 {
                     txtID.Text = string.Empty;
                     txtDescripcion.Text = string.Empty;
-                    MessageBox.Show("La Ficha Médica se ha eliminado correctamente");
+                    MessageBox.Show("La Ficha Médica se ha eliminado correctamente", "FICHA MÉDICA ELIMINADA", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     OracleConnection cnn = new OracleConnection((consultas.Variables.ConString));
                     OracleCommand cmd;
                     cmd = new OracleCommand(""+(consultas.Variables.MostrarFichaMedica)+"", cnn);
@@ -226,7 +226,7 @@ namespace Aeronautica.Operador
                     da.Fill(ds);
                     dgvFicha.DataSource = ds.Tables[0];
                 }
-                else { MessageBox.Show("No se pudo eliminar"); }
+                else { MessageBox.Show("No se pudo eliminar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
             
         }

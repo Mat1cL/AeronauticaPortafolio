@@ -44,7 +44,6 @@ namespace Aeronautica
                     cbFabricante.Enabled = true;
                     txtAño.Enabled = true;
                     btnModificarAeronave.Enabled = true;
-                    btnEliminarAeronave.Enabled = true;
                     btnEditarComponente.Enabled = true;
                     btnEliminarComponente.Enabled = true;
                     txtMatricula1.Text = dr["MATRICULA"].ToString();
@@ -96,7 +95,6 @@ namespace Aeronautica
             cbProveedor.Enabled = false;
             txtNombre.Enabled = false;
             btnModificarAeronave.Enabled = false;
-            btnEliminarAeronave.Enabled = false;
             btnEditarComponente.Enabled = false;
             btnEliminarComponente.Enabled = false;
             FillCbTipo();
@@ -281,7 +279,7 @@ namespace Aeronautica
             conexion cn = new conexion();
             if (txtNombre.Text.Trim() == "" || txtDescripcion.Text.Trim() == "" || cbProveedor.SelectedText == "SELECCIONAR")
             {
-                MessageBox.Show("Debes Completar Los Campos Pertenecientes a Componentes");
+                MessageBox.Show("Debes Completar Los Campos Pertenecientes a Componentes", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -289,7 +287,7 @@ namespace Aeronautica
                 string sql = ""+(consultas.Variables.ModificarComponente)+"'" + txtNombre.Text + "',"+(consultas.Variables.ModificarComponente2)+"'" + txtDescripcion.Text + "', "+(consultas.Variables.ModificarComponente3)+"" + cbProveedor.SelectedValue.ToString() +" "+(consultas.Variables.ModificarComponente4)+"" + txtID.Text + "";
                 if (obDAtos.actualizar(sql))
                 {
-                    MessageBox.Show("Componente Modificado Correctamente");
+                    MessageBox.Show("Componente Modificado Correctamente", "COMPONENTE MODIFICADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                     OracleConnection cnx = new OracleConnection(consultas.Variables.ConString);
                     OracleCommand cmd;
@@ -310,7 +308,7 @@ namespace Aeronautica
 
                     cnx.Close();
                 }
-                else { MessageBox.Show("No se pudo Modificar"); }
+                else { MessageBox.Show("No se pudo Modificar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
         }
 
@@ -319,7 +317,7 @@ namespace Aeronautica
             conexion cn = new conexion();
             if (txtID.Text.Trim() == "")
             {
-                MessageBox.Show("Debe Seleccionar un Componente"); return;
+                MessageBox.Show("Debe Seleccionar un Componente", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
             }
             else
             {
@@ -333,7 +331,7 @@ namespace Aeronautica
                     txtNombre.Text = string.Empty;
                     txtDescripcion.Text = string.Empty;
                     cbProveedor.SelectedIndex = 0;
-                    MessageBox.Show("El Componente fue eliminado Correctamente");
+                    MessageBox.Show("El Componente fue eliminado Correctamente", "COMPONENTE ELIMINADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                     OracleConnection cnx = new OracleConnection(consultas.Variables.ConString);
                     OracleCommand cmd;
@@ -358,7 +356,7 @@ namespace Aeronautica
                     }
                     cnx.Close();
                 }
-                else { MessageBox.Show("No se pudo eliminar"); }
+                else { MessageBox.Show("No se pudo eliminar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
 
             }
         }
@@ -372,32 +370,32 @@ namespace Aeronautica
             conexion cn = new conexion();
             if (txtMatricula1.Text.Trim() == "" || txtAño.Text.Trim() == "" || cbTipoAeronave.SelectedText == "SELECCIONAR" || cbFabricante.SelectedText == "SELECCIONAR")
             {
-                MessageBox.Show("Falta completar los campos de Aeronave");
+                MessageBox.Show("Falta completar los campos de Aeronave", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             else if (yearseleccionado > yearactual)
             {
-                MessageBox.Show("El año de fabricación debe ser igual o menor al Actual: " + DateTime.Now.ToString("yyyy") + "");
+                MessageBox.Show("El año de fabricación debe ser igual o menor al Actual: " + DateTime.Now.ToString("yyyy") + "", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                string sql = "" + (consultas.Variables.ModificarAeronave) + "'" + txtAño.Text + "', " + (consultas.Variables.ModificarAeronave2) + "" + cbTipoAeronave.SelectedValue.ToString() + ", ESTADO_ID_ESTADO='"+cboDisponible.SelectedValue+"'" + (consultas.Variables.ModificarAeronave3) + "" + cbFabricante.SelectedValue.ToString() + "" + (consultas.Variables.ModificarAeronave4) + "'" + txtMatricula1.Text + "'";
+                string sql = "" + (consultas.Variables.ModificarAeronave) + " '" + txtAño.Text + "'" + (consultas.Variables.ModificarAeronave2) + " '" + cbTipoAeronave.SelectedValue + "'" + (consultas.Variables.ModificarAeronave3) + " '" + cbFabricante.SelectedValue + "'"+(consultas.Variables.ModificarAeronave4)+" '"+cboDisponible.SelectedValue+"' "+(consultas.Variables.ModificarAeronave5)+" '" + txtMatricula1.Text + "'";
                 if (obDAtos.actualizar(sql))
                 {
-                    MessageBox.Show("Aeronave modificada Correctamente");
+                    MessageBox.Show("Aeronave modificada Correctamente", "AERONAVE MODIFICADA", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
-                else { MessageBox.Show("No se pudo Modificar"); }
+                else { MessageBox.Show("No se pudo Modificar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
         }
 
-        private void btnEliminarAeronave_Click(object sender, EventArgs e)
+        /*private void btnEliminarAeronave_Click(object sender, EventArgs e)
         {
             conexion cn = new conexion();
             if (txtMatricula1.Text.Trim() == "")
             {
-                MessageBox.Show("SELECCIONE AERONAVE"); return;
+                MessageBox.Show("SELECCIONE AERONAVE", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
             }
             else
             {
@@ -409,7 +407,7 @@ namespace Aeronautica
                     cbFabricante.SelectedIndex = 0;
                     cbTipoAeronave.SelectedIndex = 0;
                     txtAño.Text = string.Empty;
-                    MessageBox.Show("La Aeronave fue eliminada Correctamente");
+                    MessageBox.Show("La Aeronave fue eliminada Correctamente", "AERONAVE ELIMINADA", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     cbFabricante.Enabled = false;
                     cbTipoAeronave.Enabled = false;
                     btnEditarComponente.Enabled = false;
@@ -417,10 +415,10 @@ namespace Aeronautica
                     btnModificarAeronave.Enabled = false;
                     btnEliminarAeronave.Enabled = false;
                 }
-                else { MessageBox.Show("No se pudo eliminar la Aeronave, Comrpueba primero que no contenga componentes"); }
+                else { MessageBox.Show("No se pudo eliminar la Aeronave, Comrpueba primero que no contenga componentes", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
 
             }
-        }
+        }*/
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
@@ -463,7 +461,6 @@ namespace Aeronautica
             txtDescripcion.Enabled = false;
             txtDescripcion.Clear();
             btnModificarAeronave.Enabled = false;
-            btnEliminarAeronave.Enabled = false;
             btnEliminarComponente.Enabled = false;
             btnEditarComponente.Enabled = false;
             this.dgvComponentes.DataSource = null;

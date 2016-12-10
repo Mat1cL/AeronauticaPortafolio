@@ -36,7 +36,6 @@
             this.cboDisponible = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.btnEliminarAeronave = new System.Windows.Forms.Button();
             this.btnModificarAeronave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblNombreDGV = new System.Windows.Forms.Label();
@@ -62,6 +61,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.btnVolveraBuscar = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.gbDatosAeronave.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvComponentes)).BeginInit();
@@ -69,7 +69,7 @@
             // 
             // btnMostrar
             // 
-            this.btnMostrar.Location = new System.Drawing.Point(290, 30);
+            this.btnMostrar.Location = new System.Drawing.Point(288, 67);
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(75, 23);
             this.btnMostrar.TabIndex = 1;
@@ -80,7 +80,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(71, 35);
+            this.label1.Location = new System.Drawing.Point(69, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 1;
@@ -88,7 +88,7 @@
             // 
             // txtMatricula
             // 
-            this.txtMatricula.Location = new System.Drawing.Point(176, 30);
+            this.txtMatricula.Location = new System.Drawing.Point(174, 67);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.Size = new System.Drawing.Size(100, 20);
             this.txtMatricula.TabIndex = 0;
@@ -98,7 +98,6 @@
             this.gbDatosAeronave.Controls.Add(this.cboDisponible);
             this.gbDatosAeronave.Controls.Add(this.label10);
             this.gbDatosAeronave.Controls.Add(this.btnVolver);
-            this.gbDatosAeronave.Controls.Add(this.btnEliminarAeronave);
             this.gbDatosAeronave.Controls.Add(this.btnModificarAeronave);
             this.gbDatosAeronave.Controls.Add(this.groupBox1);
             this.gbDatosAeronave.Controls.Add(this.cbFabricante);
@@ -109,7 +108,7 @@
             this.gbDatosAeronave.Controls.Add(this.label4);
             this.gbDatosAeronave.Controls.Add(this.label3);
             this.gbDatosAeronave.Controls.Add(this.label2);
-            this.gbDatosAeronave.Location = new System.Drawing.Point(57, 68);
+            this.gbDatosAeronave.Location = new System.Drawing.Point(55, 105);
             this.gbDatosAeronave.Name = "gbDatosAeronave";
             this.gbDatosAeronave.Size = new System.Drawing.Size(499, 382);
             this.gbDatosAeronave.TabIndex = 2;
@@ -136,7 +135,7 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(328, 320);
+            this.btnVolver.Location = new System.Drawing.Point(265, 320);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(112, 34);
             this.btnVolver.TabIndex = 8;
@@ -144,19 +143,9 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // btnEliminarAeronave
-            // 
-            this.btnEliminarAeronave.Location = new System.Drawing.Point(187, 320);
-            this.btnEliminarAeronave.Name = "btnEliminarAeronave";
-            this.btnEliminarAeronave.Size = new System.Drawing.Size(112, 34);
-            this.btnEliminarAeronave.TabIndex = 7;
-            this.btnEliminarAeronave.Text = "Eliminar Aeronave";
-            this.btnEliminarAeronave.UseVisualStyleBackColor = true;
-            this.btnEliminarAeronave.Click += new System.EventHandler(this.btnEliminarAeronave_Click);
-            // 
             // btnModificarAeronave
             // 
-            this.btnModificarAeronave.Location = new System.Drawing.Point(49, 320);
+            this.btnModificarAeronave.Location = new System.Drawing.Point(104, 320);
             this.btnModificarAeronave.Name = "btnModificarAeronave";
             this.btnModificarAeronave.Size = new System.Drawing.Size(113, 34);
             this.btnModificarAeronave.TabIndex = 6;
@@ -384,14 +373,14 @@
             // lblMensaje
             // 
             this.lblMensaje.AutoSize = true;
-            this.lblMensaje.Location = new System.Drawing.Point(374, 35);
+            this.lblMensaje.Location = new System.Drawing.Point(372, 72);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(0, 13);
             this.lblMensaje.TabIndex = 4;
             // 
             // btnVolveraBuscar
             // 
-            this.btnVolveraBuscar.Location = new System.Drawing.Point(290, 30);
+            this.btnVolveraBuscar.Location = new System.Drawing.Point(288, 67);
             this.btnVolveraBuscar.Name = "btnVolveraBuscar";
             this.btnVolveraBuscar.Size = new System.Drawing.Size(94, 23);
             this.btnVolveraBuscar.TabIndex = 5;
@@ -399,12 +388,24 @@
             this.btnVolveraBuscar.UseVisualStyleBackColor = true;
             this.btnVolveraBuscar.Click += new System.EventHandler(this.btnVolveraBuscar_Click);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(137, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(318, 25);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "MANTENEDOR DE AERONAVE";
+            // 
             // MantenedorAeronave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(600, 480);
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ClientSize = new System.Drawing.Size(600, 508);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnVolveraBuscar);
             this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.gbDatosAeronave);
@@ -450,7 +451,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnEliminarAeronave;
         private System.Windows.Forms.Button btnModificarAeronave;
         private System.Windows.Forms.Button btnEliminarComponente;
         private System.Windows.Forms.Button btnEditarComponente;
@@ -462,5 +462,6 @@
         private System.Windows.Forms.Label lblIDDGV;
         private System.Windows.Forms.ComboBox cboDisponible;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

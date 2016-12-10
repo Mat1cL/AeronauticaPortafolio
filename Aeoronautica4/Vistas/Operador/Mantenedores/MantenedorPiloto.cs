@@ -90,7 +90,7 @@ namespace Aeronautica
             string rutFormateado = String.Empty;
             if (string.IsNullOrWhiteSpace(txtRutPiloto.Text))
             {
-                MessageBox.Show("Debe ingresar su Rut");
+                MessageBox.Show("Debe ingresar su Rut", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -101,7 +101,7 @@ namespace Aeronautica
                 }
                 else
                 {
-                    MessageBox.Show("Rut Inválido", "ERROR");
+                    MessageBox.Show("Rut Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtRutPiloto.Text = String.Empty;
                 }
             }
@@ -174,7 +174,7 @@ namespace Aeronautica
             OracleDataReader reader3 = dbCmdx3.ExecuteReader();
             if (txtRutPiloto.Text.Trim() == "")
             {
-                MessageBox.Show("Debes completar los campo rut");
+                MessageBox.Show("Debes completar el campo RUT", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             string pattern = null;
@@ -184,7 +184,7 @@ namespace Aeronautica
 
             if (txtRutPiloto.Text.Trim() == "")
             {
-                MessageBox.Show("Debes completar los campo rut");
+                MessageBox.Show("Debes completar el campo RUT", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -193,7 +193,7 @@ namespace Aeronautica
                 {
                     if (txtNombre.Text.Trim() == "" || txtApellidoPaterno.Text.Trim() == "" || txtApellidoMaterno.Text.Trim() == "")
                     {
-                        MessageBox.Show("Falta completar los campos...");
+                        MessageBox.Show("Falta completar los campos...", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                     else
@@ -204,7 +204,7 @@ namespace Aeronautica
 
                             if (obDAtos.actualizar(sqlx))
                             {
-                                MessageBox.Show("El piloto fue modificado Correctamente");
+                                MessageBox.Show("El piloto fue modificado Correctamente", "PILOTO MODIFICADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                                 OracleConnection cnnx = new OracleConnection(cn2);
                                 OracleCommand cmd = new OracleCommand(""+(consultas.Variables.SelectPilotoMantenedorPiloto)+"", cnnx);
                                 cmd.CommandType = CommandType.Text;
@@ -214,13 +214,13 @@ namespace Aeronautica
                                 da.Fill(ds);
                                 dgvPiloto.DataSource = ds.Tables[0];
                             }
-                            else { MessageBox.Show("No se pudo Modificar"); }
+                            else { MessageBox.Show("No se pudo Modificar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
                         }
                         else
                         {
                             if (reader3.Read())
                             {
-                                MessageBox.Show("El e-mail ingresado ya se encuentra asociado a un Piloto");
+                                MessageBox.Show("El e-mail ingresado ya se encuentra asociado a un Piloto", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                             else
                             {
@@ -228,7 +228,7 @@ namespace Aeronautica
 
                                 if (obDAtos.actualizar(sql))
                                 {
-                                    MessageBox.Show("El piloto fue modificado Correctamente");
+                                    MessageBox.Show("El piloto fue modificado Correctamente", "PILOTO MODIFICADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                                     OracleConnection cnnx = new OracleConnection(cn2);
                                     OracleCommand cmd = new OracleCommand(""+(consultas.Variables.SelectPilotoMantenedorPiloto)+"", cnnx);
                                     cmd.CommandType = CommandType.Text;
@@ -238,20 +238,20 @@ namespace Aeronautica
                                     da.Fill(ds);
                                     dgvPiloto.DataSource = ds.Tables[0];
                                 }
-                                else { MessageBox.Show("No se pudo Modificar"); }
+                                else { MessageBox.Show("No se pudo Modificar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
                                }
                              }
                            }
                          }
                     else 
-                    { 
-                        MessageBox.Show("Rut invalido"); 
+                    {
+                        MessageBox.Show("Rut invalido", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
                     }
                   }
                 }
                 else
                 {
-                    MessageBox.Show("E-mail inválido");
+                    MessageBox.Show("E-mail inválido", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
              }
 

@@ -59,6 +59,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnVolveraBuscar = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPiloto)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -68,7 +69,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(36, 43);
+            this.label1.Location = new System.Drawing.Point(42, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 0;
@@ -77,7 +78,7 @@
             // txtRutPiloto
             // 
             this.txtRutPiloto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRutPiloto.Location = new System.Drawing.Point(130, 40);
+            this.txtRutPiloto.Location = new System.Drawing.Point(136, 63);
             this.txtRutPiloto.MaxLength = 9;
             this.txtRutPiloto.Name = "txtRutPiloto";
             this.txtRutPiloto.Size = new System.Drawing.Size(123, 23);
@@ -89,7 +90,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(270, 40);
+            this.btnBuscar.Location = new System.Drawing.Point(276, 63);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 2;
@@ -102,7 +103,7 @@
             this.dgvPiloto.AllowUserToAddRows = false;
             this.dgvPiloto.AllowUserToDeleteRows = false;
             this.dgvPiloto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPiloto.Location = new System.Drawing.Point(18, 427);
+            this.dgvPiloto.Location = new System.Drawing.Point(24, 450);
             this.dgvPiloto.Name = "dgvPiloto";
             this.dgvPiloto.ReadOnly = true;
             this.dgvPiloto.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -122,7 +123,7 @@
             // lblMensaje
             // 
             this.lblMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensaje.Location = new System.Drawing.Point(351, 43);
+            this.lblMensaje.Location = new System.Drawing.Point(357, 66);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(154, 20);
             this.lblMensaje.TabIndex = 5;
@@ -217,7 +218,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(39, 84);
+            this.groupBox1.Location = new System.Drawing.Point(45, 107);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(306, 296);
             this.groupBox1.TabIndex = 15;
@@ -343,7 +344,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(12, 406);
+            this.groupBox2.Location = new System.Drawing.Point(18, 429);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(560, 170);
             this.groupBox2.TabIndex = 16;
@@ -354,7 +355,7 @@
             // 
             this.groupBox3.Controls.Add(this.btnModificar);
             this.groupBox3.Controls.Add(this.btnmostrar);
-            this.groupBox3.Location = new System.Drawing.Point(354, 84);
+            this.groupBox3.Location = new System.Drawing.Point(360, 107);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(212, 96);
             this.groupBox3.TabIndex = 17;
@@ -363,7 +364,7 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(245, 585);
+            this.btnVolver.Location = new System.Drawing.Point(251, 608);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
             this.btnVolver.TabIndex = 18;
@@ -374,7 +375,7 @@
             // btnVolveraBuscar
             // 
             this.btnVolveraBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolveraBuscar.Location = new System.Drawing.Point(270, 40);
+            this.btnVolveraBuscar.Location = new System.Drawing.Point(276, 63);
             this.btnVolveraBuscar.Name = "btnVolveraBuscar";
             this.btnVolveraBuscar.Size = new System.Drawing.Size(119, 23);
             this.btnVolveraBuscar.TabIndex = 19;
@@ -382,12 +383,24 @@
             this.btnVolveraBuscar.UseVisualStyleBackColor = true;
             this.btnVolveraBuscar.Click += new System.EventHandler(this.btnVolveraBuscar_Click);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(149, 21);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(278, 25);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "MANTENEDOR DE PILOTO";
+            // 
             // MantenedorPiloto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(610, 634);
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ClientSize = new System.Drawing.Size(610, 651);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnVolveraBuscar);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.dgvPiloto);
@@ -445,5 +458,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cboDisponibilidad;
         private System.Windows.Forms.Button btnVolveraBuscar;
+        private System.Windows.Forms.Label label11;
     }
 }
