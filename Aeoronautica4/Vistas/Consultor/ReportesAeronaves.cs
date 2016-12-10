@@ -19,6 +19,8 @@ namespace Aeronautica.Vistas.Consultor
 {
     public partial class ReportesAeronaves : Form
     {
+        public static string HorasA;
+        public static string MinutosA;
         public ReportesAeronaves()
         {
             InitializeComponent();
@@ -78,27 +80,65 @@ namespace Aeronautica.Vistas.Consultor
                 {
                     var boldFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 20);
                     Document doc = new Document();
-                    PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
-                    //PdfWriter.GetInstance(doc, new FileStream("C://Reporte" + txtMatricula.Text + " "  + "TipoAeronave - " + txtTipo.Text + "" + ".PDF", FileMode.Create));
-                    doc.Open();
-                    var p6 = new Phrase();
-                    Paragraph p1 = new Paragraph("Matricula: " + txtMatricula.Text);
-                    Paragraph p2 = new Paragraph("Fecha Inspección Anual: " + txtFechaInspeccion.Text);
-                    Paragraph p3 = new Paragraph("Días Restantes Para Próxima Fecha de Inspección: " + txtDias.Text);
-                    Paragraph p4 = new Paragraph("Fecha de Último Viaje Realizado: " + txtUltimo.Text);
-                    Paragraph p7 = new Paragraph("Total Horas de Vuelo: " + txtHorasDeVuelo.Text);
-                    Paragraph p5 = new Paragraph("Tipo de Aeronave Seleccionada: " + txtTipo.Text);
+                    try 
+                    {
+                        PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
+                    }
+                    catch
+                    {
+                        MessageBox.Show("El archivo que intenta reemplazar actualmente se encuentra en ejecución", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    
 
-                    p6.Add(new Chunk("REPORTE DE AERONAVE" + " " + txtTipo.Text + " " + txtMatricula.Text + "", boldFont));
-                    doc.Add(p6);
+                    doc.Open();
+
+                    /*Insertar Imagen*/
+                    System.Drawing.Image test = System.Drawing.Image.FromHbitmap(Properties.Resources.logoescuadrilla.GetHbitmap());
+                    iTextSharp.text.Image PNG = iTextSharp.text.Image.GetInstance(test, System.Drawing.Imaging.ImageFormat.Png);
+                    PNG.ScalePercent(35f);
+                    PNG.Alignment = Element.ALIGN_RIGHT;
+                    doc.Add(PNG);
+                    /*Fin Insertar Imagen*/
+                    Paragraph p1 = new Paragraph("\n\n");
                     doc.Add(p1);
-                    doc.Add(p2);
-                    doc.Add(p3);
-                    doc.Add(p4);
-                    doc.Add(p7);
-                    doc.Add(p5);
+
+                    var p6 = new Phrase();
+                    p6.Add(new Chunk("REPORTE DE AERONAVE: " + " \"" + txtTipo.Text + " " + txtMatricula.Text + "\"", boldFont));
+
+                    PdfPTable table = new PdfPTable(2);
+
+                    table.AddCell("Matricula"); table.AddCell("" + txtMatricula.Text + "");
+
+                    PdfPTable table2 = new PdfPTable(2);
+
+                    table.AddCell("Fecha Inspección Anual"); table.AddCell(txtFechaInspeccion.Text);
+
+                    PdfPTable table3 = new PdfPTable(2);
+
+                    table.AddCell("Días Restantes Para \n Próxima Fecha de Inspección"); table.AddCell(txtDias.Text);
+
+                    PdfPTable table4 = new PdfPTable(2);
+
+                    table.AddCell("Fecha de Último Viaje \n Realizado"); table.AddCell(txtUltimo.Text);
+
+                    PdfPTable table5 = new PdfPTable(2);
+
+                    table.AddCell("Total Horas de Vuelo"); table.AddCell(txtTipo.Text);
+
+                    PdfPTable table6 = new PdfPTable(2);
+
+                    table.AddCell("Tipo de Aeronave \n Seleccionada"); table.AddCell(txtHorasDeVuelo.Text);
+
+                    doc.Add(p6);
+                    doc.Add(table);
+                    doc.Add(table2);
+                    doc.Add(table3);
+                    doc.Add(table4);
+                    doc.Add(table5);
+                    doc.Add(table6);
                     doc.Close();
-                    MessageBox.Show("Reporte Creado");
+                    MessageBox.Show("Reporte Creado", "REPORTE CREADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
 
             }
@@ -243,11 +283,11 @@ namespace Aeronautica.Vistas.Consultor
             OracleDataAdapter da = new OracleDataAdapter();
             if (cboMatricula.Text == "Seleccione un Matricula")
             {
-               
+
             }
             else
             {
-                cmd = new OracleCommand("" + (consultas.Variables.ConsultarHorasVueloAeronave1) + "'" + this.cboMatricula.SelectedValue + "'", cn);
+                cmd = new OracleCommand("" + (consultas.Variables.ConsultarHorasVueloAeronaveVHA) + "'" + this.cboMatricula.SelectedValue + "'", cn);
                 cn.Open();
                 cmd.CommandType = CommandType.Text;
                 da.SelectCommand = cmd;
@@ -255,35 +295,11 @@ namespace Aeronautica.Vistas.Consultor
                 cn.Close();
                 dgvHorasAeronave.DataSource = ds.Tables[0];
 
-                cmd = new OracleCommand("" + (consultas.Variables.ConsultarHorasVueloAeronave2) + "'" + this.cboMatricula.SelectedValue + "'", cn);
-                cn.Open();
-                cmd.CommandType = CommandType.Text;
-                da.SelectCommand = cmd;
-                da.Fill(ds);
-                cn.Close();
-                dgvHorasAeronave.DataSource = ds.Tables[0];
-
-                cmd = new OracleCommand("" + (consultas.Variables.ConsultarHorasVueloAeronave3) + "'" + this.cboMatricula.SelectedValue + "'", cn);
-                cn.Open();
-                cmd.CommandType = CommandType.Text;
-                da.SelectCommand = cmd;
-                da.Fill(ds);
-                cn.Close();
-                dgvHorasAeronave.DataSource = ds.Tables[0];
-
+                lblSubtotalPiloto.Text = "Total Horas de Vuelo: " + dgvHorasAeronave.CurrentRow.Cells[0].Value.ToString() + " horas y " + dgvHorasAeronave.CurrentRow.Cells[1].Value.ToString() + " minutos";
+                HorasA = dgvHorasAeronave.CurrentRow.Cells[0].Value.ToString();
+                MinutosA = dgvHorasAeronave.CurrentRow.Cells[1].Value.ToString();
+                txtHorasDeVuelo.Text = lblSubtotalPiloto.Text;
             }
-
-            int suma = 0;
-            foreach (DataGridViewRow row in dgvHorasAeronave.Rows)
-            {
-                suma += (Convert.ToInt32(row.Cells["horas"].Value)) * 60;
-                suma += Convert.ToInt32(row.Cells["minutos"].Value);
-            }
-
-            int hrs = suma / 60;
-            int min = suma %= 60;
-            lblSubtotalPiloto.Text = " " + hrs.ToString() + " horas y " + min.ToString() + " minutos";
-            txtHorasDeVuelo.Text = lblSubtotalPiloto.Text;
         }
 
         private void btnHelicoptero_Click(object sender, EventArgs e)
@@ -365,11 +381,11 @@ namespace Aeronautica.Vistas.Consultor
             OracleDataAdapter da = new OracleDataAdapter();
             if (cboMatricula.Text == "Seleccione un Matricula")
             {
-                
+
             }
             else
             {
-                cmd = new OracleCommand("" + (consultas.Variables.ConsultarHorasVueloAeronave1) + "'" + this.cboMatricula.SelectedValue + "'", cn);
+                cmd = new OracleCommand("" + (consultas.Variables.ConsultarHorasVueloAeronaveVHA) + "'" + this.cboMatricula.SelectedValue + "'", cn);
                 cn.Open();
                 cmd.CommandType = CommandType.Text;
                 da.SelectCommand = cmd;
@@ -377,35 +393,11 @@ namespace Aeronautica.Vistas.Consultor
                 cn.Close();
                 dgvHorasAeronave.DataSource = ds.Tables[0];
 
-                cmd = new OracleCommand("" + (consultas.Variables.ConsultarHorasVueloAeronave2) + "'" + this.cboMatricula.SelectedValue + "'", cn);
-                cn.Open();
-                cmd.CommandType = CommandType.Text;
-                da.SelectCommand = cmd;
-                da.Fill(ds);
-                cn.Close();
-                dgvHorasAeronave.DataSource = ds.Tables[0];
-
-                cmd = new OracleCommand("" + (consultas.Variables.ConsultarHorasVueloAeronave3) + "'" + this.cboMatricula.SelectedValue + "'", cn);
-                cn.Open();
-                cmd.CommandType = CommandType.Text;
-                da.SelectCommand = cmd;
-                da.Fill(ds);
-                cn.Close();
-                dgvHorasAeronave.DataSource = ds.Tables[0];
-
+                lblSubtotalPiloto.Text = "Total Horas de Vuelo: " + dgvHorasAeronave.CurrentRow.Cells[0].Value.ToString() + " horas y " + dgvHorasAeronave.CurrentRow.Cells[1].Value.ToString() + " minutos";
+                HorasA = dgvHorasAeronave.CurrentRow.Cells[0].Value.ToString();
+                MinutosA = dgvHorasAeronave.CurrentRow.Cells[1].Value.ToString();
+                txtHorasDeVuelo.Text = lblSubtotalPiloto.Text;
             }
-
-            int suma = 0;
-            foreach (DataGridViewRow row in dgvHorasAeronave.Rows)
-            {
-                suma += (Convert.ToInt32(row.Cells["horas"].Value)) * 60;
-                suma += Convert.ToInt32(row.Cells["minutos"].Value);
-            }
-
-            int hrs = suma / 60;
-            int min = suma %= 60;
-            lblSubtotalPiloto.Text = " " + hrs.ToString() + " horas y " + min.ToString() + " minutos";
-            txtHorasDeVuelo.Text = lblSubtotalPiloto.Text;
         }
 
         
@@ -416,5 +408,3 @@ namespace Aeronautica.Vistas.Consultor
         }
     }
 }
-
-

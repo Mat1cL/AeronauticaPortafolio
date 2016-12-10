@@ -40,6 +40,7 @@
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.btnGenerar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVuelos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,13 +51,14 @@
             this.dtgVuelos.Name = "dtgVuelos";
             this.dtgVuelos.Size = new System.Drawing.Size(1119, 287);
             this.dtgVuelos.TabIndex = 0;
+            this.dtgVuelos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgVuelos_CellContentClick);
             // 
             // btnVuelos
             // 
-            this.btnVuelos.Location = new System.Drawing.Point(514, 484);
+            this.btnVuelos.Location = new System.Drawing.Point(428, 484);
             this.btnVuelos.Name = "btnVuelos";
             this.btnVuelos.Size = new System.Drawing.Size(117, 41);
-            this.btnVuelos.TabIndex = 1;
+            this.btnVuelos.TabIndex = 4;
             this.btnVuelos.Text = "Consultar Vuelos";
             this.btnVuelos.UseVisualStyleBackColor = true;
             this.btnVuelos.Click += new System.EventHandler(this.btnVuelos_Click);
@@ -78,7 +80,8 @@
             this.dtDesde.Location = new System.Drawing.Point(446, 76);
             this.dtDesde.Name = "dtDesde";
             this.dtDesde.Size = new System.Drawing.Size(89, 20);
-            this.dtDesde.TabIndex = 15;
+            this.dtDesde.TabIndex = 0;
+            this.dtDesde.ValueChanged += new System.EventHandler(this.dtDesde_ValueChanged);
             // 
             // dtHasta
             // 
@@ -87,7 +90,8 @@
             this.dtHasta.Location = new System.Drawing.Point(585, 76);
             this.dtHasta.Name = "dtHasta";
             this.dtHasta.Size = new System.Drawing.Size(89, 20);
-            this.dtHasta.TabIndex = 16;
+            this.dtHasta.TabIndex = 1;
+            this.dtHasta.ValueChanged += new System.EventHandler(this.dtHasta_ValueChanged);
             // 
             // label2
             // 
@@ -97,6 +101,7 @@
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 17;
             this.label2.Text = "Desde";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -106,13 +111,14 @@
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 18;
             this.label3.Text = "Hasta";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnFiltrar
             // 
             this.btnFiltrar.Location = new System.Drawing.Point(691, 82);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(75, 53);
-            this.btnFiltrar.TabIndex = 19;
+            this.btnFiltrar.TabIndex = 3;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
@@ -123,7 +129,8 @@
             this.txtMatricula.MaxLength = 6;
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.Size = new System.Drawing.Size(100, 20);
-            this.txtMatricula.TabIndex = 20;
+            this.txtMatricula.TabIndex = 2;
+            this.txtMatricula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMatricula_KeyPress);
             // 
             // label4
             // 
@@ -139,17 +146,29 @@
             this.btnVolver.Location = new System.Drawing.Point(532, 546);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
-            this.btnVolver.TabIndex = 22;
+            this.btnVolver.TabIndex = 6;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // btnGenerar
+            // 
+            this.btnGenerar.Location = new System.Drawing.Point(611, 484);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(117, 41);
+            this.btnGenerar.TabIndex = 5;
+            this.btnGenerar.Text = "Generar Reporte";
+            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
             // ConsultarVuelosRealizados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(1143, 581);
+            this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtMatricula);
@@ -186,5 +205,6 @@
         private System.Windows.Forms.TextBox txtMatricula;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button btnGenerar;
     }
 }

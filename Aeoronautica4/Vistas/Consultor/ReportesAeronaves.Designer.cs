@@ -51,6 +51,7 @@
             this.cboMatricula = new System.Windows.Forms.ComboBox();
             this.txtHorasDeVuelo = new System.Windows.Forms.TextBox();
             this.btnGenerarReporte = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHorasAeronave)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,15 +82,15 @@
             // 
             // txtTipo
             // 
-            this.txtTipo.Location = new System.Drawing.Point(297, 288);
+            this.txtTipo.Location = new System.Drawing.Point(296, 334);
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.Size = new System.Drawing.Size(270, 20);
-            this.txtTipo.TabIndex = 70;
+            this.txtTipo.TabIndex = 9;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(44, 288);
+            this.label6.Location = new System.Drawing.Point(43, 334);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(160, 13);
             this.label6.TabIndex = 69;
@@ -97,40 +98,40 @@
             // 
             // btnHelicoptero
             // 
-            this.btnHelicoptero.Location = new System.Drawing.Point(362, 74);
+            this.btnHelicoptero.Location = new System.Drawing.Point(361, 120);
             this.btnHelicoptero.Name = "btnHelicoptero";
             this.btnHelicoptero.Size = new System.Drawing.Size(96, 41);
-            this.btnHelicoptero.TabIndex = 68;
+            this.btnHelicoptero.TabIndex = 2;
             this.btnHelicoptero.Text = "Helicóptero";
             this.btnHelicoptero.UseVisualStyleBackColor = true;
             this.btnHelicoptero.Click += new System.EventHandler(this.btnHelicoptero_Click);
             // 
             // btnAvion
             // 
-            this.btnAvion.Location = new System.Drawing.Point(127, 74);
+            this.btnAvion.Location = new System.Drawing.Point(126, 120);
             this.btnAvion.Name = "btnAvion";
             this.btnAvion.Size = new System.Drawing.Size(96, 41);
-            this.btnAvion.TabIndex = 67;
+            this.btnAvion.TabIndex = 1;
             this.btnAvion.Text = "Avión";
             this.btnAvion.UseVisualStyleBackColor = true;
             this.btnAvion.Click += new System.EventHandler(this.btnAvion_Click_1);
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(239, 462);
+            this.btnVolver.Location = new System.Drawing.Point(238, 508);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
-            this.btnVolver.TabIndex = 66;
+            this.btnVolver.TabIndex = 11;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(477, 20);
+            this.button3.Location = new System.Drawing.Point(476, 66);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(99, 23);
-            this.button3.TabIndex = 65;
+            this.button3.TabIndex = 3;
             this.button3.Text = "Volver a Buscar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
@@ -138,7 +139,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 233);
+            this.label4.Location = new System.Drawing.Point(43, 279);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 13);
             this.label4.TabIndex = 64;
@@ -146,15 +147,15 @@
             // 
             // txtUltimo
             // 
-            this.txtUltimo.Location = new System.Drawing.Point(297, 233);
+            this.txtUltimo.Location = new System.Drawing.Point(296, 279);
             this.txtUltimo.Name = "txtUltimo";
             this.txtUltimo.Size = new System.Drawing.Size(270, 20);
-            this.txtUltimo.TabIndex = 63;
+            this.txtUltimo.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(44, 203);
+            this.label3.Location = new System.Drawing.Point(43, 249);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(252, 13);
             this.label3.TabIndex = 62;
@@ -162,29 +163,29 @@
             // 
             // txtDias
             // 
-            this.txtDias.Location = new System.Drawing.Point(297, 203);
+            this.txtDias.Location = new System.Drawing.Point(296, 249);
             this.txtDias.Name = "txtDias";
             this.txtDias.Size = new System.Drawing.Size(270, 20);
-            this.txtDias.TabIndex = 61;
+            this.txtDias.TabIndex = 6;
             // 
             // txtFechaInspeccion
             // 
-            this.txtFechaInspeccion.Location = new System.Drawing.Point(297, 174);
+            this.txtFechaInspeccion.Location = new System.Drawing.Point(296, 220);
             this.txtFechaInspeccion.Name = "txtFechaInspeccion";
             this.txtFechaInspeccion.Size = new System.Drawing.Size(270, 20);
-            this.txtFechaInspeccion.TabIndex = 60;
+            this.txtFechaInspeccion.TabIndex = 5;
             // 
             // txtMatricula
             // 
-            this.txtMatricula.Location = new System.Drawing.Point(297, 141);
+            this.txtMatricula.Location = new System.Drawing.Point(296, 187);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.Size = new System.Drawing.Size(270, 20);
-            this.txtMatricula.TabIndex = 59;
+            this.txtMatricula.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 174);
+            this.label2.Location = new System.Drawing.Point(43, 220);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 13);
             this.label2.TabIndex = 58;
@@ -193,7 +194,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 141);
+            this.label1.Location = new System.Drawing.Point(43, 187);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 57;
@@ -202,7 +203,7 @@
             // lblNombrePiloto
             // 
             this.lblNombrePiloto.AutoSize = true;
-            this.lblNombrePiloto.Location = new System.Drawing.Point(44, 25);
+            this.lblNombrePiloto.Location = new System.Drawing.Point(43, 71);
             this.lblNombrePiloto.Name = "lblNombrePiloto";
             this.lblNombrePiloto.Size = new System.Drawing.Size(53, 13);
             this.lblNombrePiloto.TabIndex = 56;
@@ -211,7 +212,7 @@
             // lblHorasDeVuelo
             // 
             this.lblHorasDeVuelo.AutoSize = true;
-            this.lblHorasDeVuelo.Location = new System.Drawing.Point(44, 262);
+            this.lblHorasDeVuelo.Location = new System.Drawing.Point(43, 308);
             this.lblHorasDeVuelo.Name = "lblHorasDeVuelo";
             this.lblHorasDeVuelo.Size = new System.Drawing.Size(113, 13);
             this.lblHorasDeVuelo.TabIndex = 55;
@@ -221,34 +222,46 @@
             // 
             this.cboMatricula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMatricula.FormattingEnabled = true;
-            this.cboMatricula.Location = new System.Drawing.Point(162, 22);
+            this.cboMatricula.Location = new System.Drawing.Point(161, 68);
             this.cboMatricula.Name = "cboMatricula";
             this.cboMatricula.Size = new System.Drawing.Size(270, 21);
-            this.cboMatricula.TabIndex = 54;
+            this.cboMatricula.TabIndex = 0;
             // 
             // txtHorasDeVuelo
             // 
-            this.txtHorasDeVuelo.Location = new System.Drawing.Point(297, 262);
+            this.txtHorasDeVuelo.Location = new System.Drawing.Point(296, 308);
             this.txtHorasDeVuelo.Name = "txtHorasDeVuelo";
             this.txtHorasDeVuelo.Size = new System.Drawing.Size(270, 20);
-            this.txtHorasDeVuelo.TabIndex = 53;
+            this.txtHorasDeVuelo.TabIndex = 8;
             // 
             // btnGenerarReporte
             // 
-            this.btnGenerarReporte.Location = new System.Drawing.Point(208, 351);
+            this.btnGenerarReporte.Location = new System.Drawing.Point(207, 397);
             this.btnGenerarReporte.Name = "btnGenerarReporte";
             this.btnGenerarReporte.Size = new System.Drawing.Size(146, 83);
-            this.btnGenerarReporte.TabIndex = 52;
+            this.btnGenerarReporte.TabIndex = 10;
             this.btnGenerarReporte.Text = "Generar Reporte";
             this.btnGenerarReporte.UseVisualStyleBackColor = true;
             this.btnGenerarReporte.Click += new System.EventHandler(this.btnGenerarReporte_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(156, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(270, 25);
+            this.label7.TabIndex = 73;
+            this.label7.Text = "REPORTE DE AERONAVE";
             // 
             // ReportesAeronaves
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(613, 511);
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ClientSize = new System.Drawing.Size(613, 544);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.dgvHorasAeronave);
             this.Controls.Add(this.lblSubtotalPiloto);
             this.Controls.Add(this.txtTipo);
@@ -305,5 +318,6 @@
         private System.Windows.Forms.ComboBox cboMatricula;
         private System.Windows.Forms.TextBox txtHorasDeVuelo;
         private System.Windows.Forms.Button btnGenerarReporte;
+        private System.Windows.Forms.Label label7;
     }
 }
