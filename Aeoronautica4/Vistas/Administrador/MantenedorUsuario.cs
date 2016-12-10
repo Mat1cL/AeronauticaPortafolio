@@ -75,14 +75,14 @@ namespace Aeronautica.Vistas.Administrador
         {
             Usuarios UsuarioOb = new Usuarios();
             // Inicio Validar Rut
-
             UsuarioOb.Rut = this.txtRut.Text;
-            
+
+
             string rutSinFormato = UsuarioOb.Rut;
             string rutFormateado = String.Empty;
             if (string.IsNullOrWhiteSpace(txtRut.Text))
             {
-                MessageBox.Show("Debe ingresar su Rut");
+                MessageBox.Show("Debe ingresar su Rut", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -93,7 +93,7 @@ namespace Aeronautica.Vistas.Administrador
                 }
                 else
                 {
-                    MessageBox.Show("Rut Inválido", "ERROR");
+                    MessageBox.Show("Rut Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtRut.Text = String.Empty;
                 }
 
@@ -197,9 +197,14 @@ namespace Aeronautica.Vistas.Administrador
         datos obDAtos = new datos();
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            hash hs = new hash();
+            string hash = hs.CalculateMD5Hash(txtContrasena.Text);
+            string passEncriptado = hash.Trim().ToLower();
+            txtContrasena.Text = passEncriptado;
             if (txtRut.Text.Trim() == "")
             {
-                MessageBox.Show("Debes Completar el Campo de Rut");
+                MessageBox.Show("Debes Completar el Campo de Rut", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtContrasena.Clear();
                 return;
             }
             else
@@ -208,7 +213,8 @@ namespace Aeronautica.Vistas.Administrador
                 {
                     if (txtContrasena.Text.Trim() == "")
                     {
-                        MessageBox.Show("Falta completar los campos...");
+                        MessageBox.Show("Falta completar los campos...", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtContrasena.Clear();
                         return;
                     }
                     else
@@ -217,7 +223,7 @@ namespace Aeronautica.Vistas.Administrador
 
                         if (obDAtos.actualizar(sql))
                         {
-                            MessageBox.Show("El Usuario se ha actualizado correctamente");
+                            MessageBox.Show("El Usuario se ha actualizado correctamente", "USUARIO ACTUALIZADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             OracleConnection cnn = new OracleConnection((consultas.Variables.ConString));
                             OracleCommand cmd;
                             cmd = new OracleCommand(""+(consultas.Variables.ActualizarGridMantenedorUsuario)+"", cnn);
@@ -227,13 +233,13 @@ namespace Aeronautica.Vistas.Administrador
                             da.SelectCommand = cmd;
                             da.Fill(ds);
                             dgvUsuario.DataSource = ds.Tables[0];
-
+                            txtContrasena.Clear();
                         }
-                        else { MessageBox.Show("No se pudo Modificar"); }
+                        else { MessageBox.Show("No se pudo Modificar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning); txtContrasena.Clear(); }
                     }
 
                 }
-                else { MessageBox.Show("Rut invalido"); }
+                else { MessageBox.Show("Rut invalido", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning); txtContrasena.Clear(); }
             }
         }
 
@@ -250,7 +256,7 @@ namespace Aeronautica.Vistas.Administrador
             dgvUsuario.DataSource = ds.Tables[0];
             dgvUsuario.Columns["NOMBRE_TIPO_USUARIO"].Width = 158;
             dgvUsuario.Columns["NOMBRE_TIPO_USUARIO"].HeaderText = "NOMBRE DEL TIPO DE USUARIO";
-            dgvUsuario.Columns["CONTRASENA"].HeaderText = "CONTRASEÑA";
+            txtContrasena.Clear();
         }
 
         private void txtRut_KeyPress(object sender, KeyPressEventArgs e)
@@ -290,7 +296,7 @@ namespace Aeronautica.Vistas.Administrador
         {
             if (txtRut.Text.Trim() == "")
             {
-                MessageBox.Show("Debes Completar el Campo de Rut");
+                MessageBox.Show("Debes Completar el Campo de Rut", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -299,7 +305,7 @@ namespace Aeronautica.Vistas.Administrador
                 string sql = ""+(consultas.Variables.MantenedorUsuarioDelete)+"'" + txtRut.Text + "'";
                 if (obDAtos.eliminar(sql))
                 {
-                    MessageBox.Show("El Usuario se ha eliminado correctamente");
+                    MessageBox.Show("La credencial de Usuario se ha eliminado correctamente", "CREDENCIAL DE USUARIO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     cboTipoUsuario.Text = "";
                     cboTipoUsuario.Enabled = false;
                     txtContrasena.Text = string.Empty;
@@ -318,7 +324,7 @@ namespace Aeronautica.Vistas.Administrador
                     da.Fill(ds);
                     dgvUsuario.DataSource = ds.Tables[0];
                 }
-                else { MessageBox.Show("No se pudo eliminar"); }
+                else { MessageBox.Show("No se pudo eliminar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
         }
 

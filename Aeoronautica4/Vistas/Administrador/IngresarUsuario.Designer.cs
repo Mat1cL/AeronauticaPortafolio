@@ -41,21 +41,22 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cboTipoU
             // 
             this.cboTipoU.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoU.FormattingEnabled = true;
-            this.cboTipoU.Location = new System.Drawing.Point(203, 95);
+            this.cboTipoU.Location = new System.Drawing.Point(200, 136);
             this.cboTipoU.Name = "cboTipoU";
             this.cboTipoU.Size = new System.Drawing.Size(195, 21);
-            this.cboTipoU.TabIndex = 39;
+            this.cboTipoU.TabIndex = 3;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(69, 98);
+            this.label13.Location = new System.Drawing.Point(66, 139);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(82, 13);
             this.label13.TabIndex = 59;
@@ -64,7 +65,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(404, 17);
+            this.label7.Location = new System.Drawing.Point(401, 58);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 13);
             this.label7.TabIndex = 52;
@@ -73,7 +74,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(67, 71);
+            this.label5.Location = new System.Drawing.Point(64, 112);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(115, 13);
             this.label5.TabIndex = 47;
@@ -82,7 +83,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(69, 45);
+            this.label4.Location = new System.Drawing.Point(66, 86);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 45;
@@ -90,48 +91,48 @@
             // 
             // txtRePass
             // 
-            this.txtRePass.Location = new System.Drawing.Point(203, 68);
+            this.txtRePass.Location = new System.Drawing.Point(200, 109);
             this.txtRePass.MaxLength = 50;
             this.txtRePass.Name = "txtRePass";
             this.txtRePass.PasswordChar = '*';
             this.txtRePass.Size = new System.Drawing.Size(195, 20);
-            this.txtRePass.TabIndex = 36;
+            this.txtRePass.TabIndex = 2;
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(203, 41);
+            this.txtPass.Location = new System.Drawing.Point(200, 82);
             this.txtPass.MaxLength = 50;
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(195, 20);
-            this.txtPass.TabIndex = 35;
+            this.txtPass.TabIndex = 1;
             // 
             // txtRut
             // 
-            this.txtRut.Location = new System.Drawing.Point(203, 14);
+            this.txtRut.Location = new System.Drawing.Point(200, 55);
             this.txtRut.MaxLength = 9;
             this.txtRut.Name = "txtRut";
             this.txtRut.Size = new System.Drawing.Size(195, 20);
-            this.txtRut.TabIndex = 32;
+            this.txtRut.TabIndex = 0;
             this.txtRut.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRut_KeyPress);
             this.txtRut.Validated += new System.EventHandler(this.txtRut_Validated);
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(309, 152);
+            this.btnVolver.Location = new System.Drawing.Point(306, 193);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
-            this.btnVolver.TabIndex = 53;
+            this.btnVolver.TabIndex = 5;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(218, 152);
+            this.btnAgregar.Location = new System.Drawing.Point(215, 193);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 51;
+            this.btnAgregar.TabIndex = 4;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -139,7 +140,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(69, 21);
+            this.label2.Location = new System.Drawing.Point(66, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 13);
             this.label2.TabIndex = 33;
@@ -154,11 +155,23 @@
             this.label1.TabIndex = 31;
             this.label1.Text = "Ingreso de Piloto";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(90, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(408, 25);
+            this.label3.TabIndex = 60;
+            this.label3.Text = "REGISTRAR CREDENCIAL DE USUARIO";
+            // 
             // IngresarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 206);
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ClientSize = new System.Drawing.Size(577, 243);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.cboTipoU);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label7);
@@ -195,5 +208,6 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }

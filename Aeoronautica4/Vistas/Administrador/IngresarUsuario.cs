@@ -53,24 +53,40 @@ namespace Aeronautica.Vistas.Administrador
         {
             Usuarios UsuarioOb = new Usuarios();
             // Inicio Validar Rut
-
+            hash hs = new hash();
             UsuarioOb.Rut = this.txtRut.Text;
             string rutSinFormato = UsuarioOb.Rut;
             string rutFormateado = String.Empty;
 
+            string hash = hs.CalculateMD5Hash(txtPass.Text);
+            string passEncriptado = hash.Trim().ToLower();
+            txtPass.Text = passEncriptado;
+
+            string hash2 = hs.CalculateMD5Hash(txtRePass.Text);
+            string passEncriptado2 = hash.Trim().ToLower();
+            txtRePass.Text = passEncriptado;
 
             if (string.IsNullOrWhiteSpace(txtRut.Text) || (string.IsNullOrWhiteSpace(txtPass.Text)) || (string.IsNullOrWhiteSpace(txtRePass.Text)))
             {
-                MessageBox.Show("Debe ingresar todos los datos");
+                MessageBox.Show("Debe ingresar todos los datos", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtRut.Clear();
+                txtPass.Clear();
+                txtRePass.Clear();
                 return;
             }
             else if (cboTipoU.Text == "Seleccione un Tipo de Usuario")
             {
-                MessageBox.Show("Debes Seleccionar un Tipo de Usuario");
+                MessageBox.Show("Debes Seleccionar un Tipo de Usuario", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtRut.Clear();
+                txtPass.Clear();
+                txtRePass.Clear();
             }
             else if (txtPass.Text != txtRePass.Text)
             {
-                MessageBox.Show("Las contraseñas deben ser iguales");
+                MessageBox.Show("Las contraseñas deben ser iguales", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtRut.Clear();
+                txtPass.Clear();
+                txtRePass.Clear();
             }
             else
             {
@@ -91,7 +107,10 @@ namespace Aeronautica.Vistas.Administrador
                         OracleDataReader reader2 = dbCmd2.ExecuteReader();
                         if (reader.Read())
                         {
-                            MessageBox.Show("El Rut ya se encuentra registrado");
+                            MessageBox.Show("El Rut ya se encuentra registrado", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtRut.Clear();
+                            txtPass.Clear();
+                            txtRePass.Clear();
                         }
                         else
                         {
@@ -102,17 +121,22 @@ namespace Aeronautica.Vistas.Administrador
                                     string sql = "" + (consultas.Variables.InsertUsuarios) + " ('" + this.txtRut.Text + "','" + this.txtPass.Text + "','" + this.cboTipoU.SelectedValue + "')";
                                     if (obDAtos.insertar(sql))
                                     {
-                                        MessageBox.Show("Registro Insertado");
+                                        MessageBox.Show("Registro Insertado", "USUARIO REGISTRADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Error al Insertar");
-
+                                        MessageBox.Show("Error al Insertar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        txtRut.Clear();
+                                        txtPass.Clear();
+                                        txtRePass.Clear();
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("El Rut no se encuentra Asociado a ningún Piloto");
+                                    MessageBox.Show("El Rut no se encuentra Asociado a ningún Piloto", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    txtRut.Clear();
+                                    txtPass.Clear();
+                                    txtRePass.Clear();
                                 }
                             }
                             else
@@ -121,19 +145,24 @@ namespace Aeronautica.Vistas.Administrador
                             {
                                 if (reader2.Read())
                                 {
-                                    MessageBox.Show("El Rut se encuentra Asociado a un Piloto");
+                                    MessageBox.Show("El Rut se encuentra Asociado a un Piloto", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    txtRut.Clear();
+                                    txtPass.Clear();
+                                    txtRePass.Clear();
                                 }
                                 else
                                 {
                                     string sql = "" + (consultas.Variables.InsertUsuarios) + " ('" + this.txtRut.Text + "','" + this.txtPass.Text + "','" + this.cboTipoU.SelectedValue + "')";
                                     if (obDAtos.insertar(sql))
                                     {
-                                        MessageBox.Show("Registro Insertado");
+                                        MessageBox.Show("Registro Insertado", "USUARIO REGISTRADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Error al Insertar");
-
+                                        MessageBox.Show("Error al Insertar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        txtRut.Clear();
+                                        txtPass.Clear();
+                                        txtRePass.Clear();
                                     }
                                 }
                             }
@@ -141,19 +170,24 @@ namespace Aeronautica.Vistas.Administrador
                             {
                                 if (reader2.Read())
                                 {
-                                    MessageBox.Show("El Rut se encuentra Asociado a un Piloto");
+                                    MessageBox.Show("El Rut se encuentra Asociado a un Piloto", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    txtRut.Clear();
+                                    txtPass.Clear();
+                                    txtRePass.Clear();
                                 }
                                 else
                                 {
                                     string sql = "" + (consultas.Variables.InsertUsuarios) + " ('" + this.txtRut.Text + "','" + this.txtPass.Text + "','" + this.cboTipoU.SelectedValue + "')";
                                     if (obDAtos.insertar(sql))
                                     {
-                                        MessageBox.Show("Registro Insertado");
+                                        MessageBox.Show("Registro Insertado", "USUARIO REGISTRADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Error al Insertar");
-
+                                        MessageBox.Show("Error al Insertar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        txtRut.Clear();
+                                        txtPass.Clear();
+                                        txtRePass.Clear();
                                     }
                                 }
                             }
@@ -161,19 +195,24 @@ namespace Aeronautica.Vistas.Administrador
                             {
                                 if (reader2.Read())
                                 {
-                                    MessageBox.Show("El Rut se encuentra Asociado a un Piloto");
+                                    MessageBox.Show("El Rut se encuentra Asociado a un Piloto", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    txtRut.Clear();
+                                    txtPass.Clear();
+                                    txtRePass.Clear();
                                 }
                                 else
                                 {
                                     string sql = "" + (consultas.Variables.InsertUsuarios) + " ('" + this.txtRut.Text + "','" + this.txtPass.Text + "','" + this.cboTipoU.SelectedValue + "')";
                                     if (obDAtos.insertar(sql))
                                     {
-                                        MessageBox.Show("Registro Insertado");
+                                        MessageBox.Show("Registro Insertado", "USUARIO REGISTRADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Error al Insertar");
-
+                                        MessageBox.Show("Error al Insertar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        txtRut.Clear();
+                                        txtPass.Clear();
+                                        txtRePass.Clear();
                                     }
                                 }
                             }
@@ -184,11 +223,12 @@ namespace Aeronautica.Vistas.Administrador
 
                                 if (obDAtos.insertar(sql2))
                                 {
-                                    MessageBox.Show("Registro Insertado");
+                                    MessageBox.Show("Registro Insertado", "USUARIO REGISTRADO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                    this.Close();
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Error al Insertar");
+                                    MessageBox.Show("Error al Insertar", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                                 }
                             }
@@ -214,7 +254,7 @@ namespace Aeronautica.Vistas.Administrador
 
                 else
                 {
-                    MessageBox.Show("Rut Inválido", "ERROR");
+                    MessageBox.Show("Rut Inválido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
