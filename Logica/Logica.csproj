@@ -63,11 +63,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="consultas.cs" />
-    <Compile Include="datos.cs" />
+    <Compile Include="Clases\Aeronave.cs" />
+    <Compile Include="Clases\FichaMedica.cs" />
+    <Compile Include="Clases\Licencia.cs" />
+    <Compile Include="Clases\Mantenimiento.cs" />
+    <Compile Include="Clases\Piloto.cs" />
+    <Compile Include="Clases\PlanVuelo.cs" />
+    <Compile Include="Clases\PlanVueloReal.cs" />
+    <Compile Include="Clases\Componente.cs" />
+    <Compile Include="Consultas\consultas.cs" />
+    <Compile Include="Clases\datos.cs" />
+    <Compile Include="Encryption\hash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="rut.cs" />
-    <Compile Include="Usuarios.cs" />
+    <Compile Include="FormatearRut\rut.cs" />
+    <Compile Include="Clases\Usuarios.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Conexion\Conexion.csproj">
