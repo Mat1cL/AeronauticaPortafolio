@@ -41,7 +41,7 @@ namespace Aeronautica
             OracleDataReader reader = dbCmdx2.ExecuteReader();
             if (reader.Read())
             {
-                MessageBox.Show("El Piloto se encuentra deshabilitado, revise su casilla de correo para saber la razón");
+                MessageBox.Show("El Piloto se encuentra deshabilitado, revise su casilla de correo para saber la razón", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {

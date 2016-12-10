@@ -37,9 +37,10 @@
             this.cboLicencia = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgvHorasPiloto = new System.Windows.Forms.DataGridView();
             this.txtPiloto = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnGenerar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHorasPiloto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             // 
             this.lblSubtotalPiloto.AutoSize = true;
             this.lblSubtotalPiloto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubtotalPiloto.Location = new System.Drawing.Point(25, 306);
+            this.lblSubtotalPiloto.Location = new System.Drawing.Point(42, 331);
             this.lblSubtotalPiloto.Name = "lblSubtotalPiloto";
             this.lblSubtotalPiloto.Size = new System.Drawing.Size(44, 20);
             this.lblSubtotalPiloto.TabIndex = 22;
@@ -56,7 +57,7 @@
             // lblhrsPiloto
             // 
             this.lblhrsPiloto.AutoSize = true;
-            this.lblhrsPiloto.Location = new System.Drawing.Point(26, 111);
+            this.lblhrsPiloto.Location = new System.Drawing.Point(43, 136);
             this.lblhrsPiloto.Name = "lblhrsPiloto";
             this.lblhrsPiloto.Size = new System.Drawing.Size(64, 13);
             this.lblhrsPiloto.TabIndex = 21;
@@ -64,7 +65,7 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(232, 338);
+            this.btnVolver.Location = new System.Drawing.Point(138, 363);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
             this.btnVolver.TabIndex = 19;
@@ -74,7 +75,7 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(29, 338);
+            this.btnConsultar.Location = new System.Drawing.Point(46, 363);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
             this.btnConsultar.TabIndex = 18;
@@ -86,7 +87,7 @@
             // 
             this.cboLicencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLicencia.FormattingEnabled = true;
-            this.cboLicencia.Location = new System.Drawing.Point(79, 68);
+            this.cboLicencia.Location = new System.Drawing.Point(96, 93);
             this.cboLicencia.Name = "cboLicencia";
             this.cboLicencia.Size = new System.Drawing.Size(228, 21);
             this.cboLicencia.TabIndex = 17;
@@ -94,7 +95,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 71);
+            this.label3.Location = new System.Drawing.Point(43, 96);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 16;
@@ -103,20 +104,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 33);
+            this.label2.Location = new System.Drawing.Point(43, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "Piloto";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(118, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Consultar Horas de Vuelo";
             // 
             // dgvHorasPiloto
             // 
@@ -126,7 +118,7 @@
             this.dgvHorasPiloto.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHorasPiloto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHorasPiloto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHorasPiloto.Location = new System.Drawing.Point(29, 141);
+            this.dgvHorasPiloto.Location = new System.Drawing.Point(46, 166);
             this.dgvHorasPiloto.Name = "dgvHorasPiloto";
             this.dgvHorasPiloto.ReadOnly = true;
             this.dgvHorasPiloto.RowHeadersVisible = false;
@@ -136,17 +128,40 @@
             // 
             // txtPiloto
             // 
-            this.txtPiloto.Location = new System.Drawing.Point(79, 33);
+            this.txtPiloto.Location = new System.Drawing.Point(96, 58);
             this.txtPiloto.Name = "txtPiloto";
             this.txtPiloto.Size = new System.Drawing.Size(228, 20);
             this.txtPiloto.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(348, 25);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Consultar Horas de Vuelo de Piloto";
+            // 
+            // btnGenerar
+            // 
+            this.btnGenerar.Location = new System.Drawing.Point(227, 363);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(97, 23);
+            this.btnGenerar.TabIndex = 25;
+            this.btnGenerar.Text = "Generar Reporte";
+            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
             // ConsultarHoraDeVueloPiloto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(332, 371);
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ClientSize = new System.Drawing.Size(373, 398);
+            this.Controls.Add(this.btnGenerar);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPiloto);
             this.Controls.Add(this.lblSubtotalPiloto);
             this.Controls.Add(this.lblhrsPiloto);
@@ -155,7 +170,6 @@
             this.Controls.Add(this.cboLicencia);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvHorasPiloto);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -178,8 +192,9 @@
         private System.Windows.Forms.ComboBox cboLicencia;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvHorasPiloto;
         private System.Windows.Forms.TextBox txtPiloto;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnGenerar;
     }
 }

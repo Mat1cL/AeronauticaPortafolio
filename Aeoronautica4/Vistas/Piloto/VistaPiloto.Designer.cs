@@ -34,16 +34,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnIngresarPlanVuelo = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnPlanVuelo
             // 
             this.btnPlanVuelo.AutoSize = true;
-            this.btnPlanVuelo.Location = new System.Drawing.Point(74, 236);
+            this.btnPlanVuelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlanVuelo.Location = new System.Drawing.Point(27, 236);
             this.btnPlanVuelo.Name = "btnPlanVuelo";
-            this.btnPlanVuelo.Size = new System.Drawing.Size(160, 13);
+            this.btnPlanVuelo.Size = new System.Drawing.Size(235, 16);
             this.btnPlanVuelo.TabIndex = 57;
             this.btnPlanVuelo.Text = "Ingresar Plan de Vuelo Estimado";
             // 
@@ -51,7 +51,7 @@
             // 
             this.btnConsultarVuelos.BackColor = System.Drawing.Color.SlateGray;
             this.btnConsultarVuelos.Image = global::Aeronautica.Properties.Resources.ConsultarHoradeVueloPiloto;
-            this.btnConsultarVuelos.Location = new System.Drawing.Point(325, 121);
+            this.btnConsultarVuelos.Location = new System.Drawing.Point(330, 121);
             this.btnConsultarVuelos.Name = "btnConsultarVuelos";
             this.btnConsultarVuelos.Size = new System.Drawing.Size(128, 112);
             this.btnConsultarVuelos.TabIndex = 54;
@@ -61,9 +61,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(326, 236);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(312, 236);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(127, 13);
+            this.label6.Size = new System.Drawing.Size(185, 16);
             this.label6.TabIndex = 56;
             this.label6.Text = "Consultar Horas de Vuelo";
             // 
@@ -71,7 +72,7 @@
             // 
             this.btnIngresarPlanVuelo.BackColor = System.Drawing.Color.SlateGray;
             this.btnIngresarPlanVuelo.Image = global::Aeronautica.Properties.Resources.paper1X1;
-            this.btnIngresarPlanVuelo.Location = new System.Drawing.Point(95, 121);
+            this.btnIngresarPlanVuelo.Location = new System.Drawing.Point(69, 121);
             this.btnIngresarPlanVuelo.Name = "btnIngresarPlanVuelo";
             this.btnIngresarPlanVuelo.Size = new System.Drawing.Size(128, 112);
             this.btnIngresarPlanVuelo.TabIndex = 53;
@@ -89,16 +90,6 @@
             this.label4.TabIndex = 55;
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(373, 339);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 52;
-            this.button2.Text = "Salir";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(227, 77);
@@ -110,6 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(564, 397);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.btnPlanVuelo);
@@ -117,7 +109,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnIngresarPlanVuelo);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VistaPiloto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -136,7 +127,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnIngresarPlanVuelo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtUsuario;
 
     }
