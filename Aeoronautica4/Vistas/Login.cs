@@ -15,6 +15,7 @@ using Logica;
 using Conexion;
 using System.Net.Mail;
 
+
 namespace Aeronautica
 {
     public partial class Login : Form
@@ -25,6 +26,7 @@ namespace Aeronautica
         public Login()
         {
             InitializeComponent();
+            
         }
         //Fin de inicialización del form
         [STAThread]
@@ -34,38 +36,52 @@ namespace Aeronautica
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
         }
-            
+
         
+        
+
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            
+
+
             Usuarios UsuarioOb = new Usuarios();
             // Inicio Validar Rut
-            
+            hash hs = new hash();
             UsuarioOb.Rut = this.txtUsuario.Text;
 
             string rutSinFormato = UsuarioOb.Rut;
             string rutFormateado = String.Empty;
-            
+            if (txtContraseña.Text.Length > 0)
+            {
+                string hash = hs.CalculateMD5Hash(txtContraseña.Text);
 
+                string passEncriptado = hash.Trim().ToLower();
+
+                txtContraseña.Text = passEncriptado;
+            }
+            
 
             if (string.IsNullOrWhiteSpace(txtUsuario.Text))
             {
-                MessageBox.Show("Debe ingresar su Rut");
-                return;
+                errorProvider1.SetError(txtUsuario, "Debe ingresar su Rut");
+                txtContraseña.Clear();
             }
             else
             {
+                errorProvider1.SetError(txtUsuario, string.Empty);
                 if (Rut.ValidaRut(txtUsuario.Text))
                 {
                     Console.WriteLine("Rut Valido");
+                    label5.Hide();
+
                 }
                 else
                 {
-                    MessageBox.Show("Rut Inválido", "ERROR");
+                    label5.Show();
+                    label5.Text = "Rut Inválido";
                     txtUsuario.Text = String.Empty;
-                    
+                    errorProvider1.Clear();
+                    txtContraseña.Clear();
                 }
             }
             // Fin Validar Rut
@@ -73,182 +89,212 @@ namespace Aeronautica
             // Inicio Validar Contraseña
             if (string.IsNullOrWhiteSpace(txtContraseña.Text))
             {
-                MessageBox.Show("Debe ingresar su Contraseña");
-                return;
+                errorProvider1.SetError(txtContraseña, "Debe ingresar su Contraseña");
             }
             else
             {
+                errorProvider1.SetError(txtContraseña, string.Empty);
                 UsuarioOb.Contrseña = this.txtContraseña.Text;
             }
             // Fin Validar Contraseña
 
+
             // Inicio Valida ComboBox
             if (this.comboBox1.Text == "Seleccione Tipo de Usuario")
             {
-                MessageBox.Show("Seleccione un tipo de usuario");
+                errorProvider1.SetError(comboBox1, "Seleccione un tipo de usuario");
             }
-    
+
             else
-            { 
-                UsuarioOb.Tipo = this.comboBox1.SelectedItem.ToString();
-            
-
-            //Establecer Condición
-
-            // Inicio Validar Datos de ComboBox
-            if (UsuarioOb.Buscar() == true)
             {
-                OracleConnection conDataBase = new OracleConnection((consultas.Variables.ConString));
-
-                try
+                if (string.IsNullOrWhiteSpace(txtContraseña.Text))
                 {
-                    conDataBase.Open();
-                    ////////INICIO FECHA MÉDICA/////////////
-                    string Command2 = ""+(consultas.Variables.CorreoFichaMedica)+"";
-                    OracleCommand Comm12 = new OracleCommand(Command2, conDataBase);
-                    OracleDataReader DR12 = Comm12.ExecuteReader();
-                    if (DR12.Read())
+                    errorProvider1.SetError(txtContraseña, "Debe ingresar su Contraseña");
+                }
+                else if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+                {
+                    errorProvider1.SetError(txtUsuario, "Debe ingresar su Rut");
+                    txtContraseña.Clear();
+                }
+                else
+                {
+                    errorProvider1.SetError(txtUsuario, string.Empty);
+                    errorProvider1.SetError(txtContraseña, string.Empty);
+                    errorProvider1.SetError(comboBox1, string.Empty);
+                    UsuarioOb.Tipo = this.comboBox1.SelectedItem.ToString();
+
+
+                    //Establecer Condición
+
+                    // Inicio Validar Datos de ComboBox
+                    if (UsuarioOb.Buscar() == true)
                     {
-                        txtreciever.Text = DR12["correos"].ToString();
-                        SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Conexión a Gmail
-                        MailMessage message = new MailMessage(); // Objeto E-mail
-                        message.From = new MailAddress(txtreciever.Text); // Quien envia el e-mail
-                        message.To.Add(txtreciever.Text); // Receptor del E-mail
-                        txtbody.Text = "Piloto le informamos que ha sido deshabilitado por que su Ficha Médica se encuentra Vencida";
-                        message.Body = txtbody.Text; // Mensaje E-mail
-                        txtsubject.Text = "Deshabilitado Por Vencimiento de Ficha Médica";
-                        message.Subject = txtsubject.Text; // Asunto del E-mail
-                        client.UseDefaultCredentials = false;
-                        client.EnableSsl = true;
-                        /*if(txtattachment.Text != null)
+                        OracleConnection conDataBase = new OracleConnection((consultas.Variables.ConString));
+
+                        try
                         {
-                            message.Attachments.Add(new Attachment(txtattachment.Text)); //Adding attachment
-                        }*/
-                        client.Credentials = new System.Net.NetworkCredential(txtsender.Text, txtpass.Text);
-                        Cursor.Current = Cursors.WaitCursor;
-                        client.Send(message); //Enviar Email
-                        Cursor.Current = Cursors.Default;
-                        message = null; // Liberar Memoria
+                            conDataBase.Open();
+                            ////////INICIO FECHA MÉDICA/////////////
+                            string Command2 = "" + (consultas.Variables.CorreoFichaMedica) + "";
+                            OracleCommand Comm12 = new OracleCommand(Command2, conDataBase);
+                            OracleDataReader DR12 = Comm12.ExecuteReader();
+                            if (DR12.Read())
+                            {
+                                try
+                                {
+                                    txtreciever.Text = DR12["correos"].ToString();
+                                    SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Conexión a Gmail
+                                    MailMessage message = new MailMessage(); // Objeto E-mail
+                                    message.From = new MailAddress(txtreciever.Text); // Quien envia el e-mail
+                                    message.To.Add(txtreciever.Text); // Receptor del E-mail
+                                    txtbody.Text = "Piloto le informamos que ha sido deshabilitado por que su Ficha Médica se encuentra Vencida";
+                                    message.Body = txtbody.Text; // Mensaje E-mail
+                                    txtsubject.Text = "Deshabilitado Por Vencimiento de Ficha Médica";
+                                    message.Subject = txtsubject.Text; // Asunto del E-mail
+                                    client.UseDefaultCredentials = false;
+                                    client.EnableSsl = true;
+                                    /*if(txtattachment.Text != null)
+                                    {
+                                        message.Attachments.Add(new Attachment(txtattachment.Text)); //Adding attachment
+                                    }*/
+                                    client.Credentials = new System.Net.NetworkCredential(txtsender.Text, txtpass.Text);
+                                    Cursor.Current = Cursors.WaitCursor;
+                                    client.Send(message); //Enviar Email
+                                    Cursor.Current = Cursors.Default;
+                                    message = null; // Liberar Memoria
+                                }
+                                catch
+                                {
 
-                        string QueryUpdate3 = ""+(consultas.Variables.UpdateCorreoFichaMedica)+"";
-                        OracleCommand cmdDataBasez3 = new OracleCommand(QueryUpdate3, conDataBase);
-                        cmdDataBasez3.ExecuteReader();
-                        OracleDataReader dr = null;
-                        dr = cmdDataBasez3.ExecuteReader();
-                    }
-                    ////////FIN FECHA MÉDICA/////////////
+                                }
+                                string QueryUpdate3 = "" + (consultas.Variables.UpdateCorreoFichaMedica) + "";
+                                OracleCommand cmdDataBasez3 = new OracleCommand(QueryUpdate3, conDataBase);
+                                cmdDataBasez3.ExecuteReader();
+                                OracleDataReader dr = null;
+                                dr = cmdDataBasez3.ExecuteReader();
 
-                    ////////INICIO CORREO INACTIVIDAD/////////////
-                    string Command3 = ""+(consultas.Variables.CorreoInactividad)+"";
-                    OracleCommand Comm13 = new OracleCommand(Command3, conDataBase);
-                    OracleDataReader DR13 = Comm13.ExecuteReader();
-                    if (DR13.Read())
-                    {
-                        txtreciever.Text = DR13["correos"].ToString();
-                        SmtpClient client2 = new SmtpClient("smtp.gmail.com", 587); //Conexión a Gmail
-                        MailMessage message2 = new MailMessage(); // Objeto E-mail
-                        message2.From = new MailAddress(txtreciever.Text); // Quien envia el e-mail
-                        message2.To.Add(txtreciever.Text); // Receptor del E-mail
-                        txtbody.Text = "Piloto le informamos que ha sido deshabilitado por inactividad de vuelos, por favor comunicarse con un operador para normalizar su situación";
-                        message2.Body = txtbody.Text; // Mensaje E-mail
-                        txtsubject.Text = "Deshabilitado Por Inactividad de Vuelos";
-                        message2.Subject = txtsubject.Text; // Asunto del E-mail
-                        client2.UseDefaultCredentials = false;
-                        client2.EnableSsl = true;
-                        /*if(txtattachment.Text != null)
+                            }
+                            ////////FIN FECHA MÉDICA/////////////
+
+                            ////////INICIO CORREO INACTIVIDAD/////////////
+                            string Command3 = "" + (consultas.Variables.CorreoInactividad) + "";
+                            OracleCommand Comm13 = new OracleCommand(Command3, conDataBase);
+                            OracleDataReader DR13 = Comm13.ExecuteReader();
+                            if (DR13.Read())
+                            {
+                                try 
+                                {
+                                txtreciever.Text = DR13["correos"].ToString();
+                                SmtpClient client2 = new SmtpClient("smtp.gmail.com", 587); //Conexión a Gmail
+                                MailMessage message2 = new MailMessage(); // Objeto E-mail
+                                message2.From = new MailAddress(txtreciever.Text); // Quien envia el e-mail
+                                message2.To.Add(txtreciever.Text); // Receptor del E-mail
+                                txtbody.Text = "Piloto le informamos que ha sido deshabilitado por inactividad de vuelos, por favor comunicarse con un operador para normalizar su situación";
+                                message2.Body = txtbody.Text; // Mensaje E-mail
+                                txtsubject.Text = "Deshabilitado Por Inactividad de Vuelos";
+                                message2.Subject = txtsubject.Text; // Asunto del E-mail
+                                client2.UseDefaultCredentials = false;
+                                client2.EnableSsl = true;
+                                /*if(txtattachment.Text != null)
+                                {
+                                    message.Attachments.Add(new Attachment(txtattachment.Text)); //Adding attachment
+                                }*/
+                                client2.Credentials = new System.Net.NetworkCredential(txtsender.Text, txtpass.Text);
+                                Cursor.Current = Cursors.WaitCursor;
+                                client2.Send(message2); //Enviar Email
+                                Cursor.Current = Cursors.Default;
+                                message2 = null; // Liberar Memoria
+                                }
+                                catch
+                                {
+                                   
+                                }
+                                string QueryUpdate3 = "" + (consultas.Variables.UpdateCorreoInactividad) + "";
+                                OracleCommand cmdDataBasez3 = new OracleCommand(QueryUpdate3, conDataBase);
+                                cmdDataBasez3.ExecuteReader();
+                                OracleDataReader dr = null;
+                                dr = cmdDataBasez3.ExecuteReader();
+
+                                ////////FIN CORREO INACTIVIDAD/////////////
+
+
+                            }
+
+                        }
+
+
+
+                        catch (Exception)
                         {
-                            message.Attachments.Add(new Attachment(txtattachment.Text)); //Adding attachment
-                        }*/
-                        client2.Credentials = new System.Net.NetworkCredential(txtsender.Text, txtpass.Text);
-                        Cursor.Current = Cursors.WaitCursor;
-                        client2.Send(message2); //Enviar Email
-                        Cursor.Current = Cursors.Default;
-                        message2 = null; // Liberar Memoria
 
-                        string QueryUpdate3 = ""+(consultas.Variables.UpdateCorreoInactividad)+"";
-                        OracleCommand cmdDataBasez3 = new OracleCommand(QueryUpdate3, conDataBase);
-                        cmdDataBasez3.ExecuteReader();
-                        OracleDataReader dr = null;
-                        dr = cmdDataBasez3.ExecuteReader();
-
-                        ////////FIN CORREO INACTIVIDAD/////////////
-
-
-                    }
-                    
-                }
+                        }
 
 
 
-                catch (Exception)
-                {
-
-                }
-
-                
-                    
-                    
 
 
-                
-               
-                
-                
-                ////////////////////////////////////////////////////////////////////////
 
-                if (this.comboBox1.Text == "Administrador")
-                { 
-                this.Hide();
-                VistaAdministrador f = new VistaAdministrador();
-                f.ShowDialog();
-                }
-                else if (this.comboBox1.Text == "Piloto")
-                {
-                    string Command4 = ""+(consultas.Variables.ValidarEstadoPilotoLogin)+"'" + txtUsuario.Text + "' "+(consultas.Variables.ValidarEstadoPilotoLogin2)+"";
-                    OracleCommand Comm14 = new OracleCommand(Command4, conDataBase);
-                    OracleDataReader DR14 = Comm14.ExecuteReader();
-                    if (DR14.Read())
-                    {
-                        MessageBox.Show("Piloto te encuentras deshabilitado, revisa tu correo para ver tu situación.");
-                        this.Hide();
-                        VariableRut = txtUsuario.Text;
-                        VistaPiloto f = new VistaPiloto();
-                        f.ShowDialog();
+
+
+
+
+                        ////////////////////////////////////////////////////////////////////////
+
+                        if (this.comboBox1.Text == "Administrador")
+                        {
+                            this.Hide();
+                            VistaAdministrador f = new VistaAdministrador();
+                            f.ShowDialog();
+                        }
+                        else if (this.comboBox1.Text == "Piloto")
+                        {
+                            string Command4 = "" + (consultas.Variables.ValidarEstadoPilotoLogin) + "'" + txtUsuario.Text + "' " + (consultas.Variables.ValidarEstadoPilotoLogin2) + "";
+                            OracleCommand Comm14 = new OracleCommand(Command4, conDataBase);
+                            OracleDataReader DR14 = Comm14.ExecuteReader();
+                            if (DR14.Read())
+                            {
+                                MessageBox.Show("Piloto te encuentras deshabilitado, revisa tu correo para ver tu situación.", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                this.Hide();
+                                VariableRut = txtUsuario.Text;
+                                VistaPiloto f = new VistaPiloto();
+                                f.ShowDialog();
+                            }
+                            else
+                            {
+                                this.Hide();
+                                VariableRut = txtUsuario.Text;
+                                VistaPiloto f = new VistaPiloto();
+                                f.ShowDialog();
+                            }
+
+
+                        }
+                        else if (this.comboBox1.Text == "Operador")
+                        {
+                            this.Hide();
+                            VistaOperador f = new VistaOperador();
+                            f.ShowDialog();
+                        }
+                        else if (this.comboBox1.Text == "Consultor")
+                        {
+                            this.Hide();
+                            VistaConsultor f = new VistaConsultor();
+                            f.ShowDialog();
+                        }
+
                     }
                     else
                     {
-                        this.Hide();
-                        VariableRut = txtUsuario.Text;
-                        VistaPiloto f = new VistaPiloto();
-                        f.ShowDialog();
-                    }
-                        
+                        txtContraseña.Clear();
+                        txtUsuario.Clear();
+                        // txtContraseña.Text = String.Empty;
+                        MessageBox.Show(UsuarioOb.Mensaje, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        // txtUsuario.Text = String.Empty;
 
+                    }
+                    // Fin Validar Datos de ComboBox
                 }
-                else if (this.comboBox1.Text == "Operador")
-                {
-                    this.Hide();
-                    VistaOperador f = new VistaOperador();
-                    f.ShowDialog();
-                }
-                else if (this.comboBox1.Text == "Consultor")
-                {
-                    this.Hide();
-                    VistaConsultor f = new VistaConsultor();
-                    f.ShowDialog();
-                }
-                
-            }
-            else
-            {
-                txtContraseña.Clear();
-                txtUsuario.Clear();
-               // txtContraseña.Text = String.Empty;
-                MessageBox.Show(UsuarioOb.Mensaje, "ERROR");
-                // txtUsuario.Text = String.Empty;
-                
-            }
-            // Fin Validar Datos de ComboBox
+
             }
             // Fin Validar ComboBox
         }
@@ -275,15 +321,15 @@ namespace Aeronautica
 
         private void Login_Load(object sender, EventArgs e)
         {
-            
+            label5.Hide();
             this.comboBox1.SelectedIndex = 0;
             txtUsuario.CharacterCasing = CharacterCasing.Upper;
 
             string username = txtsender.Text;
-            txtsender.Text = ""+(consultas.Variables.NombreCorreo)+"";
+            txtsender.Text = "" + (consultas.Variables.NombreCorreo) + "";
             txtsender.Enabled = false;
             string pass = txtpass.Text;
-            txtpass.Text = ""+(consultas.Variables.PassCorreo)+"";
+            txtpass.Text = "" + (consultas.Variables.PassCorreo) + "";
             txtpass.Enabled = false;
             txtreciever.Enabled = false;
             txtsubject.Enabled = false;
@@ -307,42 +353,45 @@ namespace Aeronautica
             if (txtUsuario.Text == "")
             {
                 //MessageBox.Show("Debes ingresar el Rut");
-            }
-            else
-            { 
-            //obtengo la parte numerica del RUT
-            string rutTemporal = rutSinFormato.Substring(0, rutSinFormato.Length - 1);
-
-            //obtengo el Digito Verificador del RUT
-            
-            string dv = rutSinFormato.Substring(rutSinFormato.Length - 1, 1);
-
-            Int64 rut;
-
-            //aqui convierto a un numero el RUT si ocurre un error lo deja en CERO
-            if (!Int64.TryParse(rutTemporal, out rut))
-            {
-                rut = 0;
-            }
-
-            //este comando es el que formatea con los separadores de miles
-            rutFormateado = rut.ToString("N0");
-
-            if (rutFormateado.Equals("0"))
-            {
-                rutFormateado = string.Empty;
+                
             }
             else
             {
-                //si no hubo problemas con el formateo agrego el DV a la salida
-                rutFormateado += "-" + dv;
+                //obtengo la parte numerica del RUT
+                string rutTemporal = rutSinFormato.Substring(0, rutSinFormato.Length - 1);
 
-                //y hago este replace por si el servidor tuviese configuracion anglosajona y reemplazo las comas por puntos
-                rutFormateado = rutFormateado.Replace(",", ".");
-            }
-            txtUsuario.Text = rutFormateado;
-            //la salida esperada para el ejemplo es 99.999.999-K
-            //MessageBox.Show("RUT Formateado: " + rutFormateado);
+                //obtengo el Digito Verificador del RUT
+
+                string dv = rutSinFormato.Substring(rutSinFormato.Length - 1, 1);
+
+                Int64 rut;
+
+                //aqui convierto a un numero el RUT si ocurre un error lo deja en CERO
+                if (!Int64.TryParse(rutTemporal, out rut))
+                {
+                    rut = 0;
+                }
+
+                //este comando es el que formatea con los separadores de miles
+                rutFormateado = rut.ToString("N0");
+
+                if (rutFormateado.Equals("0"))
+                {
+                    rutFormateado = string.Empty;
+                    label5.Show();
+                    label5.Text = "Rut Inválido";
+                }
+                else
+                {
+                    //si no hubo problemas con el formateo agrego el DV a la salida
+                    rutFormateado += "-" + dv;
+
+                    //y hago este replace por si el servidor tuviese configuracion anglosajona y reemplazo las comas por puntos
+                    rutFormateado = rutFormateado.Replace(",", ".");
+                }
+                txtUsuario.Text = rutFormateado;
+                //la salida esperada para el ejemplo es 99.999.999-K
+                //MessageBox.Show("RUT Formateado: " + rutFormateado);
             }
         }
 
@@ -353,13 +402,13 @@ namespace Aeronautica
 
         private void txtUsuario_MouseClick(object sender, MouseEventArgs e)
         {
-            
-            
+
+
         }
 
         private void txtContraseña_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
